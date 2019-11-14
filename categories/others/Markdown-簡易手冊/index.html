@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="隨勛所欲">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://samirliu127.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="markdown" />
+
+
+<meta name="description" content="標題當您想要將一段文字標示為標題的時候，請使用這個語法。請在行首輸入 # 符號，並在後面加上一個空白後，再輸入標題文字。標題有分成 6 個層級，# 的數量愈多，層級越低。
+您可以按照範例輸入看看..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Markdown 簡易手冊 |
+    
+    隨勛所欲
+</title>
+
+<link rel="alternate" href="/atom.xml" title="隨勛所欲" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5M44L8F');</script>
+<!-- End Google Tag Manager -->
+
+
+    
+
+    <script data-ad-client="ca-pub-5811286107404442" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5M44L8F"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <header class="main-header"  style="background-image:url(
+    /./img/up-background.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Samir Liu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://samirliu127.github.io">
+                        隨勛所欲</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首頁</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/tracking/"><i class="fa "></i>
+                                網站分析</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/others/"><i class="fa "></i>
+                                隨筆</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                時間軸</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Markdown 簡易手冊">
+            
+            Markdown 簡易手冊
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/others/">隨筆</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/markdown/" rel="tag">markdown</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/11/09</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="標題"><a href="#標題" class="headerlink" title="標題"></a>標題</h2><p>當您想要將一段文字標示為標題的時候，請使用這個語法。<br>請在行首輸入 <code>#</code> 符號，並在後面加上一個空白後，再輸入標題文字。<br>標題有分成 6 個層級，<code>#</code> 的數量愈多，層級越低。</p>
+<p>您可以按照範例輸入看看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 第一層級標題</span><br><span class="line">## 第一層級標題</span><br><span class="line">### 第一層級標題</span><br><span class="line">#### 第一層級標題</span><br><span class="line">##### 第一層級標題</span><br><span class="line">###### 第一層級標題</span><br></pre></td></tr></table></figure>
+
+<p>以上範例結果為：</p>
+<h1 id="第一層級標題"><a href="#第一層級標題" class="headerlink" title="第一層級標題"></a>第一層級標題</h1><h2 id="第一層級標題-1"><a href="#第一層級標題-1" class="headerlink" title="第一層級標題"></a>第一層級標題</h2><h3 id="第一層級標題-2"><a href="#第一層級標題-2" class="headerlink" title="第一層級標題"></a>第一層級標題</h3><h4 id="第一層級標題-3"><a href="#第一層級標題-3" class="headerlink" title="第一層級標題"></a>第一層級標題</h4><h5 id="第一層級標題-4"><a href="#第一層級標題-4" class="headerlink" title="第一層級標題"></a>第一層級標題</h5><h6 id="第一層級標題-5"><a href="#第一層級標題-5" class="headerlink" title="第一層級標題"></a>第一層級標題</h6><p>:::info<br>:bulb: 小提示：覺得語法容易忘記嗎？沒關係！<br>HackMD 提供貼心的自動完成功能，例如：您在行首輸入 <code>#</code>，就會出現自動完成選單，提示您可用的標題語法！</p>
+<img width=500 src=https://i.imgur.com/fyFgCez.png?)>
+:::
+
+<h2 id="清單"><a href="#清單" class="headerlink" title="清單"></a>清單</h2><p>當您想要列舉一些項目的時候，請使用此語法，並且可以加上項目編號，將項目縮排即可作為子清單。<br>清單分為<strong>有序清單</strong>與<strong>無序清單</strong>兩種。有序清單是項目符號會使用數字編號；無序清單是項目符號會使用同樣的層級的符號。</p>
+<p>您可以按照範例輸入看看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- 無序清單</span><br><span class="line">- 無序清單</span><br><span class="line">    - 無序清單子清單</span><br><span class="line">        - 無序清單子子清單</span><br><span class="line"></span><br><span class="line">1. 有序清單</span><br><span class="line">2. 有序清單</span><br><span class="line">    1. 有序清單子清單</span><br><span class="line">        1. 有序清單子子清單</span><br></pre></td></tr></table></figure>
+
+<p>以上範例結果為：</p>
+<ul>
+<li>無序清單</li>
+<li>無序清單<ul>
+<li>無序清單子清單<ul>
+<li>無序清單子子清單</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>有序清單</li>
+<li>有序清單<ol>
+<li>有序清單子清單<ol>
+<li>有序清單子子清單</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="引用區塊"><a href="#引用區塊" class="headerlink" title="引用區塊"></a>引用區塊</h2><p>當您需要將一段文字標示為引用的時候，請使用此語法。<br>請在行首輸入 <code>&gt;</code> 符號，並在後面加上一個空白後，再輸入引用文字，即可形成引用區塊。如在引用區塊前多次輸入 <code>&gt;</code> 符號，即是子引用區塊。</p>
+<p>您可以按照範例輸入看看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用區塊</span><br><span class="line">&gt;&gt; 子引用區塊</span><br><span class="line">&gt;&gt;&gt; 子子引用區塊</span><br></pre></td></tr></table></figure>
+
+<p>以上範例結果為：</p>
+<blockquote>
+<p>引用區塊</p>
+<blockquote>
+<p>子引用區塊</p>
+<blockquote>
+<p>子子引用區塊</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="粗體、斜體"><a href="#粗體、斜體" class="headerlink" title="粗體、斜體"></a>粗體、斜體</h2><p>當您需要將一段文字以粗體或是斜體表現的時候，請用此語法。<br>請在文字兩端加上 <code>*</code> 符號，即可將文字變成粗體或是斜體<br>使用一個 <code>*</code> 為斜體；使用兩個 <code>*</code> 為粗體。</p>
+<p>您可以按照範例輸入看看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*斜體*</span><br><span class="line">**粗體**</span><br></pre></td></tr></table></figure>
+
+<p>以上範例結果為：</p>
+<p><em>斜體</em><br><strong>粗體</strong></p>
+<p>:::info<br>:bulb: 小提示：使用編輯區塊上方的工具列，快速對選取中的文字加上格式</p>
+<p><img src="https://i.imgur.com/Cnle9f9.png" alt=""><br>:::</p>
+<h2 id="圖片"><a href="#圖片" class="headerlink" title="圖片"></a>圖片</h2><p>當您需要在筆記中加入圖片的時候，請使用此語法。<br>請先輸入 <code>![]()</code> 這些文字，然後在後面的 <code>()</code> 中間插入圖片的網址，即可加入圖片。<br>您也可以將圖片直接拖曳到編輯器、複製圖片後直接在編輯器貼上，都會直接將圖片上傳到 <a href="https://imgur.com/" target="_blank" rel="noopener">imgur</a> 後自動插入圖片語法。</p>
+<p>您可以按照範例輸入看看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](https://hackmd.io/favicon.png)</span><br></pre></td></tr></table></figure>
+
+<p>以上範例結果為：</p>
+<p><img src="https://hackmd.io/favicon.png" alt=""></p>
+<p>:::info<br>:bulb: 小提示：在空白之後輸入 <code>!</code> 會有自動完成，提示您可用的圖片語法</p>
+<img width=500 src="https://i.imgur.com/sZJf6AJ.png" >
+:::
+
+<h2 id="影片"><a href="#影片" class="headerlink" title="影片"></a>影片</h2><p>當您需要加入影片的時候，請使用此語法。<br>請先輸入 <code>{}</code> 這些文字，這時候會有自動完成：</p>
+<img width=500 src="https://i.imgur.com/e2dWOvX.png" >
+
+<p>接下來請按下列步驟：</p>
+<ol>
+<li>在自動完成中選擇您的影片來源，可能是 youtube 或是 vimeo</li>
+<li>假設您選擇 youtube，您的文字會變成 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%youtube youtubeid %&#125;</span><br></pre></td></tr></table></figure></li>
+<li>假設您的影片連結是：<code>https://www.youtube.com/watch?v=PJuNmlE74BQ</code></li>
+<li>請您將文字中的 <code>youtubeid</code> 替換成您影片連結的 id，也就是 <code>PJuNmlE74BQ</code></li>
+<li>您的文字最後會是：<code><div class="video-container"><iframe src="//www.youtube.com/embed/PJuNmlE74BQ" frameborder="0" allowfullscreen></iframe></div></code></li>
+</ol>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            轉載聲明：
+            商業轉載請聯繫作者獲得授權，非商業傳再請註明出處 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/categories/tracking/GA-GTM-%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85%E6%A5%9A/" class="pre-post btn btn-default" title='GA?GTM? 傻傻分不清楚'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            GA?GTM? 傻傻分不清楚</span>
+    </a>
+    
+    
+    <a href="/categories/others/Hexo-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" class="next-post btn btn-default" title='Hexo 常用指令'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Hexo 常用指令</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<script id="dsq-count-scr" src="https://samirliu127-hexo-blog.disqus.com/count.js" async></script>
+
+<script type="text/javascript">
+var disqus_config = function() {
+    this.page.url = 'https://samirliu127.github.io/categories/others/Markdown-%E7%B0%A1%E6%98%93%E6%89%8B%E5%86%8A/';
+    this.page.identifier = 'categories/others/Markdown-簡易手冊/';
+    this.page.title = 'Markdown 簡易手冊';
+};
+var d = document,
+    s = d.createElement('script');
+s.src = 'https://samirliu127-hexo-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);
+</script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#標題"><span class="toc-text">標題</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一層級標題"><span class="toc-text">第一層級標題</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一層級標題-1"><span class="toc-text">第一層級標題</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一層級標題-2"><span class="toc-text">第一層級標題</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一層級標題-3"><span class="toc-text">第一層級標題</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#第一層級標題-4"><span class="toc-text">第一層級標題</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#第一層級標題-5"><span class="toc-text">第一層級標題</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清單"><span class="toc-text">清單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用區塊"><span class="toc-text">引用區塊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#粗體、斜體"><span class="toc-text">粗體、斜體</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#圖片"><span class="toc-text">圖片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#影片"><span class="toc-text">影片</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

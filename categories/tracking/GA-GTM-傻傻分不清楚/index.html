@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="隨勛所欲">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://samirliu127.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="GTM,Google Tag Manager,GA,Google Analytics" />
+
+
+<meta name="description" content="GA 跟 GTM 有什麼區別?許多剛接觸 GA 跟 GTM 的人，常常搞不清楚它們的差別，在這邊盡量的簡單說明一下。
+Google Analytics (GA)Google Analytics ..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    GA?GTM? 傻傻分不清楚 |
+    
+    隨勛所欲
+</title>
+
+<link rel="alternate" href="/atom.xml" title="隨勛所欲" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5M44L8F');</script>
+<!-- End Google Tag Manager -->
+
+
+    
+
+    <script data-ad-client="ca-pub-5811286107404442" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5M44L8F"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <header class="main-header"  style="background-image:url(
+    /./img/up-background.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Samir Liu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://samirliu127.github.io">
+                        隨勛所欲</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首頁</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/tracking/"><i class="fa "></i>
+                                網站分析</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/python/"><i class="fa "></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/others/"><i class="fa "></i>
+                                隨筆</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                時間軸</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="GA?GTM? 傻傻分不清楚">
+            
+            GA?GTM? 傻傻分不清楚
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/tracking/">網站分析</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Google-Analytics/" rel="tag">Google Analytics</a> <a class="tag-link" href="/tags/Google-Tag-Manager/" rel="tag">Google Tag Manager</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/11/10</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="GA-跟-GTM-有什麼區別"><a href="#GA-跟-GTM-有什麼區別" class="headerlink" title="GA 跟 GTM 有什麼區別?"></a>GA 跟 GTM 有什麼區別?</h1><p>許多剛接觸 GA 跟 GTM 的人，常常搞不清楚它們的差別，在這邊盡量的簡單說明一下。<br><img src="https://pic.pimg.tw/serena0513/1512702551-2896529632.jpg" alt=""></p>
+<h2 id="Google-Analytics-GA"><a href="#Google-Analytics-GA" class="headerlink" title="Google Analytics (GA)"></a>Google Analytics (GA)</h2><p>Google Analytics 主要是追蹤你的網站，產生報告跟統計資訊。<a href="https://marketingplatform.google.com/about/analytics/" target="_blank" rel="noopener">了解更多</a></p>
+<ul>
+<li>多少人訪問了你的網站</li>
+<li>網站裡那些頁面是最受歡迎的</li>
+<li>使用者是透過甚麼管道進到你的網站</li>
+<li>使用者的輪廓統計(年齡層、性別、興趣、地區分佈)</li>
+<li>使用者在網站瀏覽的行為流程</li>
+</ul>
+<h2 id="Google-Tag-Manager-GTM"><a href="#Google-Tag-Manager-GTM" class="headerlink" title="Google Tag Manager (GTM)"></a>Google Tag Manager (GTM)</h2><p>顧名思義<strong>代碼管理(Tag Manager)</strong>，Google Tag Manager 能讓用戶定義觸發某些代碼的規則，從而更輕鬆地管理這些混亂的代碼。</p>
+<blockquote>
+<p>Google Tag Manager 並<strong>不會取代</strong> Google Analytics，反而幫助用戶輕鬆將 Google Analytics 部屬到網站上。</p>
+</blockquote>
+<p> Google Tag Manager 不只適用於 Google Analytics，其他包括：</p>
+<ul>
+<li>Google Ads</li>
+<li>Facebook Pixel</li>
+<li>Bing Ads</li>
+<li>Hotjar Tracking</li>
+<li>其他自訂義 HTML/JavaScript 代碼</li>
+</ul>
+<p>GA GTM 的關係：<br><img src="https://i.imgur.com/uXNMR3M.png" alt=""></p>
+<h2 id="使用-GTM-埋設-GA"><a href="#使用-GTM-埋設-GA" class="headerlink" title="使用 GTM 埋設 GA"></a>使用 GTM 埋設 GA</h2><p>這裡簡單的示範在 GTM 埋設 GA 追蹤代碼。</p>
+<ol>
+<li>在網站上設置 GTM，參考官方 <a href="https://developers.google.com/tag-manager/quickstart" target="_blank" rel="noopener">Quick Start Guide</a>。</li>
+<li>找到 GA 追蹤編號。GA 後臺 (管理 &gt; 資源 &gt; 追蹤資訊 &gt; 追蹤程式碼) 即可找到如 <code>UA-XXXXXXX-XX</code> 的編號。</li>
+<li>在 GTM 的代碼新增 <code>通用 Analytics (分析)</code> 的模塊，啟用覆寫後填入 GA 編號。</li>
+<li>觸發條件選擇網頁瀏覽的 <code>All Pages</code>。</li>
+<li>最後儲存後發佈。<br><img src="https://i.imgur.com/7IZ7XzF.png" alt=""></li>
+</ol>
+<p>以上就完成了基本設置。GA 將會追蹤所有已安裝 GTM 所有頁面的瀏覽量。</p>
+<hr>
+<blockquote>
+<p>最後分享個 Chrome 的檢查小工具 Tag Assistant，啟用後在網站上就可以檢查各種 Google 相關產品的標籤狀態。<a href="https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk" target="_blank" rel="noopener"><strong>連結點我</strong></a><br><img src="https://i.imgur.com/HXyGXWl.png" alt=""></p>
+</blockquote>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            轉載聲明：
+            商業轉載請聯繫作者獲得授權，非商業傳再請註明出處 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/categories/tracking/Google-Tag-Manager-%E5%85%A5%E9%96%80/" class="pre-post btn btn-default" title='Google Tag Manager 入門'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Google Tag Manager 入門</span>
+    </a>
+    
+    
+    <a href="/categories/others/Markdown-%E7%B0%A1%E6%98%93%E6%89%8B%E5%86%8A/" class="next-post btn btn-default" title='Markdown 簡易手冊'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Markdown 簡易手冊</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<script id="dsq-count-scr" src="https://samirliu127-hexo-blog.disqus.com/count.js" async></script>
+
+<script type="text/javascript">
+var disqus_config = function() {
+    this.page.url = 'https://samirliu127.github.io/categories/tracking/GA-GTM-%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85%E6%A5%9A/';
+    this.page.identifier = 'categories/tracking/GA-GTM-傻傻分不清楚/';
+    this.page.title = 'GA?GTM? 傻傻分不清楚';
+};
+var d = document,
+    s = d.createElement('script');
+s.src = 'https://samirliu127-hexo-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);
+</script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GA-跟-GTM-有什麼區別"><span class="toc-text">GA 跟 GTM 有什麼區別?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Analytics-GA"><span class="toc-text">Google Analytics (GA)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Tag-Manager-GTM"><span class="toc-text">Google Tag Manager (GTM)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-GTM-埋設-GA"><span class="toc-text">使用 GTM 埋設 GA</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
