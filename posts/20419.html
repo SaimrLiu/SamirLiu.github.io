@@ -22,10 +22,8 @@
 <meta name="keywords" content="GTM,Google Tag Manager,GA,Google Analytics" />
 
 
-<meta name="description" content="
-前一篇文章(GA?GTM? 傻傻分不清楚)提到 GA 與 GTM 的差異，不過為什麼要多一層 GTM 呢？這次來講 GTM 的基本介紹與使用方法。
-
-使用 Google Tag Manager..." />
+<meta name="description" content="GA 跟 GTM 有什麼區別?許多剛接觸 GA 跟 GTM 的人，常常搞不清楚它們的差別，在這邊盡量的簡單說明一下。
+Google Analytics (GA)Google Analytics ..." />
 
 
 <meta name="robots" content="all" />
@@ -36,7 +34,7 @@
 
 <title>
     
-    Google Tag Manager 入門 |
+    GA?GTM? 傻傻分不清楚 |
     
     隨勛所欲
 </title>
@@ -150,9 +148,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Google Tag Manager 入門">
+        <h1 id="GA?GTM? 傻傻分不清楚">
             
-            Google Tag Manager 入門
+            GA?GTM? 傻傻分不清楚
             
         </h1>
         <div class="post-meta">
@@ -177,7 +175,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2019/11/12</span>
+            2019/11/10</span>
     </span>
     
     
@@ -187,54 +185,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     
     <div class="post-body post-content">
-        <blockquote>
-<p>前一篇文章(<a href="../GA-GTM-傻傻分不清楚">GA?GTM? 傻傻分不清楚</a>)提到 GA 與 GTM 的差異，不過為什麼要多一層 GTM 呢？這次來講 GTM 的基本介紹與使用方法。</p>
-</blockquote>
-<h1 id="使用-Google-Tag-Manager-的優點"><a href="#使用-Google-Tag-Manager-的優點" class="headerlink" title="使用 Google Tag Manager 的優點"></a>使用 Google Tag Manager 的優點</h1><hr>
-<h2 id="1-介面化操作新增、刪除、修改網站上的代碼。"><a href="#1-介面化操作新增、刪除、修改網站上的代碼。" class="headerlink" title="1. 介面化操作新增、刪除、修改網站上的代碼。"></a>1. 介面化操作新增、刪除、修改網站上的代碼。</h2><p>不懂程式也可以簡單在網頁設置追蹤碼，同時在管理追蹤上也更有效率。</p>
-<h2 id="2-透過-GTM-可以快速測試代碼的可行性。"><a href="#2-透過-GTM-可以快速測試代碼的可行性。" class="headerlink" title="2. 透過 GTM 可以快速測試代碼的可行性。"></a>2. 透過 GTM 可以快速測試代碼的可行性。</h2><p>在預覽模式就可以在本端測試代碼執行狀況，在 Debug 的畫面上可以很快的找到問題。從新增、修正到發佈只需要短短幾分鐘，這將大大節省了時間。</p>
-<h2 id="3-提高網站的速度"><a href="#3-提高網站的速度" class="headerlink" title="3. 提高網站的速度"></a>3. 提高網站的速度</h2><p>透過 GTM 去載入代碼是異步執行，這代表網站不會被載入較慢的代碼給拖累，提升網站的使用者體驗。</p>
-<h1 id="設置-Google-Tag-Manager"><a href="#設置-Google-Tag-Manager" class="headerlink" title="設置 Google Tag Manager"></a>設置 Google Tag Manager</h1><hr>
-<p>部署只需要在 GTM 裡找到兩段程式碼，分別放在 head 與 body 裡就完成了，參考官方 <a href="https://developers.google.com/tag-manager/quickstart" target="_blank" rel="noopener">Quick Start Guide</a>。<br><img src="https://i.imgur.com/SXkLWRl.png" alt=""></p>
-<h1 id="Google-Tag-Manager-基本結構"><a href="#Google-Tag-Manager-基本結構" class="headerlink" title="Google Tag Manager 基本結構"></a>Google Tag Manager 基本結構</h1><hr>
-<p><img src="https://i.imgur.com/Q1OHzIB.png" alt=""></p>
-<blockquote>
-<p><strong>這邊以實作 Google Analytics 事件來說明各個組件的意義</strong><br>目的：追蹤站內搜尋按鈕的點擊量!<br><img src="https://i.imgur.com/ZwFgyCb.png" alt=""></p>
-</blockquote>
-<h2 id="變數-variable"><a href="#變數-variable" class="headerlink" title="變數 (variable)"></a>變數 (variable)</h2><p>定義具名的預留值，供觸發條件與代碼使用。</p>
+        <h1 id="GA-跟-GTM-有什麼區別"><a href="#GA-跟-GTM-有什麼區別" class="headerlink" title="GA 跟 GTM 有什麼區別?"></a>GA 跟 GTM 有什麼區別?</h1><p>許多剛接觸 GA 跟 GTM 的人，常常搞不清楚它們的差別，在這邊盡量的簡單說明一下。<br><img src="https://pic.pimg.tw/serena0513/1512702551-2896529632.jpg" alt=""></p>
+<h2 id="Google-Analytics-GA"><a href="#Google-Analytics-GA" class="headerlink" title="Google Analytics (GA)"></a>Google Analytics (GA)</h2><p>Google Analytics 主要是追蹤你的網站，產生報告跟統計資訊。<a href="https://marketingplatform.google.com/about/analytics/" target="_blank" rel="noopener">了解更多</a></p>
 <ul>
-<li>內建變數：<br><code>Click</code> 的系列預設是沒有啟用的，所以這邊把它打開，之後會用到。</li>
-<li>自訂義變數：<br>新增 GAID 變數供代碼使用，好處是不需要在每個代碼設置 GA 追蹤編號的基本參數。這次新增<code>siteSpeedSampleRate=100</code>與啟用多媒體廣告功能(之後會講 GA 的參數設定)。<br><img src="https://i.imgur.com/wMFdcAC.png" alt=""><h2 id="觸發條件-Trigger"><a href="#觸發條件-Trigger" class="headerlink" title="觸發條件 (Trigger)"></a>觸發條件 (Trigger)</h2>設定啟用代碼的規則與邏輯。<br>本次實作的按鈕的標籤<code>buttom#search-local.search-form-submit</code>，觸發條件可以設置的方法：</li>
-<li>點擊-所有元素：<code>Click Classes</code> 等於 <code>search-form-submit</code></li>
-<li>點擊-所有元素：<code>Click ID</code> 等於 <code>search-local</code></li>
+<li>多少人訪問了你的網站</li>
+<li>網站裡那些頁面是最受歡迎的</li>
+<li>使用者是透過甚麼管道進到你的網站</li>
+<li>使用者的輪廓統計(年齡層、性別、興趣、地區分佈)</li>
+<li>使用者在網站瀏覽的行為流程</li>
 </ul>
-<p><img src="https://i.imgur.com/ClOxhUY.png" alt=""></p>
-<p><img src="https://i.imgur.com/OlIl4lK.png" alt=""></p>
-<h2 id="代碼-Tag"><a href="#代碼-Tag" class="headerlink" title="代碼 (Tag)"></a>代碼 (Tag)</h2><p>用來嵌入想要觸發的程式碼。</p>
+<h2 id="Google-Tag-Manager-GTM"><a href="#Google-Tag-Manager-GTM" class="headerlink" title="Google Tag Manager (GTM)"></a>Google Tag Manager (GTM)</h2><p>顧名思義<strong>代碼管理(Tag Manager)</strong>，Google Tag Manager 能讓用戶定義觸發某些代碼的規則，從而更輕鬆地管理這些混亂的代碼。</p>
+<blockquote>
+<p>Google Tag Manager 並<strong>不會取代</strong> Google Analytics，反而幫助用戶輕鬆將 Google Analytics 部屬到網站上。</p>
+</blockquote>
+<p> Google Tag Manager 不只適用於 Google Analytics，其他包括：</p>
+<ul>
+<li>Google Ads</li>
+<li>Facebook Pixel</li>
+<li>Bing Ads</li>
+<li>Hotjar Tracking</li>
+<li>其他自訂義 HTML/JavaScript 代碼</li>
+</ul>
+<p>GA GTM 的關係：<br><img src="https://i.imgur.com/uXNMR3M.png" alt=""></p>
+<h2 id="使用-GTM-埋設-GA"><a href="#使用-GTM-埋設-GA" class="headerlink" title="使用 GTM 埋設 GA"></a>使用 GTM 埋設 GA</h2><p>這裡簡單的示範在 GTM 埋設 GA 追蹤代碼。</p>
 <ol>
-<li>新增代碼通用 Analytics(分析)</li>
-<li>追蹤類型：事件</li>
-<li>設定事件追蹤資料(<a href="https://support.google.com/analytics/answer/1033068" target="_blank" rel="noopener">參考</a>)<ul>
-<li>類別</li>
-<li>動作</li>
-<li>標籤(選填)</li>
-<li>值(選填)</li>
-</ul>
-</li>
-<li>選擇之前所定義好的<code>GAID</code>變數</li>
-<li>選擇<code>Click - Search</code>觸發條件</li>
+<li>在網站上設置 GTM，參考官方 <a href="https://developers.google.com/tag-manager/quickstart" target="_blank" rel="noopener">Quick Start Guide</a>。</li>
+<li>找到 GA 追蹤編號。GA 後臺 (管理 &gt; 資源 &gt; 追蹤資訊 &gt; 追蹤程式碼) 即可找到如 <code>UA-XXXXXXX-XX</code> 的編號。</li>
+<li>在 GTM 的代碼新增 <code>通用 Analytics (分析)</code> 的模塊，啟用覆寫後填入 GA 編號。</li>
+<li>觸發條件選擇網頁瀏覽的 <code>All Pages</code>。</li>
+<li>最後儲存後發佈。<br><img src="https://i.imgur.com/7IZ7XzF.png" alt=""></li>
 </ol>
+<p>以上就完成了基本設置。GA 將會追蹤所有已安裝 GTM 所有頁面的瀏覽量。</p>
+<hr>
 <blockquote>
-<p>完成後如圖<br><img src="https://i.imgur.com/nshwGcc.png" alt=""></p>
+<p>最後分享個 Chrome 的檢查小工具 Tag Assistant，啟用後在網站上就可以檢查各種 Google 相關產品的標籤狀態。<a href="https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk" target="_blank" rel="noopener"><strong>連結點我</strong></a><br><img src="https://i.imgur.com/HXyGXWl.png" alt=""></p>
 </blockquote>
-<h1 id="其他小工具"><a href="#其他小工具" class="headerlink" title="其他小工具"></a>其他小工具</h1><hr>
-<p>介紹幾個廣告應用的小工具</p>
-<ul>
-<li><a href="https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk" target="_blank" rel="noopener">Tag Assistant</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/facebook-pixel-helper/fdgfkebogiimcoedlicjlajpkdmockpc" target="_blank" rel="noopener">Facebook Pixel Helper</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/oath-ad-platforms-dot-hel/eppmoegdkngaleolkhdcdjoepijloikj" target="_blank" rel="noopener">Oath: Ad Platforms Dot Helper</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/uet-tag-helper-by-bing-ad/naijndjklgmffmpembnkfbcjbognokbf" target="_blank" rel="noopener">UET Tag Helper (by Bing Ads)</a></li>
-</ul>
 
     </div>
     
@@ -253,17 +238,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/categories/tracking/Google-Analytics-%E5%B8%B8%E7%94%A8%E8%A1%93%E8%AA%9E%E6%95%B4%E7%90%86/" class="pre-post btn btn-default" title='Google Analytics 常用術語整理'>
+    <a href="/posts/30024.html" class="pre-post btn btn-default" title='Google Tag Manager 入門'>
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            Google Analytics 常用術語整理</span>
+            Google Tag Manager 入門</span>
     </a>
     
     
-    <a href="/categories/tracking/GA-GTM-%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85%E6%A5%9A/" class="next-post btn btn-default" title='GA?GTM? 傻傻分不清楚'>
+    <a href="/posts/6756.html" class="next-post btn btn-default" title='Markdown 簡易手冊'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            GA?GTM? 傻傻分不清楚</span><i class="fa fa-angle-right fa-fw"></i>
+            Markdown 簡易手冊</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -276,9 +261,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_config = function() {
-    this.page.url = 'https://samirliu127.github.io/categories/tracking/Google-Tag-Manager-%E5%85%A5%E9%96%80/';
-    this.page.identifier = 'categories/tracking/Google-Tag-Manager-入門/';
-    this.page.title = 'Google Tag Manager 入門';
+    this.page.url = 'https://samirliu127.github.io/posts/20419.html';
+    this.page.identifier = 'posts/20419.html';
+    this.page.title = 'GA?GTM? 傻傻分不清楚';
 };
 var d = document,
     s = d.createElement('script');
@@ -297,7 +282,7 @@ s.setAttribute('data-timestamp', '' + +new Date());
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Google-Tag-Manager-的優點"><span class="toc-text">使用 Google Tag Manager 的優點</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-介面化操作新增、刪除、修改網站上的代碼。"><span class="toc-text">1. 介面化操作新增、刪除、修改網站上的代碼。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-透過-GTM-可以快速測試代碼的可行性。"><span class="toc-text">2. 透過 GTM 可以快速測試代碼的可行性。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-提高網站的速度"><span class="toc-text">3. 提高網站的速度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#設置-Google-Tag-Manager"><span class="toc-text">設置 Google Tag Manager</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Google-Tag-Manager-基本結構"><span class="toc-text">Google Tag Manager 基本結構</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#變數-variable"><span class="toc-text">變數 (variable)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#觸發條件-Trigger"><span class="toc-text">觸發條件 (Trigger)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代碼-Tag"><span class="toc-text">代碼 (Tag)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他小工具"><span class="toc-text">其他小工具</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GA-跟-GTM-有什麼區別"><span class="toc-text">GA 跟 GTM 有什麼區別?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Analytics-GA"><span class="toc-text">Google Analytics (GA)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Tag-Manager-GTM"><span class="toc-text">Google Tag Manager (GTM)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-GTM-埋設-GA"><span class="toc-text">使用 GTM 埋設 GA</span></a></li></ol></li></ol>
         
     </div>
 </aside>
