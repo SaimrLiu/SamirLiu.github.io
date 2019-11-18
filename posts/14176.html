@@ -19,11 +19,11 @@
     <link rel="dns-prefetch" href="https://samirliu127.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="hexo" />
+<meta name="keywords" content="GTM,Google Tag Manager,GA,Google Analytics,參數,client id,user id" />
 
 
-<meta name="description" content="文章命令行中輸入：
-123$ hexo new "new article"  # 建立文章$ hexo new draft "draft article"  # 建立草稿$ hexo publi..." />
+<meta name="description" content="
+這篇整理常用 Google Analytics 常用設置的說明，可能使用的情境：管理訪客 Coockie、動態網頁追蹤、跨站追蹤、跨裝置追蹤，在默認的環境下這些功能是沒有的，所以需要做一些個人..." />
 
 
 <meta name="robots" content="all" />
@@ -34,7 +34,7 @@
 
 <title>
     
-    Hexo 常用指令 |
+    Google Analytics 基本參數設置 |
     
     隨勛所欲 - Google Analytics 網站分析
 </title>
@@ -164,16 +164,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Hexo 常用指令">
+        <h1 id="Google Analytics 基本參數設置">
             
-            Hexo 常用指令
+            Google Analytics 基本參數設置
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/others/">隨筆</a>
+        <a class="category-link" href="/categories/tracking/">網站分析</a>
     </span>
     
     
@@ -181,7 +181,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/hexo/" rel="tag">hexo</a>
+            <a class="tag-link" href="/tags/Google-Analytics/" rel="tag">Google Analytics</a> <a class="tag-link" href="/tags/Google-Tag-Manager/" rel="tag">Google Tag Manager</a>
             
         </span>
     </span>
@@ -191,7 +191,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2019/11/08</span>
+            2019/11/18</span>
     </span>
     
     
@@ -201,71 +201,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     
     <div class="post-body post-content">
-        <h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><p>命令行中輸入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"new article"</span>  <span class="comment"># 建立文章</span></span><br><span class="line">$ hexo new draft <span class="string">"draft article"</span>  <span class="comment"># 建立草稿</span></span><br><span class="line">$ hexo publish <span class="string">"draft article"</span>  <span class="comment"># 發布文章</span></span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>這篇整理常用 Google Analytics 常用設置的說明，可能使用的情境：管理訪客 Coockie、動態網頁追蹤、跨站追蹤、跨裝置追蹤，在默認的環境下這些功能是沒有的，所以需要做一些個人化的設定。</p>
+</blockquote>
+<h1 id="Google-Analytics-參數"><a href="#Google-Analytics-參數" class="headerlink" title="Google Analytics 參數"></a>Google Analytics 參數</h1><hr>
+<p><a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference" target="_blank" rel="noopener">官方文件</a></p>
+<h5 id="clientId-text-："><a href="#clientId-text-：" class="headerlink" title="clientId(text)："></a><strong>clientId</strong>(text)：</h5><p>訪客匿名識別 id，即為 Google Analytics 的第一方 Cookie <code>_ga</code>，可以在使用者多層檢視找到，預設為兩組數字組成，如 <code>717269320.1574042822</code>，分別為隨機數字與進站時間作為訪客的唯一識別。</p>
+<h5 id="cookieName-text-："><a href="#cookieName-text-：" class="headerlink" title="cookieName(text)："></a><strong>cookieName</strong>(text)：</h5><p>用於儲存第一方 cookie 的名稱，預設為<code>_ga</code>。</p>
+<h5 id="sampleRate-number-："><a href="#sampleRate-number-：" class="headerlink" title="sampleRate(number)："></a><strong>sampleRate</strong>(number)：</h5><p>指定網站追蹤的用戶百分比。預設值為100。大流量網站可以降低讓 Google Analytics 保持在資料處理限制之內。</p>
+<h5 id="siteSpeedSampleRate-number-："><a href="#siteSpeedSampleRate-number-：" class="headerlink" title="siteSpeedSampleRate(number)："></a><strong>siteSpeedSampleRate</strong>(number)：</h5><p>指定網站數據計算的抽樣比例，預設值為10。</p>
+<h5 id="allowLinker-boolean-："><a href="#allowLinker-boolean-：" class="headerlink" title="allowLinker(boolean)："></a><strong>allowLinker</strong>(boolean)：</h5><p>預設為<code>false</code>，當需要跨站追蹤須設置為<code>true</code>。</p>
+<h5 id="userId-text-："><a href="#userId-text-：" class="headerlink" title="userId(text)："></a><strong>userId</strong>(text)：</h5><p>訪客跨站、跨裝置的唯一識別 id，不能是能識別個人身份的資料(姓名、身分證字號、電子郵件地址等)，違反帳戶可能會被終止。</p>
+<h5 id="page-text-："><a href="#page-text-：" class="headerlink" title="page(text)："></a><strong>page</strong>(text)：</h5><p>頁面路徑，應該以<code>/</code>開頭，於動態網頁時須設置。</p>
+<h5 id="title-text-："><a href="#title-text-：" class="headerlink" title="title(text)："></a><strong>title</strong>(text)：</h5><p>頁面標題，於動態網頁時須設置。</p>
+<h1 id="Google-Tag-Manager-設置參數"><a href="#Google-Tag-Manager-設置參數" class="headerlink" title="Google Tag Manager 設置參數"></a>Google Tag Manager 設置參數</h1><hr>
+<p>在 Google Tag Manager 上設置非常簡單，只需要在 Google Analytics 的模組上新增所需要的欄位名稱與值就完成了。<br><img src="https://i.imgur.com/wMFdcAC.png" alt=""></p>
 
-<p>之後在 <code>source/_posts</code> 目錄下面，多了一個 <code>new-article.md</code> 的文件。</p>
-<p>打開之後我們會看到：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: new article</span><br><span class="line">date: 2019-11-01 20:10:33</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>文件的開頭是屬性，採用統一的yaml格式，用三條短橫線分隔。下面是文章正文。</p>
-<p>文章的正文支持markdown格式，建議你先學習一下它的語法。markdown不像html似的一大堆標籤，很簡單，只有幾個符號。</p>
-<p>新建、刪除或修改文章後，不需要重啟hexo server，刷新一下即可預覽。</p>
-<h2 id="屬性"><a href="#屬性" class="headerlink" title="屬性"></a>屬性</h2><p>文章可以擁有如下屬性：</p>
-<table>
-<thead>
-<tr>
-<th>Setting</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>layout</td>
-<td>layout</td>
-<td>post或page</td>
-</tr>
-<tr>
-<td>title</td>
-<td>文章的標題</td>
-<td></td>
-</tr>
-<tr>
-<td>date</td>
-<td>創建日期</td>
-<td>文件的創建日期</td>
-</tr>
-<tr>
-<td>updated</td>
-<td>修改日期</td>
-<td>文件的修改日期</td>
-</tr>
-<tr>
-<td>comments</td>
-<td>是否開啟評論</td>
-<td>true</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>標籤</td>
-<td></td>
-</tr>
-<tr>
-<td>categories</td>
-<td>分類</td>
-<td></td>
-</tr>
-<tr>
-<td>permalink</td>
-<td>url中的名字</td>
-<td>文件名</td>
-</tr>
-</tbody></table>
-<h2 id="部屬"><a href="#部屬" class="headerlink" title="部屬"></a>部屬</h2><p>本端測試</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s --draft</span><br></pre></td></tr></table></figure>
-<p>清空暫存</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-<p>打包並部屬</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
     </div>
     
     <div class="post-footer">
@@ -283,17 +234,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/posts/6756.html" class="pre-post btn btn-default" title='Markdown 簡易手冊'>
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            Markdown 簡易手冊</span>
-    </a>
     
-    
-    <a href="/posts/16107.html" class="next-post btn btn-default" title='Hello World'>
+    <a href="/posts/13266.html" class="next-post btn btn-default" title='頁面捲動深度追蹤'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            Hello World</span><i class="fa fa-angle-right fa-fw"></i>
+            頁面捲動深度追蹤</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -306,9 +251,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_config = function() {
-    this.page.url = 'https://samirliu127.github.io/posts/23955.html';
-    this.page.identifier = 'posts/23955.html';
-    this.page.title = 'Hexo 常用指令';
+    this.page.url = 'https://samirliu127.github.io/posts/14176.html';
+    this.page.identifier = 'posts/14176.html';
+    this.page.title = 'Google Analytics 基本參數設置';
 };
 var d = document,
     s = d.createElement('script');
@@ -327,7 +272,7 @@ s.setAttribute('data-timestamp', '' + +new Date());
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文章"><span class="toc-text">文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#屬性"><span class="toc-text">屬性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部屬"><span class="toc-text">部屬</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Google-Analytics-參數"><span class="toc-text">Google Analytics 參數</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#clientId-text-："><span class="toc-text">clientId(text)：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#cookieName-text-："><span class="toc-text">cookieName(text)：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#sampleRate-number-："><span class="toc-text">sampleRate(number)：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#siteSpeedSampleRate-number-："><span class="toc-text">siteSpeedSampleRate(number)：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#allowLinker-boolean-："><span class="toc-text">allowLinker(boolean)：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#userId-text-："><span class="toc-text">userId(text)：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#page-text-："><span class="toc-text">page(text)：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#title-text-："><span class="toc-text">title(text)：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Google-Tag-Manager-設置參數"><span class="toc-text">Google Tag Manager 設置參數</span></a></li></ol>
         
     </div>
 </aside>

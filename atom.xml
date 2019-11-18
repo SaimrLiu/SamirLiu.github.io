@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>隨勛所欲</title>
+  <title>隨勛所欲 - Google Analytics 網站分析</title>
   
-  
+  <subtitle>從未如此簡單有趣</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://samirliu127.github.io/"/>
-  <updated>2019-11-15T04:01:22.324Z</updated>
+  <updated>2019-11-18T07:45:44.839Z</updated>
   <id>https://samirliu127.github.io/</id>
   
   <author>
@@ -15,6 +15,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google Analytics 基本參數設置</title>
+    <link href="https://samirliu127.github.io/posts/14176.html"/>
+    <id>https://samirliu127.github.io/posts/14176.html</id>
+    <published>2019-11-18T07:45:44.000Z</published>
+    <updated>2019-11-18T07:45:44.839Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>這篇整理常用 Google Analytics 常用設置的說明，可能使用的情境：管理訪客 Coockie、動態網頁追蹤、跨站追蹤、跨裝置追蹤，在默認的環境下這些功能是沒有的，所以需要做一些個人化的設定。</p></blockquote><h1 id="Google-Analytics-參數"><a href="#Google-Analytics-參數" class="headerlink" title="Google Analytics 參數"></a>Google Analytics 參數</h1><hr><p><a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference" target="_blank" rel="noopener">官方文件</a></p><h5 id="clientId-text-："><a href="#clientId-text-：" class="headerlink" title="clientId(text)："></a><strong>clientId</strong>(text)：</h5><p>訪客匿名識別 id，即為 Google Analytics 的第一方 Cookie <code>_ga</code>，可以在使用者多層檢視找到，預設為兩組數字組成，如 <code>717269320.1574042822</code>，分別為隨機數字與進站時間作為訪客的唯一識別。</p><h5 id="cookieName-text-："><a href="#cookieName-text-：" class="headerlink" title="cookieName(text)："></a><strong>cookieName</strong>(text)：</h5><p>用於儲存第一方 cookie 的名稱，預設為<code>_ga</code>。</p><h5 id="sampleRate-number-："><a href="#sampleRate-number-：" class="headerlink" title="sampleRate(number)："></a><strong>sampleRate</strong>(number)：</h5><p>指定網站追蹤的用戶百分比。預設值為100。大流量網站可以降低讓 Google Analytics 保持在資料處理限制之內。</p><h5 id="siteSpeedSampleRate-number-："><a href="#siteSpeedSampleRate-number-：" class="headerlink" title="siteSpeedSampleRate(number)："></a><strong>siteSpeedSampleRate</strong>(number)：</h5><p>指定網站數據計算的抽樣比例，預設值為10。</p><h5 id="allowLinker-boolean-："><a href="#allowLinker-boolean-：" class="headerlink" title="allowLinker(boolean)："></a><strong>allowLinker</strong>(boolean)：</h5><p>預設為<code>false</code>，當需要跨站追蹤須設置為<code>true</code>。</p><h5 id="userId-text-："><a href="#userId-text-：" class="headerlink" title="userId(text)："></a><strong>userId</strong>(text)：</h5><p>訪客跨站、跨裝置的唯一識別 id，不能是能識別個人身份的資料(姓名、身分證字號、電子郵件地址等)，違反帳戶可能會被終止。</p><h5 id="page-text-："><a href="#page-text-：" class="headerlink" title="page(text)："></a><strong>page</strong>(text)：</h5><p>頁面路徑，應該以<code>/</code>開頭，於動態網頁時須設置。</p><h5 id="title-text-："><a href="#title-text-：" class="headerlink" title="title(text)："></a><strong>title</strong>(text)：</h5><p>頁面標題，於動態網頁時須設置。</p><h1 id="Google-Tag-Manager-設置參數"><a href="#Google-Tag-Manager-設置參數" class="headerlink" title="Google Tag Manager 設置參數"></a>Google Tag Manager 設置參數</h1><hr><p>在 Google Tag Manager 上設置非常簡單，只需要在 Google Analytics 的模組上新增所需要的欄位名稱與值就完成了。<br><img src="https://i.imgur.com/wMFdcAC.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;這篇整理常用 Google Analytics 常用設置的說明，可能使用的情境：管理訪客 Coockie、動態網頁追蹤、跨站追蹤、跨裝置追蹤，在默認的環境下這些功能是沒有的，所以需要做一些個人化的設定。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 
+      
+    
+    </summary>
+    
+      <category term="網站分析" scheme="https://samirliu127.github.io/categories/tracking/"/>
+    
+    
+      <category term="Google Tag Manager" scheme="https://samirliu127.github.io/tags/Google-Tag-Manager/"/>
+    
+      <category term="Google Analytics" scheme="https://samirliu127.github.io/tags/Google-Analytics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>頁面捲動深度追蹤</title>
+    <link href="https://samirliu127.github.io/posts/13266.html"/>
+    <id>https://samirliu127.github.io/posts/13266.html</id>
+    <published>2019-11-16T05:05:33.000Z</published>
+    <updated>2019-11-18T01:48:09.089Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>本站屬於技術分享的文章，最好的互動就是<strong>閱讀文章的深度</strong>，透過 GTM 可以簡單的設置當捲動深度達到目標百分比時當作是轉換。本篇可以拆分成三個部分：GTM 事件設定、GTM Debug、GA 目標設定。</p></blockquote><h1 id="Google-Tag-Manager-設置事件"><a href="#Google-Tag-Manager-設置事件" class="headerlink" title="Google Tag Manager 設置事件"></a>Google Tag Manager 設置事件</h1><hr><h2 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h2><p>啟用內建變數<code>Scroll Depth Threshold</code>，拿來當作事件價值使用。<br><img src="https://i.imgur.com/tHtwVnr.png" alt=""></p><h2 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h2><p>新增捲動深度的觸發條件，勾選捲動深度後分別設置 40 與 85 百分比，出發條件鎖定在文章頁面，開頭為 <code>/posts/</code>。<br><img src="https://i.imgur.com/OQt44S5.png" alt=""></p><p><img src="https://i.imgur.com/SZnI2t2.png" alt=""></p><h2 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h2><ol><li>新增通用 Analytics (分析)。</li><li>追蹤類型改成 <code>事件</code>。</li><li>填上自訂義的類別、動作或標籤，值帶上預設變數<code>Scroll Depth Threshold</code>。</li><li>帶上以設置好的 GAID (<a href="../posts/20419.html#使用-GTM-埋設-GA">不知道看這邊</a>)。</li><li>新增觸發條件<code>Scroll Depth 40</code>與<code>Scroll Depth 85</code></li></ol><p><img src="https://i.imgur.com/GmBp2Kn.png" alt=""></p><h1 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h1><hr><p>基本上只要 <a href="#Google-Tag-Manager-設置事件">Google Tag Manager 設置事件</a>發佈後就完成了，不過在正式環境還是 Debug 一下比較安全。</p><h2 id="啟用預覽"><a href="#啟用預覽" class="headerlink" title="啟用預覽"></a>啟用預覽</h2><p>在 Google Tag Manager 右上角有個預覽按鈕，按下後出現橘色的框框即進入預覽模式。<br><img src="https://i.imgur.com/lqwRzoG.png" alt=""></p><h2 id="確認事件觸發"><a href="#確認事件觸發" class="headerlink" title="確認事件觸發"></a>確認事件觸發</h2><p>重新整理網站後底下出現 Debug 小工具，接著測試欲觸發的事件，確認左邊 Trigger 新增時，右邊 Tag 是否有被移動到 <code>Tags Fired On This Event</code>。<br><img src="https://i.imgur.com/3NLa2sE.png" alt=""></p><h2 id="確認變數"><a href="#確認變數" class="headerlink" title="確認變數"></a>確認變數</h2><p>接著點入 Tag，可以確認 Tag 被觸發時所帶的變數是否符合預期。<br><img src="https://i.imgur.com/hi8Pzhp.png" alt=""></p><h1 id="Google-Analytics-設置目標"><a href="#Google-Analytics-設置目標" class="headerlink" title="Google Analytics 設置目標"></a>Google Analytics 設置目標</h1><hr><p>目標用來衡量網站/應用程式<strong>達成指定目標</strong>的效果<a href="https://support.google.com/analytics/answer/1012040" target="_blank" rel="noopener">官方參考</a>，目標追蹤完成文章閱讀 (捲動百分比達 80% 以上)。</p><p>根據 Tag 上所帶的參數設定。<br><img src="https://i.imgur.com/nfUeA82.png" alt=""></p><p>之後就可以追訪客的目標達成率。<br><img src="https://i.imgur.com/pG0ogjW.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;本站屬於技術分享的文章，最好的互動就是&lt;strong&gt;閱讀文章的深度&lt;/strong&gt;，透過 GTM 可以簡單的設置當捲動深度達到目標百分比時當作是轉換。本篇可以拆分成三個部分：GTM 事件設定、GTM Debug、GA 目標設定。&lt;/p&gt;
+&lt;/b
+      
+    
+    </summary>
+    
+      <category term="網站分析" scheme="https://samirliu127.github.io/categories/tracking/"/>
+    
+    
+      <category term="Google Tag Manager" scheme="https://samirliu127.github.io/tags/Google-Tag-Manager/"/>
+    
+      <category term="Google Analytics" scheme="https://samirliu127.github.io/tags/Google-Analytics/"/>
+    
+  </entry>
   
   <entry>
     <title>Google Analytics 常用術語整理</title>
