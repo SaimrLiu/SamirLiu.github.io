@@ -226,35 +226,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>部署只需要在 GTM 裡找到兩段程式碼，分別放在 head 與 body 裡就完成了，參考官方 <a href="https://developers.google.com/tag-manager/quickstart" target="_blank" rel="noopener">Quick Start Guide</a>。<br><img src="https://i.imgur.com/SXkLWRl.png" alt=""></p>
 <h1 id="Google-Tag-Manager-基本結構"><a href="#Google-Tag-Manager-基本結構" class="headerlink" title="Google Tag Manager 基本結構"></a>Google Tag Manager 基本結構</h1><hr>
 <p><img src="https://i.imgur.com/Q1OHzIB.png" alt=""></p>
-<blockquote>
-<p><strong>這邊以實作 Google Analytics 事件來說明各個組件的意義</strong><br>目的：追蹤站內搜尋按鈕的點擊量!<br><img src="https://i.imgur.com/ZwFgyCb.png" alt=""></p>
-</blockquote>
-<h2 id="變數-variable"><a href="#變數-variable" class="headerlink" title="變數 (variable)"></a>變數 (variable)</h2><p>定義具名的預留值，供觸發條件與代碼使用。</p>
+<h2 id="變數-variable"><a href="#變數-variable" class="headerlink" title="變數 (variable)"></a>變數 (variable)</h2><p>定義具名的預留值，供觸發條件與代碼使用，又細分為內建變數與使用者自定義變數，列出幾個我常使用的變數。</p>
 <ul>
-<li>內建變數：<br><code>Click</code> 的系列預設是沒有啟用的，所以這邊把它打開，之後會用到。</li>
-<li>自訂義變數：<br>新增 GAID 變數供代碼使用，好處是不需要在每個代碼設置 GA 追蹤編號的基本參數。這次新增<code>siteSpeedSampleRate=100</code>與啟用多媒體廣告功能(之後會講 GA 的參數設定)。<br><img src="https://i.imgur.com/wMFdcAC.png" alt=""><h2 id="觸發條件-Trigger"><a href="#觸發條件-Trigger" class="headerlink" title="觸發條件 (Trigger)"></a>觸發條件 (Trigger)</h2>設定啟用代碼的規則與邏輯。<br>本次實作的按鈕的標籤<code>buttom#search-local.search-form-submit</code>，觸發條件可以設置的方法：</li>
-<li>點擊-所有元素：<code>Click Classes</code> 等於 <code>search-form-submit</code></li>
-<li>點擊-所有元素：<code>Click ID</code> 等於 <code>search-local</code></li>
+<li>內建變數 (Built-in Variables)：<br>Click Element<br>Click Classes<br>Click ID</li>
+<li>使用者自訂變數（User-defines Variables）：<br>Google Analytics (分析) 設定</li>
 </ul>
-<p><img src="https://i.imgur.com/ClOxhUY.png" alt=""></p>
-<p><img src="https://i.imgur.com/OlIl4lK.png" alt=""></p>
-<h2 id="代碼-Tag"><a href="#代碼-Tag" class="headerlink" title="代碼 (Tag)"></a>代碼 (Tag)</h2><p>用來嵌入想要觸發的程式碼。</p>
-<ol>
-<li>新增代碼通用 Analytics(分析)</li>
-<li>追蹤類型：事件</li>
-<li>設定事件追蹤資料(<a href="https://support.google.com/analytics/answer/1033068" target="_blank" rel="noopener">參考</a>)<ul>
-<li>類別</li>
-<li>動作</li>
-<li>標籤(選填)</li>
-<li>值(選填)</li>
+<h2 id="觸發條件-Trigger"><a href="#觸發條件-Trigger" class="headerlink" title="觸發條件 (Trigger)"></a>觸發條件 (Trigger)</h2><p>設定啟用代碼的規則與邏輯。</p>
+<ul>
+<li>網頁瀏覽<br>觸發順序：網頁瀏覽(PageView) =&gt; Dom 就緒(Dom Ready) =&gt; 視窗載入(Window Load)</li>
+<li>點擊<br>會使用到內建變數點擊(Click) 系列，須自行去變數啟用。</li>
 </ul>
-</li>
-<li>選擇之前所定義好的<code>GAID</code>變數</li>
-<li>選擇<code>Click - Search</code>觸發條件</li>
-</ol>
-<blockquote>
-<p>完成後如圖<br><img src="https://i.imgur.com/nshwGcc.png" alt=""></p>
-</blockquote>
+<h2 id="代碼-Tag"><a href="#代碼-Tag" class="headerlink" title="代碼(Tag)"></a>代碼(Tag)</h2><p>設置想要觸發的程式碼，列出幾個我常使用的預設模板。</p>
+<ul>
+<li>Google Analytics (分析) – 通用 Analytics (分析)</li>
+<li>Google Ads 再行銷</li>
+<li>Google Ads 轉換追蹤</li>
+<li>Bing 廣告通用事件追蹤</li>
+<li>Hotjar Tracking Code</li>
+</ul>
+<p>當沒有預設模板使用<code>自訂 HTML</code>，如：Facebook Pixel</p>
+<h1 id="在-GTM-設置-GA"><a href="#在-GTM-設置-GA" class="headerlink" title="在 GTM 設置 GA"></a>在 GTM 設置 GA</h1><hr>
+<h2 id="設置"><a href="#設置" class="headerlink" title="設置"></a>設置</h2><h3 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h3><p>Google Analytics (分析) 設定，這變數好用在設定代碼時，不用每次都填入 GA Tracking ID 與相關的設定。<br><img src="https://i.imgur.com/0LLSnFU.png" alt=""></p>
+<h3 id="觸發條件"><a href="#觸發條件" class="headerlink" title="觸發條件"></a>觸發條件</h3><p>預設就有<code>All Pages</code>，不需要設置。</p>
+<h3 id="代碼"><a href="#代碼" class="headerlink" title="代碼"></a>代碼</h3><p>使用預設模板<code>Google Analytics (分析) – 通用 Analytics (分析)</code>，選擇變數<code>GAID</code>，選擇觸發條件<code>All Pages</code>，設置完後發佈。<br><img src="https://i.imgur.com/olaaQ1j.png" alt=""></p>
+<h2 id="檢查工具"><a href="#檢查工具" class="headerlink" title="檢查工具"></a>檢查工具</h2><p>推薦使用 <a href="https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk" target="_blank" rel="noopener">Tag Assistant</a>，可以檢查 Google 服務的工具，啟用後重新整理網頁將會看到代碼的狀態。<br><img src="https://i.imgur.com/P6Wx8zc.png" alt=""></p>
 <h1 id="其他小工具"><a href="#其他小工具" class="headerlink" title="其他小工具"></a>其他小工具</h1><hr>
 <p>介紹幾個廣告應用的小工具</p>
 <ul>
@@ -325,7 +320,7 @@ s.setAttribute('data-timestamp', '' + +new Date());
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Google-Tag-Manager-的優點"><span class="toc-text">使用 Google Tag Manager 的優點</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-介面化操作新增、刪除、修改網站上的代碼。"><span class="toc-text">1. 介面化操作新增、刪除、修改網站上的代碼。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-透過-GTM-可以快速測試代碼的可行性。"><span class="toc-text">2. 透過 GTM 可以快速測試代碼的可行性。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-提高網站的速度"><span class="toc-text">3. 提高網站的速度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#設置-Google-Tag-Manager"><span class="toc-text">設置 Google Tag Manager</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Google-Tag-Manager-基本結構"><span class="toc-text">Google Tag Manager 基本結構</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#變數-variable"><span class="toc-text">變數 (variable)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#觸發條件-Trigger"><span class="toc-text">觸發條件 (Trigger)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代碼-Tag"><span class="toc-text">代碼 (Tag)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他小工具"><span class="toc-text">其他小工具</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Google-Tag-Manager-的優點"><span class="toc-text">使用 Google Tag Manager 的優點</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-介面化操作新增、刪除、修改網站上的代碼。"><span class="toc-text">1. 介面化操作新增、刪除、修改網站上的代碼。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-透過-GTM-可以快速測試代碼的可行性。"><span class="toc-text">2. 透過 GTM 可以快速測試代碼的可行性。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-提高網站的速度"><span class="toc-text">3. 提高網站的速度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#設置-Google-Tag-Manager"><span class="toc-text">設置 Google Tag Manager</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Google-Tag-Manager-基本結構"><span class="toc-text">Google Tag Manager 基本結構</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#變數-variable"><span class="toc-text">變數 (variable)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#觸發條件-Trigger"><span class="toc-text">觸發條件 (Trigger)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代碼-Tag"><span class="toc-text">代碼(Tag)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在-GTM-設置-GA"><span class="toc-text">在 GTM 設置 GA</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#設置"><span class="toc-text">設置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#變數"><span class="toc-text">變數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#觸發條件"><span class="toc-text">觸發條件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代碼"><span class="toc-text">代碼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#檢查工具"><span class="toc-text">檢查工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他小工具"><span class="toc-text">其他小工具</span></a></li></ol>
         
     </div>
 </aside>
