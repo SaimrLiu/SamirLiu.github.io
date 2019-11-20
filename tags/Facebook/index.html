@@ -19,13 +19,10 @@
     <link rel="dns-prefetch" href="https://samirliu127.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="GTM,Google Tag Manager,GA,Google Analytics,事件,目標,轉換" />
+<meta name="keywords" content="網站追蹤,網站分析,技術分享,GTM,Google Tag Manager,GA,Google Analytics,Python,tracking,Ecommerce" />
 
 
-<meta name="description" content="
-之前的文章 Google Tag Manager 入門有提到如何用 GTM 設置全頁追蹤 GA。這次介紹另一個重要的功能事件，了解事件才算是脫離 GA 新手村。
-
-Google Analyti..." />
+<meta name="description" content="專注分享網頁追蹤、資料分析，包含各廣告追蹤。" />
 
 
 <meta name="robots" content="all" />
@@ -34,21 +31,16 @@ Google Analyti..." />
 <meta name="verify" content="all" />
 
 <!-- Open Graph data -->
-<meta property="og:title" content="Google Analytics 事件" />
+<meta property="og:title" content="" />
 
-<meta name="og:description" content="
-之前的文章 Google Tag Manager 入門有提到如何用 GTM 設置全頁追蹤 GA。這次介紹另一個重要的功能事件，了解事件才算是脫離 GA 新手村。
+<meta property="og:description" content="專注分享網頁追蹤、資料分析，包含各廣告追蹤。" />
 
-Google Analyti..." />
-
-
-<meta property="og:image" content="https://i.imgur.com/JR5jeY7.jpg" />
 
     <!--Title-->
 
 <title>
     
-    Google Analytics 事件 |
+    Tag: Facebook |
     
     隨勛所欲 - Google Analytics 網站分析
 </title>
@@ -174,133 +166,143 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="Google Analytics 事件">
-            
-            Google Analytics 事件
-            
-        </h1>
-        <div class="post-meta">
+                <main class="col-md-8 main-content ">
+                    <ol class="breadcrumb">
     
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/tracking/">網站分析</a>
-    </span>
+    <li>
+        Facebook
+    </li>
     
     
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/Google-Analytics/" rel="tag">Google Analytics</a> <a class="tag-link" href="/tags/Google-Tag-Manager/" rel="tag">Google Tag Manager</a>
-            
-        </span>
-    </span>
-    
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta">
-            2019/11/19</span>
-    </span>
-    
-    
-</div>
-        
-        
-    </div>
-    
-    <div class="post-body post-content">
-        <blockquote>
-<p>之前的文章 <a href="../posts/30024.html">Google Tag Manager 入門</a>有提到如何用 GTM 設置全頁追蹤 GA。這次介紹另一個重要的功能<strong>事件</strong>，了解事件才算是脫離 GA 新手村。</p>
-</blockquote>
-<h1 id="Google-Analytics-事件"><a href="#Google-Analytics-事件" class="headerlink" title="Google Analytics 事件"></a>Google Analytics 事件</h1><hr>
-<p>事件在網頁分析上是個重要的功能，需要在網站安裝自訂義的程式碼，才會搜集事件的資料，從此觀察訪客與網站的互動行為。</p>
-<h2 id="事件的紀錄資料"><a href="#事件的紀錄資料" class="headerlink" title="事件的紀錄資料"></a>事件的紀錄資料</h2><p>所填入的值只要是自己有辦法辨識即可，這邊分享我習慣的設置想法。</p>
-<ol>
-<li>事件類別 (Category)<br>訪客預期得到動作，如：Search, AddToCart, Contact。</li>
-<li>事件動作 (Action)<br>觸發事件的動作，如：Click, Scroll the page。</li>
-<li>事件標籤 (Label)<br>敘述文字，連結、簡短的說明，依情況設置。</li>
-<li>事件價值 (Value)<br>定義訪客互動的成效數值，依情況設置。</li>
 </ol>
-<h1 id="在-GTM-設置-GA-事件"><a href="#在-GTM-設置-GA-事件" class="headerlink" title="在 GTM 設置 GA 事件"></a>在 GTM 設置 GA 事件</h1><p>目標是追蹤首頁 <code>Social</code> 的四個按鈕的點擊次數。<br><img src="https://i.imgur.com/7539n4Z.png" alt=""></p>
-<h2 id="設置"><a href="#設置" class="headerlink" title="設置"></a>設置</h2><h3 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h3><p>啟用內建變數<code>Click Element</code></p>
-<h3 id="觸發條件"><a href="#觸發條件" class="headerlink" title="觸發條件"></a>觸發條件</h3><p><img src="https://i.imgur.com/pACxsHu.png" alt=""></p>
-<h3 id="代碼"><a href="#代碼" class="headerlink" title="代碼"></a>代碼</h3><p><img src="https://i.imgur.com/GR9cTBZ.png" alt=""></p>
-<blockquote>
-<p>如果需要個別追點擊次數，可以分開設置觸發條件與代碼。</p>
-</blockquote>
-<h2 id="檢查-Debug"><a href="#檢查-Debug" class="headerlink" title="檢查(Debug)"></a>檢查(Debug)</h2><p>在發佈之前使用<a href="../posts/13266.html#Debug">預覽</a>檢查。<br><img src="https://i.imgur.com/axp3yzA.png" alt=""></p>
 
+<article class="post">
+    
+    <div class="post-media">
+        <a href="/posts/16262.html">
+            <img class="img-ajax" src="/img/loading.gif" data-src="https://s14608.pcdn.co/wp-content/uploads/2016/11/facebook-pixel.jpg" alt="Facebook Pixel 代碼部署">
+        </a>
     </div>
     
-    <div class="post-footer">
-        <div>
-            
-            轉載聲明：
-            商業轉載請聯繫作者獲得授權，非商業傳再請註明出處 © <a href="" target="_blank">Snippet</a>
-            
-            
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/posts/16262.html">
+                    Facebook Pixel 代碼部署</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime="" title="">
+                    2019年11月20日
+                </time>
+            </div>
         </div>
-        <div>
+        <p class="brief">
             
-        </div>
+            
+Facebook Pixel？臉書像素？是 Facebook 的網頁追蹤代碼，用於追蹤與衡量網站的訪客，可以針對指定受眾做在行銷或是建立相似受眾找到更多的淺在客戶群，所以在 Facebook 上投放廣告之前埋設追蹤碼是必要的。不過 ...
+            
+        </p>
     </div>
 </article>
-<div class="article-nav prev-next-wrap clearfix">
-    
-    <a href="/posts/16262.html" class="pre-post btn btn-default" title='Facebook Pixel 代碼部署'>
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            Facebook Pixel 代碼部署</span>
-    </a>
-    
-    
-    <a href="/posts/14176.html" class="next-post btn btn-default" title='Google Analytics 基本參數設置'>
-        <span class="hidden-lg">下一篇</span>
-        <span class="hidden-xs">
-            Google Analytics 基本參數設置</span><i class="fa fa-angle-right fa-fw"></i>
-    </a>
-    
-</div>
 
-<div id="comments">
-    
-
-<script id="dsq-count-scr" src="https://samirliu127-hexo-blog.disqus.com/count.js" async></script>
-
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_config = function() {
-    this.page.url = 'https://samirliu127.github.io/posts/25832.html';
-    this.page.identifier = 'posts/25832.html';
-    this.page.title = 'Google Analytics 事件';
-};
-var d = document,
-    s = d.createElement('script');
-s.src = 'https://samirliu127-hexo-blog.disqus.com/embed.js';
-s.setAttribute('data-timestamp', '' + +new Date());
-(d.head || d.body).appendChild(s);
-</script>
-
-</div>
 
                 </main>
                 
-                    <aside id="article-toc" role="navigation" class="col-md-4">
-    <div class="widget">
-        <h3 class="title">
-            Table of Contents
-        </h3>
+                    
+<aside class="col-md-4 sidebar">
+    
+    
+<div class="widget">
+    <h3 class="title">
+        Search
+    </h3>
+    <div id="search-form">
+        <div id="result-mask" class="hide"></div>
+        <div class="search-area">
+            
+            <input id="search-key" type="search" autocomplete="off" placeholder="Search What？">
+            <button type="button" class="search-form-submit" id="search-local">
+                Search</button>
+            
+            
+        </div>
+        <div id="result-wrap" class="hide">
+            <div id="search-result"></div>
+        </div>
+        <div class="hide">
+            <template id="search-tpl">
+                <div class="item">
+                    <a href="/{path}" title="{title}">
+                        <div class="title">{title}</div>
+                        <div class="content">{content}</div>
+                    </a>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        Social
+    </h3>
+    <div class="content social">
         
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Google-Analytics-事件"><span class="toc-text">Google Analytics 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件的紀錄資料"><span class="toc-text">事件的紀錄資料</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在-GTM-設置-GA-事件"><span class="toc-text">在 GTM 設置 GA 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#設置"><span class="toc-text">設置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#變數"><span class="toc-text">變數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#觸發條件"><span class="toc-text">觸發條件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代碼"><span class="toc-text">代碼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#檢查-Debug"><span class="toc-text">檢查(Debug)</span></a></li></ol></li></ol>
+        <a href="//www.facebook.com/100226861444726" rel="external nofollow" title="Facebook" target="_blank">
+            <i class="facebook-square fa fa-facebook-square"></i>
+        </a>
+        
+        <a href="//github.com/SamirLiu127" rel="external nofollow" title="Github" target="_blank">
+            <i class="github fa fa-github"></i>
+        </a>
+        
+        <a href="//www.linkedin.com/in/samirliu" rel="external nofollow" title="Linkedin" target="_blank">
+            <i class="linkedin fa fa-linkedin"></i>
+        </a>
+        
+        <a href="mailto:gip24000@gmail.com" rel="external nofollow" title="電子信箱" target="_blank">
+            <i class="envelope-o fa fa-envelope-o"></i>
+        </a>
         
     </div>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        Archives
+    </h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/"><i class="fa" aria-hidden="true">2019年11月</i></a><span class="archive-list-count">10</span></li></ul>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        Categories
+    </h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tracking/"><i class="fa" aria-hidden="true">網站分析</i></a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/"><i class="fa" aria-hidden="true">隨筆</i></a><span class="category-list-count">3</span></li></ul>
+</div>
+
+    
+    
+<div class="widget">
+    <h3 class="title">
+        Tag Cloud
+    </h3>
+    <div class="content tag-cloud">
+        
+        <a href="/tags/Facebook/" style="font-size: 10px;">Facebook</a> <a href="/tags/Google-Analytics/" style="font-size: 20px;">Google Analytics</a> <a href="/tags/Google-Tag-Manager/" style="font-size: 20px;">Google Tag Manager</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+        
+    </div>
+</div>
+
+    
 </aside>
+
                 
             </div>
         </div>
@@ -337,6 +339,8 @@ s.setAttribute('data-timestamp', '' + +new Date());
         </div>
     </div>
 </div>
+
+<script src="/js/search.js?rev=@@hash"></script>
 
 
 

@@ -19,13 +19,11 @@
     <link rel="dns-prefetch" href="https://samirliu127.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="GTM,Google Tag Manager,GA,Google Analytics,事件,目標,轉換" />
+<meta name="keywords" content="GTM,Google Tag Manager,FB,Facebook,Facebook Pixel,Facebook 像素,廣告追蹤,事件,目標,轉換" />
 
 
 <meta name="description" content="
-之前的文章 Google Tag Manager 入門有提到如何用 GTM 設置全頁追蹤 GA。這次介紹另一個重要的功能事件，了解事件才算是脫離 GA 新手村。
-
-Google Analyti..." />
+Facebook Pixel？臉書像素？是 Facebook 的網頁追蹤代碼，用於追蹤與衡量網站的訪客，可以針對指定受眾做在行銷或是建立相似受眾找到更多的淺在客戶群，所以在 Facebook ..." />
 
 
 <meta name="robots" content="all" />
@@ -34,21 +32,19 @@ Google Analyti..." />
 <meta name="verify" content="all" />
 
 <!-- Open Graph data -->
-<meta property="og:title" content="Google Analytics 事件" />
+<meta property="og:title" content="Facebook Pixel 代碼部署" />
 
 <meta name="og:description" content="
-之前的文章 Google Tag Manager 入門有提到如何用 GTM 設置全頁追蹤 GA。這次介紹另一個重要的功能事件，了解事件才算是脫離 GA 新手村。
-
-Google Analyti..." />
+Facebook Pixel？臉書像素？是 Facebook 的網頁追蹤代碼，用於追蹤與衡量網站的訪客，可以針對指定受眾做在行銷或是建立相似受眾找到更多的淺在客戶群，所以在 Facebook ..." />
 
 
-<meta property="og:image" content="https://i.imgur.com/JR5jeY7.jpg" />
+<meta property="og:image" content="https://s14608.pcdn.co/wp-content/uploads/2016/11/facebook-pixel.jpg" />
 
     <!--Title-->
 
 <title>
     
-    Google Analytics 事件 |
+    Facebook Pixel 代碼部署 |
     
     隨勛所欲 - Google Analytics 網站分析
 </title>
@@ -178,9 +174,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Google Analytics 事件">
+        <h1 id="Facebook Pixel 代碼部署">
             
-            Google Analytics 事件
+            Facebook Pixel 代碼部署
             
         </h1>
         <div class="post-meta">
@@ -195,7 +191,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/Google-Analytics/" rel="tag">Google Analytics</a> <a class="tag-link" href="/tags/Google-Tag-Manager/" rel="tag">Google Tag Manager</a>
+            <a class="tag-link" href="/tags/Facebook/" rel="tag">Facebook</a> <a class="tag-link" href="/tags/Google-Tag-Manager/" rel="tag">Google Tag Manager</a>
             
         </span>
     </span>
@@ -205,7 +201,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2019/11/19</span>
+            2019/11/20</span>
     </span>
     
     
@@ -216,25 +212,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <div class="post-body post-content">
         <blockquote>
-<p>之前的文章 <a href="../posts/30024.html">Google Tag Manager 入門</a>有提到如何用 GTM 設置全頁追蹤 GA。這次介紹另一個重要的功能<strong>事件</strong>，了解事件才算是脫離 GA 新手村。</p>
+<p>Facebook Pixel？臉書像素？是 Facebook 的網頁追蹤代碼，用於追蹤與衡量網站的訪客，可以針對指定受眾做在行銷或是建立相似受眾找到更多的淺在客戶群，所以在 Facebook 上投放廣告之前埋設追蹤碼是必要的。不過 Facebook 在 Google Tag Manager 沒有預設模組，所以需要用自訂 HTML 設置，不過有一些地方需要注意，確保資訊有正確的送出，若有其他問題歡迎留言提問。</p>
 </blockquote>
-<h1 id="Google-Analytics-事件"><a href="#Google-Analytics-事件" class="headerlink" title="Google Analytics 事件"></a>Google Analytics 事件</h1><hr>
-<p>事件在網頁分析上是個重要的功能，需要在網站安裝自訂義的程式碼，才會搜集事件的資料，從此觀察訪客與網站的互動行為。</p>
-<h2 id="事件的紀錄資料"><a href="#事件的紀錄資料" class="headerlink" title="事件的紀錄資料"></a>事件的紀錄資料</h2><p>所填入的值只要是自己有辦法辨識即可，這邊分享我習慣的設置想法。</p>
-<ol>
-<li>事件類別 (Category)<br>訪客預期得到動作，如：Search, AddToCart, Contact。</li>
-<li>事件動作 (Action)<br>觸發事件的動作，如：Click, Scroll the page。</li>
-<li>事件標籤 (Label)<br>敘述文字，連結、簡短的說明，依情況設置。</li>
-<li>事件價值 (Value)<br>定義訪客互動的成效數值，依情況設置。</li>
+<h1 id="Facebook-Pixel"><a href="#Facebook-Pixel" class="headerlink" title="Facebook Pixel"></a>Facebook Pixel</h1><hr>
+<h2 id="全頁追蹤-All-Pages"><a href="#全頁追蹤-All-Pages" class="headerlink" title="全頁追蹤 All Pages"></a>全頁追蹤 All Pages</h2><h3 id="PageView"><a href="#PageView" class="headerlink" title="PageView"></a>PageView</h3><p>這是預設的像素跟踪頁面訪問，在訪客登陸您的網站頁面時觸發，Facebook 後臺產生時會同時存在。</p>
+<h4 id="設置："><a href="#設置：" class="headerlink" title="設置："></a>設置：</h4><ol>
+<li>選用自訂 HTML 直接將程式碼貼上。</li>
+<li>代碼觸發選項選用<strong>每個網頁一次</strong>，避免同一頁面觸發多次。</li>
+<li>觸發條件選擇 All Pages。</li>
 </ol>
-<h1 id="在-GTM-設置-GA-事件"><a href="#在-GTM-設置-GA-事件" class="headerlink" title="在 GTM 設置 GA 事件"></a>在 GTM 設置 GA 事件</h1><p>目標是追蹤首頁 <code>Social</code> 的四個按鈕的點擊次數。<br><img src="https://i.imgur.com/7539n4Z.png" alt=""></p>
-<h2 id="設置"><a href="#設置" class="headerlink" title="設置"></a>設置</h2><h3 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h3><p>啟用內建變數<code>Click Element</code></p>
-<h3 id="觸發條件"><a href="#觸發條件" class="headerlink" title="觸發條件"></a>觸發條件</h3><p><img src="https://i.imgur.com/pACxsHu.png" alt=""></p>
-<h3 id="代碼"><a href="#代碼" class="headerlink" title="代碼"></a>代碼</h3><p><img src="https://i.imgur.com/GR9cTBZ.png" alt=""></p>
+<p><img src="https://i.imgur.com/2tzqOos.png" alt=""></p>
+<h2 id="事件-Event"><a href="#事件-Event" class="headerlink" title="事件 Event"></a>事件 Event</h2><p><a href="https://developers.facebook.com/docs/facebook-pixel/reference" target="_blank" rel="noopener">官方</a>定義一些標準事件，這邊使用<code>ViewContent</code>與<code>Contact</code>做說明，兩者差異前者為到達頁面時觸發，後者為點擊觸發，在設置上稍有些不同，目的是確保訊息有正確的送出。</p>
 <blockquote>
-<p>如果需要個別追點擊次數，可以分開設置觸發條件與代碼。</p>
+<p>Facebook 事件都建議使用 <a href="https://developers.facebook.com/docs/facebook-pixel/advanced/#tracking-events-for-individual-pixels" target="_blank" rel="noopener">trackSingle</a>，避免影響其他的 pixel 事件收集，導致後臺計算成效時有落差。<br>如：<code>fbq(&#39;trackSingle&#39;, &#39;&lt;Pixel Id&gt;&#39;, &#39;&lt;Event&gt;&#39;);</code> </p>
 </blockquote>
-<h2 id="檢查-Debug"><a href="#檢查-Debug" class="headerlink" title="檢查(Debug)"></a>檢查(Debug)</h2><p>在發佈之前使用<a href="../posts/13266.html#Debug">預覽</a>檢查。<br><img src="https://i.imgur.com/axp3yzA.png" alt=""></p>
+<h3 id="到達指定頁面"><a href="#到達指定頁面" class="headerlink" title="到達指定頁面"></a>到達指定頁面</h3><h4 id="ViewContent"><a href="#ViewContent" class="headerlink" title="ViewContent"></a>ViewContent</h4><p>為到達指定頁面時觸發，需要注意的是要在 <a href="#PageView">PageView</a> 完成後才能執行，同類型的有 <code>InitiateCheckout</code>、<code>Purchase</code>。</p>
+<h4 id="設置：-1"><a href="#設置：-1" class="headerlink" title="設置："></a>設置：</h4><ol>
+<li>選用自訂 HTML 將事件代碼貼上。</li>
+<li>代碼觸發順序勾選啟用前先啟用 <a href="#PageView">PageView</a> 代碼，這會確保代碼的執行順序。</li>
+<li>觸發條件選擇 <a href="../posts/30024.html#觸發條件-Trigger">Dom Ready</a>，加上指定頁面條件，再次確保代碼執行順序。</li>
+</ol>
+<p><img src="https://i.imgur.com/NS5vCTb.png" alt=""></p>
+<h3 id="指定元素點擊"><a href="#指定元素點擊" class="headerlink" title="指定元素點擊"></a>指定元素點擊</h3><h4 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h4><p>為點擊指定元素時觸發，通常發生時已經完成了 PageView 的事件，同類型常見的如：<code>AddToCart</code>、<code>AddToWishlist</code>、<code>Search</code>…等。</p>
+<h4 id="設置：-2"><a href="#設置：-2" class="headerlink" title="設置："></a>設置：</h4><ol>
+<li>選用自訂 HTML 將事件代碼貼上。</li>
+<li>觸發條件選擇點擊，加上指定元素條件。</li>
+</ol>
+<p><img src="https://i.imgur.com/3mqLqcV.png" alt=""></p>
+<h1 id="檢查小工具"><a href="#檢查小工具" class="headerlink" title="檢查小工具"></a>檢查小工具</h1><hr>
+<p><a href="https://chrome.google.com/webstore/detail/facebook-pixel-helper/fdgfkebogiimcoedlicjlajpkdmockpc" target="_blank" rel="noopener">Facebook Pixel Helper</a><br><img src="https://i.imgur.com/mSSqp6n.png" alt=""></p>
 
     </div>
     
@@ -253,17 +259,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/posts/16262.html" class="pre-post btn btn-default" title='Facebook Pixel 代碼部署'>
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            Facebook Pixel 代碼部署</span>
-    </a>
     
-    
-    <a href="/posts/14176.html" class="next-post btn btn-default" title='Google Analytics 基本參數設置'>
+    <a href="/posts/25832.html" class="next-post btn btn-default" title='Google Analytics 事件'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            Google Analytics 基本參數設置</span><i class="fa fa-angle-right fa-fw"></i>
+            Google Analytics 事件</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -276,9 +276,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_config = function() {
-    this.page.url = 'https://samirliu127.github.io/posts/25832.html';
-    this.page.identifier = 'posts/25832.html';
-    this.page.title = 'Google Analytics 事件';
+    this.page.url = 'https://samirliu127.github.io/posts/16262.html';
+    this.page.identifier = 'posts/16262.html';
+    this.page.title = 'Facebook Pixel 代碼部署';
 };
 var d = document,
     s = d.createElement('script');
@@ -297,7 +297,7 @@ s.setAttribute('data-timestamp', '' + +new Date());
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Google-Analytics-事件"><span class="toc-text">Google Analytics 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件的紀錄資料"><span class="toc-text">事件的紀錄資料</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在-GTM-設置-GA-事件"><span class="toc-text">在 GTM 設置 GA 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#設置"><span class="toc-text">設置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#變數"><span class="toc-text">變數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#觸發條件"><span class="toc-text">觸發條件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代碼"><span class="toc-text">代碼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#檢查-Debug"><span class="toc-text">檢查(Debug)</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Facebook-Pixel"><span class="toc-text">Facebook Pixel</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#全頁追蹤-All-Pages"><span class="toc-text">全頁追蹤 All Pages</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PageView"><span class="toc-text">PageView</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#設置："><span class="toc-text">設置：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件-Event"><span class="toc-text">事件 Event</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#到達指定頁面"><span class="toc-text">到達指定頁面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ViewContent"><span class="toc-text">ViewContent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#設置：-1"><span class="toc-text">設置：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指定元素點擊"><span class="toc-text">指定元素點擊</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Contact"><span class="toc-text">Contact</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#設置：-2"><span class="toc-text">設置：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#檢查小工具"><span class="toc-text">檢查小工具</span></a></li></ol>
         
     </div>
 </aside>

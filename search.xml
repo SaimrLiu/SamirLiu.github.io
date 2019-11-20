@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Facebook Pixel 代碼部署</title>
+      <link href="/posts/16262.html"/>
+      <url>/posts/16262.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Facebook Pixel？臉書像素？是 Facebook 的網頁追蹤代碼，用於追蹤與衡量網站的訪客，可以針對指定受眾做在行銷或是建立相似受眾找到更多的淺在客戶群，所以在 Facebook 上投放廣告之前埋設追蹤碼是必要的。不過 Facebook 在 Google Tag Manager 沒有預設模組，所以需要用自訂 HTML 設置，不過有一些地方需要注意，確保資訊有正確的送出，若有其他問題歡迎留言提問。</p></blockquote><h1 id="Facebook-Pixel"><a href="#Facebook-Pixel" class="headerlink" title="Facebook Pixel"></a>Facebook Pixel</h1><hr><h2 id="全頁追蹤-All-Pages"><a href="#全頁追蹤-All-Pages" class="headerlink" title="全頁追蹤 All Pages"></a>全頁追蹤 All Pages</h2><h3 id="PageView"><a href="#PageView" class="headerlink" title="PageView"></a>PageView</h3><p>這是預設的像素跟踪頁面訪問，在訪客登陸您的網站頁面時觸發，Facebook 後臺產生時會同時存在。</p><h4 id="設置："><a href="#設置：" class="headerlink" title="設置："></a>設置：</h4><ol><li>選用自訂 HTML 直接將程式碼貼上。</li><li>代碼觸發選項選用<strong>每個網頁一次</strong>，避免同一頁面觸發多次。</li><li>觸發條件選擇 All Pages。</li></ol><p><img src="https://i.imgur.com/2tzqOos.png" alt=""></p><h2 id="事件-Event"><a href="#事件-Event" class="headerlink" title="事件 Event"></a>事件 Event</h2><p><a href="https://developers.facebook.com/docs/facebook-pixel/reference" target="_blank" rel="noopener">官方</a>定義一些標準事件，這邊使用<code>ViewContent</code>與<code>Contact</code>做說明，兩者差異前者為到達頁面時觸發，後者為點擊觸發，在設置上稍有些不同，目的是確保訊息有正確的送出。</p><blockquote><p>Facebook 事件都建議使用 <a href="https://developers.facebook.com/docs/facebook-pixel/advanced/#tracking-events-for-individual-pixels" target="_blank" rel="noopener">trackSingle</a>，避免影響其他的 pixel 事件收集，導致後臺計算成效時有落差。<br>如：<code>fbq(&#39;trackSingle&#39;, &#39;&lt;Pixel Id&gt;&#39;, &#39;&lt;Event&gt;&#39;);</code> </p></blockquote><h3 id="到達指定頁面"><a href="#到達指定頁面" class="headerlink" title="到達指定頁面"></a>到達指定頁面</h3><h4 id="ViewContent"><a href="#ViewContent" class="headerlink" title="ViewContent"></a>ViewContent</h4><p>為到達指定頁面時觸發，需要注意的是要在 <a href="#PageView">PageView</a> 完成後才能執行，同類型的有 <code>InitiateCheckout</code>、<code>Purchase</code>。</p><h4 id="設置：-1"><a href="#設置：-1" class="headerlink" title="設置："></a>設置：</h4><ol><li>選用自訂 HTML 將事件代碼貼上。</li><li>代碼觸發順序勾選啟用前先啟用 <a href="#PageView">PageView</a> 代碼，這會確保代碼的執行順序。</li><li>觸發條件選擇 <a href="../posts/30024.html#觸發條件-Trigger">Dom Ready</a>，加上指定頁面條件，再次確保代碼執行順序。</li></ol><p><img src="https://i.imgur.com/NS5vCTb.png" alt=""></p><h3 id="指定元素點擊"><a href="#指定元素點擊" class="headerlink" title="指定元素點擊"></a>指定元素點擊</h3><h4 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h4><p>為點擊指定元素時觸發，通常發生時已經完成了 PageView 的事件，同類型常見的如：<code>AddToCart</code>、<code>AddToWishlist</code>、<code>Search</code>…等。</p><h4 id="設置：-2"><a href="#設置：-2" class="headerlink" title="設置："></a>設置：</h4><ol><li>選用自訂 HTML 將事件代碼貼上。</li><li>觸發條件選擇點擊，加上指定元素條件。</li></ol><p><img src="https://i.imgur.com/3mqLqcV.png" alt=""></p><h1 id="檢查小工具"><a href="#檢查小工具" class="headerlink" title="檢查小工具"></a>檢查小工具</h1><hr><p><a href="https://chrome.google.com/webstore/detail/facebook-pixel-helper/fdgfkebogiimcoedlicjlajpkdmockpc" target="_blank" rel="noopener">Facebook Pixel Helper</a><br><img src="https://i.imgur.com/mSSqp6n.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 網站分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Google Tag Manager </tag>
+            
+            <tag> Facebook </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Google Analytics 事件</title>
       <link href="/posts/25832.html"/>
       <url>/posts/25832.html</url>
