@@ -214,11 +214,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <blockquote>
 <p>本站屬於技術分享的文章，最好的互動就是<strong>閱讀文章的深度</strong>，透過 GTM 可以簡單的設置當捲動深度達到目標百分比時當作是轉換。本篇可以拆分成三個部分：GTM 事件設定、GTM Debug、GA 目標設定。</p>
 </blockquote>
-<h1 id="Google-Tag-Manager-設置事件"><a href="#Google-Tag-Manager-設置事件" class="headerlink" title="Google Tag Manager 設置事件"></a>Google Tag Manager 設置事件</h1><hr>
-<h2 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h2><p>啟用內建變數<code>Scroll Depth Threshold</code>，拿來當作事件價值使用。<br><img src="https://i.imgur.com/tHtwVnr.png" alt=""></p>
-<h2 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h2><p>新增捲動深度的觸發條件，勾選捲動深度後分別設置 40 與 85 百分比，出發條件鎖定在文章頁面，開頭為 <code>/posts/</code>。<br><img src="https://i.imgur.com/OQt44S5.png" alt=""></p>
+<h2 id="Google-Tag-Manager-設置事件"><a href="#Google-Tag-Manager-設置事件" class="headerlink" title="Google Tag Manager 設置事件"></a>Google Tag Manager 設置事件</h2><hr>
+<h3 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h3><p>啟用內建變數<code>Scroll Depth Threshold</code>，拿來當作事件價值使用。<br><img src="https://i.imgur.com/tHtwVnr.png" alt=""></p>
+<h3 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h3><p>新增捲動深度的觸發條件，勾選捲動深度後分別設置 40 與 85 百分比，出發條件鎖定在文章頁面，開頭為 <code>/posts/</code>。<br><img src="https://i.imgur.com/OQt44S5.png" alt=""></p>
 <p><img src="https://i.imgur.com/SZnI2t2.png" alt=""></p>
-<h2 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h2><ol>
+<h3 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h3><ol>
 <li>新增通用 Analytics (分析)。</li>
 <li>追蹤類型改成 <code>事件</code>。</li>
 <li>填上自訂義的類別、動作或標籤，標籤與值帶上預設變數<code>Scroll Depth Threshold</code>。</li>
@@ -226,12 +226,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>新增觸發條件<code>Scroll Depth 40</code>與<code>Scroll Depth 85</code></li>
 </ol>
 <p><img src="https://i.imgur.com/phuxJ4n.png" alt=""></p>
-<h1 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h1><hr>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><hr>
 <p>基本上只要 <a href="#Google-Tag-Manager-設置事件">Google Tag Manager 設置事件</a>發佈後就完成了，不過在正式環境還是 Debug 一下比較安全。</p>
-<h2 id="啟用預覽"><a href="#啟用預覽" class="headerlink" title="啟用預覽"></a>啟用預覽</h2><p>在 Google Tag Manager 右上角有個預覽按鈕，按下後出現橘色的框框即進入預覽模式。<br><img src="https://i.imgur.com/lqwRzoG.png" alt=""></p>
-<h2 id="確認事件觸發"><a href="#確認事件觸發" class="headerlink" title="確認事件觸發"></a>確認事件觸發</h2><p>重新整理網站後底下出現 Debug 小工具，接著測試欲觸發的事件，確認左邊 Trigger 新增時，右邊 Tag 是否有被移動到 <code>Tags Fired On This Event</code>。<br><img src="https://i.imgur.com/3NLa2sE.png" alt=""></p>
-<h2 id="確認變數"><a href="#確認變數" class="headerlink" title="確認變數"></a>確認變數</h2><p>接著點入 Tag，可以確認 Tag 被觸發時所帶的變數是否符合預期。<br><img src="https://i.imgur.com/hi8Pzhp.png" alt=""></p>
-<h1 id="Google-Analytics-設置目標"><a href="#Google-Analytics-設置目標" class="headerlink" title="Google Analytics 設置目標"></a>Google Analytics 設置目標</h1><hr>
+<h3 id="啟用預覽"><a href="#啟用預覽" class="headerlink" title="啟用預覽"></a>啟用預覽</h3><p>在 Google Tag Manager 右上角有個預覽按鈕，按下後出現橘色的框框即進入預覽模式。<br><img src="https://i.imgur.com/lqwRzoG.png" alt=""></p>
+<h3 id="確認事件觸發"><a href="#確認事件觸發" class="headerlink" title="確認事件觸發"></a>確認事件觸發</h3><p>重新整理網站後底下出現 Debug 小工具，接著測試欲觸發的事件，確認左邊 Trigger 新增時，右邊 Tag 是否有被移動到 <code>Tags Fired On This Event</code>。<br><img src="https://i.imgur.com/3NLa2sE.png" alt=""></p>
+<h3 id="確認變數"><a href="#確認變數" class="headerlink" title="確認變數"></a>確認變數</h3><p>接著點入 Tag，可以確認 Tag 被觸發時所帶的變數是否符合預期。<br><img src="https://i.imgur.com/hi8Pzhp.png" alt=""></p>
+<h2 id="Google-Analytics-設置目標"><a href="#Google-Analytics-設置目標" class="headerlink" title="Google Analytics 設置目標"></a>Google Analytics 設置目標</h2><hr>
 <p>目標用來衡量網站/應用程式<strong>達成指定目標</strong>的效果<a href="https://support.google.com/analytics/answer/1012040" target="_blank" rel="noopener">官方參考</a>，目標追蹤完成文章閱讀 (捲動百分比達 80% 以上)。</p>
 <p>根據 Tag 上所帶的參數設定。<br><img src="https://i.imgur.com/nfUeA82.png" alt=""></p>
 <p>之後就可以追訪客的目標達成率。<br><img src="https://i.imgur.com/pG0ogjW.png" alt=""></p>
@@ -297,7 +297,7 @@ s.setAttribute('data-timestamp', '' + +new Date());
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Google-Tag-Manager-設置事件"><span class="toc-text">Google Tag Manager 設置事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Variable"><span class="toc-text">Variable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trigger"><span class="toc-text">Trigger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tag"><span class="toc-text">Tag</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Debug"><span class="toc-text">Debug</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#啟用預覽"><span class="toc-text">啟用預覽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#確認事件觸發"><span class="toc-text">確認事件觸發</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#確認變數"><span class="toc-text">確認變數</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Google-Analytics-設置目標"><span class="toc-text">Google Analytics 設置目標</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Tag-Manager-設置事件"><span class="toc-text">Google Tag Manager 設置事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Variable"><span class="toc-text">Variable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Trigger"><span class="toc-text">Trigger</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tag"><span class="toc-text">Tag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debug"><span class="toc-text">Debug</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#啟用預覽"><span class="toc-text">啟用預覽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#確認事件觸發"><span class="toc-text">確認事件觸發</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#確認變數"><span class="toc-text">確認變數</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Analytics-設置目標"><span class="toc-text">Google Analytics 設置目標</span></a></li></ol>
         
     </div>
 </aside>

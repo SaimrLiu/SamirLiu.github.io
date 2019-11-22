@@ -218,23 +218,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <blockquote>
 <p>之前的文章 <a href="../posts/30024.html">Google Tag Manager 入門</a>有提到如何用 GTM 設置全頁追蹤 GA。這次介紹另一個重要的功能<strong>事件</strong>，了解事件才算是脫離 GA 新手村。</p>
 </blockquote>
-<h1 id="Google-Analytics-事件"><a href="#Google-Analytics-事件" class="headerlink" title="Google Analytics 事件"></a>Google Analytics 事件</h1><hr>
+<h2 id="Google-Analytics-事件"><a href="#Google-Analytics-事件" class="headerlink" title="Google Analytics 事件"></a>Google Analytics 事件</h2><hr>
 <p>事件在網頁分析上是個重要的功能，需要在網站安裝自訂義的程式碼，才會搜集事件的資料，從此觀察訪客與網站的互動行為。</p>
-<h2 id="事件的紀錄資料"><a href="#事件的紀錄資料" class="headerlink" title="事件的紀錄資料"></a>事件的紀錄資料</h2><p>所填入的值只要是自己有辦法辨識即可，這邊分享我習慣的設置想法。</p>
+<h3 id="事件的紀錄資料"><a href="#事件的紀錄資料" class="headerlink" title="事件的紀錄資料"></a>事件的紀錄資料</h3><p>所填入的值只要是自己有辦法辨識即可，這邊分享我習慣的設置想法。</p>
 <ol>
 <li>事件類別 (Category)<br>訪客預期得到動作，如：Search, AddToCart, Contact。</li>
 <li>事件動作 (Action)<br>觸發事件的動作，如：Click, Scroll the page。</li>
 <li>事件標籤 (Label)<br>敘述文字，連結、簡短的說明，依情況設置。</li>
 <li>事件價值 (Value)<br>定義訪客互動的成效數值，依情況設置。</li>
 </ol>
-<h1 id="在-GTM-設置-GA-事件"><a href="#在-GTM-設置-GA-事件" class="headerlink" title="在 GTM 設置 GA 事件"></a>在 GTM 設置 GA 事件</h1><p>目標是追蹤首頁 <code>Social</code> 的四個按鈕的點擊次數。<br><img src="https://i.imgur.com/7539n4Z.png" alt=""></p>
-<h2 id="設置"><a href="#設置" class="headerlink" title="設置"></a>設置</h2><h3 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h3><p>啟用內建變數<code>Click Element</code></p>
-<h3 id="觸發條件"><a href="#觸發條件" class="headerlink" title="觸發條件"></a>觸發條件</h3><p><img src="https://i.imgur.com/pACxsHu.png" alt=""></p>
-<h3 id="代碼"><a href="#代碼" class="headerlink" title="代碼"></a>代碼</h3><p><img src="https://i.imgur.com/GR9cTBZ.png" alt=""></p>
+<h2 id="在-GTM-設置-GA-事件"><a href="#在-GTM-設置-GA-事件" class="headerlink" title="在 GTM 設置 GA 事件"></a>在 GTM 設置 GA 事件</h2><p>目標是追蹤首頁 <code>Social</code> 的四個按鈕的點擊次數。<br><img src="https://i.imgur.com/7539n4Z.png" alt=""></p>
+<h3 id="設置"><a href="#設置" class="headerlink" title="設置"></a>設置</h3><h4 id="變數"><a href="#變數" class="headerlink" title="變數"></a>變數</h4><p>啟用內建變數<code>Click Element</code></p>
+<h4 id="觸發條件"><a href="#觸發條件" class="headerlink" title="觸發條件"></a>觸發條件</h4><p><img src="https://i.imgur.com/pACxsHu.png" alt=""></p>
+<h4 id="代碼"><a href="#代碼" class="headerlink" title="代碼"></a>代碼</h4><p><img src="https://i.imgur.com/GR9cTBZ.png" alt=""></p>
 <blockquote>
 <p>如果需要個別追點擊次數，可以分開設置觸發條件與代碼。</p>
 </blockquote>
-<h2 id="檢查-Debug"><a href="#檢查-Debug" class="headerlink" title="檢查(Debug)"></a>檢查(Debug)</h2><p>在發佈之前使用<a href="../posts/13266.html#Debug">預覽</a>檢查。<br><img src="https://i.imgur.com/axp3yzA.png" alt=""></p>
+<h3 id="檢查-Debug"><a href="#檢查-Debug" class="headerlink" title="檢查(Debug)"></a>檢查(Debug)</h3><p>在發佈之前使用<a href="../posts/13266.html#Debug">預覽</a>檢查。<br><img src="https://i.imgur.com/axp3yzA.png" alt=""></p>
 
     </div>
     
@@ -297,7 +297,7 @@ s.setAttribute('data-timestamp', '' + +new Date());
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Google-Analytics-事件"><span class="toc-text">Google Analytics 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件的紀錄資料"><span class="toc-text">事件的紀錄資料</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在-GTM-設置-GA-事件"><span class="toc-text">在 GTM 設置 GA 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#設置"><span class="toc-text">設置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#變數"><span class="toc-text">變數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#觸發條件"><span class="toc-text">觸發條件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代碼"><span class="toc-text">代碼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#檢查-Debug"><span class="toc-text">檢查(Debug)</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Analytics-事件"><span class="toc-text">Google Analytics 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件的紀錄資料"><span class="toc-text">事件的紀錄資料</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在-GTM-設置-GA-事件"><span class="toc-text">在 GTM 設置 GA 事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#設置"><span class="toc-text">設置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#變數"><span class="toc-text">變數</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#觸發條件"><span class="toc-text">觸發條件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代碼"><span class="toc-text">代碼</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#檢查-Debug"><span class="toc-text">檢查(Debug)</span></a></li></ol></li></ol>
         
     </div>
 </aside>
