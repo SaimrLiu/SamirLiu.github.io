@@ -19,10 +19,14 @@
     <link rel="dns-prefetch" href="https://samirliu127.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="網站追蹤,網站分析,技術分享,GTM,Google Tag Manager,GA,Google Analytics,Python,tracking,Ecommerce" />
+<meta name="keywords" content="GA,Google Analytics,試算表,Google Sheet,報表,自動化,數據分析" />
 
 
-<meta name="description" content="專注分享網頁追蹤、資料分析，包含各廣告追蹤。" />
+<meta name="description" content="
+Google 試算表(Sheet) 有個好用的小工具，可以設定排程取得 Google Analytics 的數據，對習慣使用試算表的人是一大福音。
+
+步驟安裝：
+建立 Google Sheet..." />
 
 
 <meta name="robots" content="all" />
@@ -31,16 +35,22 @@
 <meta name="verify" content="all" />
 
 <!-- Open Graph data -->
-<meta property="og:title" content="" />
+<meta property="og:title" content="將 Google Analytics 數據同步到 Google Sheet" />
 
-<meta property="og:description" content="專注分享網頁追蹤、資料分析，包含各廣告追蹤。" />
+<meta name="og:description" content="
+Google 試算表(Sheet) 有個好用的小工具，可以設定排程取得 Google Analytics 的數據，對習慣使用試算表的人是一大福音。
 
+步驟安裝：
+建立 Google Sheet..." />
+
+
+<meta property="og:image" content="https://i.imgur.com/8EkE6GD.png" />
 
     <!--Title-->
 
 <title>
     
-    Tag: hexo |
+    將 Google Analytics 數據同步到 Google Sheet |
     
     隨勛所欲 - Google Analytics 網站分析
 </title>
@@ -166,182 +176,123 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <ol class="breadcrumb">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="將 Google Analytics 數據同步到 Google Sheet">
+            
+            將 Google Analytics 數據同步到 Google Sheet
+            
+        </h1>
+        <div class="post-meta">
     
-    <li>
-        hexo
-    </li>
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/tracking/">網站分析</a>
+    </span>
     
     
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Google-Analytics/" rel="tag">Google Analytics</a> <a class="tag-link" href="/tags/Google-Sheet/" rel="tag">Google Sheet</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/11/22</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>Google 試算表(Sheet) 有個好用的小工具，可以設定排程取得 Google Analytics 的數據，對習慣使用試算表的人是一大福音。</p>
+</blockquote>
+<h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><h3 id="安裝："><a href="#安裝：" class="headerlink" title="安裝："></a>安裝：</h3><ol>
+<li>建立 Google Sheet。</li>
+<li>安裝外掛工具，從<code>外掛程式 &gt; 取得外掛程式</code>可以找到 Google Analytics 的外掛工具。<br><img src="https://i.imgur.com/Zni371G.png" alt=""><br><img src="https://i.imgur.com/QlMQjiD.png" alt=""></li>
+</ol>
+<h3 id="建立報表："><a href="#建立報表：" class="headerlink" title="建立報表："></a>建立報表：</h3><ol>
+<li>授權安裝後，點選<code>Create new report</code>。<br><img src="https://i.imgur.com/eR6sZO4.png" alt=""></li>
+<li>根據需求選擇 Google Analytics、維度(Dimension)、指標(Metrics)後建立報表，維度跟指標的文件可以<a href="https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/" target="_blank" rel="noopener">參考這邊</a>。<br><img src="https://i.imgur.com/v47c9cR.png" alt=""></li>
+<li>會產生一個試算表 <code>Report Configuration</code>，是取得數據相關的任務設定。</li>
+</ol>
+<h3 id="執行與排程"><a href="#執行與排程" class="headerlink" title="執行與排程"></a>執行與排程</h3><ol>
+<li>在選單可以選擇立即執行與設定排程。<br><img src="https://i.imgur.com/UbObaEX.png" alt=""></li>
+<li>排成設定為自動跑報表的時間間隔。<br><img src="https://i.imgur.com/Ie2vaWE.png" alt=""></li>
 </ol>
 
-<article class="post">
-    
-    <div class="post-media">
-        <a href="/posts/23955.html">
-            <img class="img-ajax" src="/img/loading.gif" data-src="http://wst24365888.github.io/images/hexo.jpg" alt="Hexo 常用指令">
-        </a>
     </div>
     
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/posts/23955.html">
-                    Hexo 常用指令</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime="" title="">
-                    2019年11月08日
-                </time>
-            </div>
+    <div class="post-footer">
+        <div>
+            
+            轉載聲明：
+            商業轉載請聯繫作者獲得授權，非商業傳再請註明出處 © <a href="" target="_blank">Snippet</a>
+            
+            
         </div>
-        <p class="brief">
+        <div>
             
-            文章命令行中輸入：
-123$ hexo new &#34;new article&#34;  # 建立文章$ hexo new draft &#34;draft article&#34;  # 建立草稿$ hexo publish &#34;draft article&#34;  ...
-            
-        </p>
+        </div>
     </div>
 </article>
-
-<article class="post">
+<div class="article-nav prev-next-wrap clearfix">
     
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/posts/16107.html">
-                    Hello World</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime="" title="">
-                    2019年11月07日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...
-            
-        </p>
-    </div>
-</article>
+    
+    <a href="/posts/16262.html" class="next-post btn btn-default" title='Facebook Pixel 代碼部署'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Facebook Pixel 代碼部署</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
 
+<div id="comments">
+    
+
+<script id="dsq-count-scr" src="https://samirliu127-hexo-blog.disqus.com/count.js" async></script>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function() {
+    this.page.url = 'https://samirliu127.github.io/posts/51238.html';
+    this.page.identifier = 'posts/51238.html';
+    this.page.title = '將 Google Analytics 數據同步到 Google Sheet';
+};
+var d = document,
+    s = d.createElement('script');
+s.src = 'https://samirliu127-hexo-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);
+</script>
+
+</div>
 
                 </main>
                 
-                    
-<aside class="col-md-4 sidebar">
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Search
-    </h3>
-    <div id="search-form">
-        <div id="result-mask" class="hide"></div>
-        <div class="search-area">
-            
-            <input id="search-key" type="search" autocomplete="off" placeholder="Search What？">
-            <button type="button" class="search-form-submit" id="search-local">
-                Search</button>
-            
-            
-        </div>
-        <div id="result-wrap" class="hide">
-            <div id="search-result"></div>
-        </div>
-        <div class="hide">
-            <template id="search-tpl">
-                <div class="item">
-                    <a href="/{path}" title="{title}">
-                        <div class="title">{title}</div>
-                        <div class="content">{content}</div>
-                    </a>
-                </div>
-            </template>
-        </div>
-    </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Social
-    </h3>
-    <div class="content social">
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
         
-        <a href="//www.facebook.com/100226861444726" rel="external nofollow" title="Facebook" target="_blank">
-            <i class="facebook-square fa fa-facebook-square"></i>
-        </a>
-        
-        <a href="//github.com/SamirLiu127" rel="external nofollow" title="Github" target="_blank">
-            <i class="github fa fa-github"></i>
-        </a>
-        
-        <a href="//www.linkedin.com/in/samirliu" rel="external nofollow" title="Linkedin" target="_blank">
-            <i class="linkedin fa fa-linkedin"></i>
-        </a>
-        
-        <a href="mailto:gip24000@gmail.com" rel="external nofollow" title="電子信箱" target="_blank">
-            <i class="envelope-o fa fa-envelope-o"></i>
-        </a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#步驟"><span class="toc-text">步驟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安裝："><span class="toc-text">安裝：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立報表："><span class="toc-text">建立報表：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#執行與排程"><span class="toc-text">執行與排程</span></a></li></ol></li></ol>
         
     </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Archives
-    </h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/"><i class="fa" aria-hidden="true">2019年11月</i></a><span class="archive-list-count">11</span></li></ul>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Categories
-    </h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tracking/"><i class="fa" aria-hidden="true">網站分析</i></a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/"><i class="fa" aria-hidden="true">隨筆</i></a><span class="category-list-count">3</span></li></ul>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Tag Cloud
-    </h3>
-    <div class="content tag-cloud">
-        
-        <a href="/tags/Facebook/" style="font-size: 10px;">Facebook</a> <a href="/tags/Google-Analytics/" style="font-size: 20px;">Google Analytics</a> <a href="/tags/Google-Sheet/" style="font-size: 10px;">Google Sheet</a> <a href="/tags/Google-Tag-Manager/" style="font-size: 16.67px;">Google Tag Manager</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
-        
-    </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Friends
-    </h3>
-    <div class="content friends-link">
-        
-        <a href="https://jerry80409.github.io?utm_source=samir&utm_medium=blog" class="fa" target="_blank">
-            PAWS</a>
-        
-        <a href="https://chilunhuang.github.io?utm_source=samir&utm_medium=blog" class="fa" target="_blank">
-            CLH Lab</a>
-        
-    </div>
-</div>
-
-    
 </aside>
-
                 
             </div>
         </div>
@@ -378,8 +329,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
     </div>
 </div>
-
-<script src="/js/search.js?rev=@@hash"></script>
 
 
 

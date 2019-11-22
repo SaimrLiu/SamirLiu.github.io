@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>將 Google Analytics 數據同步到 Google Sheet</title>
+      <link href="/posts/51238.html"/>
+      <url>/posts/51238.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Google 試算表(Sheet) 有個好用的小工具，可以設定排程取得 Google Analytics 的數據，對習慣使用試算表的人是一大福音。</p></blockquote><h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><h3 id="安裝："><a href="#安裝：" class="headerlink" title="安裝："></a>安裝：</h3><ol><li>建立 Google Sheet。</li><li>安裝外掛工具，從<code>外掛程式 &gt; 取得外掛程式</code>可以找到 Google Analytics 的外掛工具。<br><img src="https://i.imgur.com/Zni371G.png" alt=""><br><img src="https://i.imgur.com/QlMQjiD.png" alt=""></li></ol><h3 id="建立報表："><a href="#建立報表：" class="headerlink" title="建立報表："></a>建立報表：</h3><ol><li>授權安裝後，點選<code>Create new report</code>。<br><img src="https://i.imgur.com/eR6sZO4.png" alt=""></li><li>根據需求選擇 Google Analytics、維度(Dimension)、指標(Metrics)後建立報表，維度跟指標的文件可以<a href="https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/" target="_blank" rel="noopener">參考這邊</a>。<br><img src="https://i.imgur.com/v47c9cR.png" alt=""></li><li>會產生一個試算表 <code>Report Configuration</code>，是取得數據相關的任務設定。</li></ol><h3 id="執行與排程"><a href="#執行與排程" class="headerlink" title="執行與排程"></a>執行與排程</h3><ol><li>在選單可以選擇立即執行與設定排程。<br><img src="https://i.imgur.com/UbObaEX.png" alt=""></li><li>排成設定為自動跑報表的時間間隔。<br><img src="https://i.imgur.com/Ie2vaWE.png" alt=""></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 網站分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Google Analytics </tag>
+            
+            <tag> Google Sheet </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Facebook Pixel 代碼部署</title>
       <link href="/posts/16262.html"/>
       <url>/posts/16262.html</url>
