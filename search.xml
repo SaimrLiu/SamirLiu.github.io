@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Google Analytics 內容分組</title>
+      <link href="/posts/26559.html"/>
+      <url>/posts/26559.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>介紹一個很少人使用的好功能，內容分組可以把頁面依照自己的方式分類，之後在資料有使用到網頁(pagePath)這個維度就非常有幫助。</p></blockquote><h2 id="內容分組"><a href="#內容分組" class="headerlink" title="內容分組"></a>內容分組</h2><hr><h3 id="設置"><a href="#設置" class="headerlink" title="設置"></a>設置</h3><h4 id="到-管理-gt-資料檢視-gt-內容分組-新增內容分類。"><a href="#到-管理-gt-資料檢視-gt-內容分組-新增內容分類。" class="headerlink" title="到 管理 &gt; 資料檢視 &gt; 內容分組 新增內容分類。"></a>到 <code>管理 &gt; 資料檢視 &gt; 內容分組</code> 新增內容分類。</h4><p><img src="https://i.imgur.com/VBjyFDq.png" alt=""></p><h4 id="內容分組有三種分類方式，分別是追蹤程式碼、使用者資訊擷取、使用者規則定義，這邊使用使用者規則定義做範例。"><a href="#內容分組有三種分類方式，分別是追蹤程式碼、使用者資訊擷取、使用者規則定義，這邊使用使用者規則定義做範例。" class="headerlink" title="內容分組有三種分類方式，分別是追蹤程式碼、使用者資訊擷取、使用者規則定義，這邊使用使用者規則定義做範例。"></a>內容分組有三種分類方式，分別是追蹤程式碼、使用者資訊擷取、使用者規則定義，這邊使用使用者規則定義做範例。</h4><p><img src="https://i.imgur.com/bmWt9N6.png" alt=""><br>以我的網站來定義幾個常用的<br>類別分類頁 =&gt; 網頁 開頭是 <code>/categories/</code><br>標籤分類頁 =&gt; 網頁 開頭是 <code>/tags/</code><br>文章分類頁 =&gt; 網頁 開頭是 <code>/posts/</code></p><h4 id="最後注意幾點"><a href="#最後注意幾點" class="headerlink" title="最後注意幾點"></a>最後注意幾點</h4><ol><li>內容分組為設置完當下才會生效，並不會套用到過去資料。</li><li>分類順序要注意，一個頁面只會優先分到第一個媒合的內容分頁。<br><img src="https://i.imgur.com/CP4EVlb.png" alt=""></li><li>未被媒合的頁面會分類至<code>(not set)</code></li><li>內容分組為資料檢視層，不同資料檢視需另外設置。<h2 id="分類應用"><a href="#分類應用" class="headerlink" title="分類應用"></a>分類應用</h2></li></ol><hr><p>之後大部分有使用到網頁的維度皆可切換成內容分組，方便資料分析。<br><img src="https://i.imgur.com/Faz1Nla.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 網站分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Google Analytics </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>將 Google Analytics 數據同步到 Google Sheet</title>
       <link href="/posts/51238.html"/>
       <url>/posts/51238.html</url>
