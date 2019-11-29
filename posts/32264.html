@@ -1,0 +1,481 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="隨勛所欲 - Google Analytics 網站分析">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://samirliu127.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="RFM,客戶分群,數據分析,數據行銷,python" />
+
+
+<meta name="description" content="
+RFM 是個簡易分析客戶價值的模型，在電商零售上常常使用。RFM 透過客戶近期的購買行為(Recency)、購買頻率(Frequency)、購買花費(Monetary) 三項指標評估客戶的價值..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Python 實現 RFM 用戶分析模型" />
+
+<meta name="og:description" content="
+RFM 是個簡易分析客戶價值的模型，在電商零售上常常使用。RFM 透過客戶近期的購買行為(Recency)、購買頻率(Frequency)、購買花費(Monetary) 三項指標評估客戶的價值..." />
+
+
+<meta property="og:image" content="/img/32264/000.jpg" />
+
+    <!--Title-->
+
+<title>
+    
+    Python 實現 RFM 用戶分析模型 |
+    
+    隨勛所欲 - Google Analytics 網站分析
+</title>
+
+<link rel="alternate" href="/atom.xml" title="隨勛所欲 - Google Analytics 網站分析" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5M44L8F');</script>
+<!-- End Google Tag Manager -->
+
+
+    
+<meta name="baidu-site-verification" content="P04QVZ2PUj" />
+
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    <script data-ad-client="ca-pub-5811286107404442" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5M44L8F"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <header class="main-header"  style="background-image:url(
+    /./img/up-background.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Samir Liu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://samirliu127.github.io">
+                        隨勛所欲 - Google Analytics 網站分析</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首頁</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/tracking/"><i class="fa fa-area-chart"></i>
+                                網站分析</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/python/"><i class="fa fa-code"></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/others/"><i class="fa fa-book"></i>
+                                隨筆</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-calendar-o"></i>
+                                時間軸</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python 實現 RFM 用戶分析模型">
+            
+            Python 實現 RFM 用戶分析模型
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/python/">Python</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/11/29</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>RFM 是個簡易分析客戶價值的模型，在電商零售上常常使用。RFM 透過客戶<strong>近期的購買行為(Recency)</strong>、<strong>購買頻率(Frequency)</strong>、<strong>購買花費(Monetary)</strong> 三項指標評估客戶的價值狀況。</p>
+</blockquote>
+<h2 id="模型意義"><a href="#模型意義" class="headerlink" title="模型意義"></a>模型意義</h2><ul>
+<li>最近一次消費(Recency)：<br>上一次消費時間越近的顧客應該是比較好的顧客，對提供即時的商品或是服務也最有可能會有反應。</li>
+<li>消費頻率(Frequency)：<br>也就是常客，也可以說是客戶對品牌的忠誠度，頻率高的優於頻率低的客戶。</li>
+<li>消費金額(Monetary)：<br>客戶消費力，依循 <a href="https://zh.wikipedia.org/wiki/%E5%B8%95%E7%B4%AF%E6%89%98%E6%B3%95%E5%88%99" target="_blank" rel="noopener">Pareto’s Law (八二法則)</a>，80％的銷售額來自20％的客戶，高消費金額優於低消費金額。</li>
+</ul>
+<h2 id="客戶分群意義"><a href="#客戶分群意義" class="headerlink" title="客戶分群意義"></a>客戶分群意義</h2><table>
+<thead>
+<tr>
+<th>Recency 消費時間</th>
+<th>Frequency 頻率</th>
+<th>Monetary 金額</th>
+<th>客戶分群</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>近</td>
+<td>高</td>
+<td>高</td>
+<td>高價值，常貴客戶</td>
+</tr>
+<tr>
+<td>遠</td>
+<td>高</td>
+<td>高</td>
+<td>高價值，流失客戶</td>
+</tr>
+<tr>
+<td>近</td>
+<td>低</td>
+<td>高</td>
+<td>高價值，新客戶</td>
+</tr>
+<tr>
+<td>遠</td>
+<td>低</td>
+<td>高</td>
+<td>高價值，淺在客戶</td>
+</tr>
+<tr>
+<td>近</td>
+<td>高</td>
+<td>低</td>
+<td>一般價值，常貴客戶</td>
+</tr>
+<tr>
+<td>遠</td>
+<td>高</td>
+<td>低</td>
+<td>一般價值，流失客戶</td>
+</tr>
+<tr>
+<td>近</td>
+<td>低</td>
+<td>低</td>
+<td>一般價值，新客戶</td>
+</tr>
+<tr>
+<td>遠</td>
+<td>低</td>
+<td>低</td>
+<td>一般價值，淺在客戶</td>
+</tr>
+</tbody></table>
+<p>以 R 與 F 分析圖劃分<br><img src="/img/32264/000.jpg" alt=""></p>
+<h2 id="Python-程式碼"><a href="#Python-程式碼" class="headerlink" title="Python 程式碼"></a>Python 程式碼</h2><p>使用 <a href="https://www.kaggle.com/carrie1/ecommerce-data" target="_blank" rel="noopener">kaggle</a> 的資料做練習</p>
+<h3 id="Data-Prepare"><a href="#Data-Prepare" class="headerlink" title="Data Prepare"></a>Data Prepare</h3><p>資料清理，排除缺失值與負值，並計算出收益。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">import</span> seaborn <span class="token keyword">as</span> sns
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+
+<span class="token comment" spellcheck="true"># Data Prepare</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'data.csv'</span><span class="token punctuation">,</span> encoding <span class="token operator">=</span> <span class="token string">"ISO-8859-1"</span><span class="token punctuation">)</span>
+
+df<span class="token punctuation">[</span><span class="token string">'InvoiceDate'</span><span class="token punctuation">]</span> <span class="token operator">=</span> pd<span class="token punctuation">.</span>to_datetime<span class="token punctuation">(</span>df<span class="token punctuation">[</span><span class="token string">'InvoiceDate'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 日期轉換</span>
+df_new <span class="token operator">=</span> df<span class="token punctuation">.</span>dropna<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 排除缺失值</span>
+df_new <span class="token operator">=</span> df_new<span class="token punctuation">[</span>df_new<span class="token punctuation">.</span>Quantity <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># 排除負值</span>
+df_new <span class="token operator">=</span> df_new<span class="token punctuation">[</span>df_new<span class="token punctuation">.</span>UnitPrice <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># 排除負值</span>
+
+df<span class="token punctuation">[</span><span class="token string">'Revenue'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'Quantity'</span><span class="token punctuation">]</span> <span class="token operator">*</span> df<span class="token punctuation">[</span><span class="token string">'UnitPrice'</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># 收益計算</span>
+df<span class="token punctuation">[</span><span class="token string">'CustomerID'</span><span class="token punctuation">]</span> <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token string">'CustomerID'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>astype<span class="token punctuation">(</span><span class="token string">'int64'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># CustomerID 轉換</span></code></pre>
+<p><img src="/img/32264/001.png" alt=""></p>
+<h3 id="RFM-Table"><a href="#RFM-Table" class="headerlink" title="RFM Table"></a>RFM Table</h3><p>統計個人消費行為，得到至今最近一次消費的天數、消費次數、消費總金額</p>
+<pre class=" language-python"><code class="language-python">NOW <span class="token operator">=</span> datetime<span class="token punctuation">(</span><span class="token number">2011</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 資料最後一天為 2011/12/09</span>
+rfm_df <span class="token operator">=</span> df<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token string">'CustomerID'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>agg<span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token string">'InvoiceDate'</span><span class="token punctuation">:</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token punctuation">(</span>NOW <span class="token operator">-</span> x<span class="token punctuation">.</span>max<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>days<span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># 近一次消費天</span>
+    <span class="token string">'InvoiceNo'</span><span class="token punctuation">:</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>nunique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>            <span class="token comment" spellcheck="true"># 消費次數</span>
+    <span class="token string">'Revenue'</span><span class="token punctuation">:</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>sum<span class="token punctuation">(</span><span class="token punctuation">)</span>                   <span class="token comment" spellcheck="true"># 消費金額</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+rfm_df<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>
+    columns<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'InvoiceDate'</span><span class="token punctuation">:</span> <span class="token string">'recency'</span><span class="token punctuation">,</span> 
+             <span class="token string">'InvoiceNo'</span><span class="token punctuation">:</span> <span class="token string">'frequency'</span><span class="token punctuation">,</span> 
+             <span class="token string">'Revenue'</span><span class="token punctuation">:</span> <span class="token string">'monetary'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> 
+    inplace<span class="token operator">=</span><span class="token boolean">True</span>
+<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 重新命名</span>
+rfm_df<span class="token punctuation">[</span><span class="token string">'user'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token comment" spellcheck="true"># 繪圖計數用</span></code></pre>
+<p><img src="/img/32264/002.png" alt=""></p>
+<h3 id="RFM-Model"><a href="#RFM-Model" class="headerlink" title="RFM Model"></a>RFM Model</h3><p>使用中位數(median)將數據分為兩級，也可以使用 33 與 66 分位(quantile)分三級</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 根據值將資料分級</span>
+<span class="token comment" spellcheck="true"># col_val: 輸入值, level: 分級級距</span>
+<span class="token keyword">def</span> <span class="token function">get_level</span><span class="token punctuation">(</span>col_val<span class="token punctuation">,</span> level<span class="token punctuation">:</span> list<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> idx<span class="token punctuation">,</span> val <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>reversed<span class="token punctuation">(</span>level<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> col_val <span class="token operator">>=</span> val<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> f<span class="token string">'≥{int(val)}'</span>
+
+<span class="token comment" spellcheck="true"># 分級</span>
+recency_level <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> rfm_df<span class="token punctuation">[</span><span class="token string">'recency'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>median<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+recency_label <span class="token operator">=</span> <span class="token punctuation">[</span>f<span class="token string">'≥{int(i)}'</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> recency_level<span class="token punctuation">]</span>
+rfm_df<span class="token punctuation">[</span><span class="token string">'recency_label'</span><span class="token punctuation">]</span> <span class="token operator">=</span> rfm_df<span class="token punctuation">[</span><span class="token string">'recency'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>
+    <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> get_level<span class="token punctuation">(</span>x<span class="token punctuation">,</span> recency_level<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+
+frequency_level <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> rfm_df<span class="token punctuation">[</span><span class="token string">'frequency'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>median<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+frequency_label <span class="token operator">=</span> <span class="token punctuation">[</span>f<span class="token string">'≥{int(i)}'</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> frequency_level<span class="token punctuation">]</span>
+rfm_df<span class="token punctuation">[</span><span class="token string">'frequency_label'</span><span class="token punctuation">]</span> <span class="token operator">=</span> rfm_df<span class="token punctuation">[</span><span class="token string">'frequency'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>
+    <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> get_level<span class="token punctuation">(</span>x<span class="token punctuation">,</span> frequency_level<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+
+monetary_level <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> rfm_df<span class="token punctuation">[</span><span class="token string">'monetary'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>median<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+monetary_label <span class="token operator">=</span> <span class="token punctuation">[</span>f<span class="token string">'≥{int(i)}'</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> monetary_level<span class="token punctuation">]</span>
+rfm_df<span class="token punctuation">[</span><span class="token string">'monetary_label'</span><span class="token punctuation">]</span> <span class="token operator">=</span> rfm_df<span class="token punctuation">[</span><span class="token string">'monetary'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>
+    <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> get_level<span class="token punctuation">(</span>x<span class="token punctuation">,</span> monetary_level<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span></code></pre>
+<p><img src="/img/32264/003.png" alt=""></p>
+<h3 id="RFM-Draw"><a href="#RFM-Draw" class="headerlink" title="RFM Draw"></a>RFM Draw</h3><p>利用 seaborn 繪圖，分成四個區塊為各個客戶群，裡面兩條長條圖分別為高消費力與低消費力的人數</p>
+<pre class=" language-python"><code class="language-python">g <span class="token operator">=</span> sns<span class="token punctuation">.</span>FacetGrid<span class="token punctuation">(</span>
+    rfm_df<span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># 來源資料表</span>
+    col<span class="token operator">=</span><span class="token string">"recency_label"</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># X資料來源欄位</span>
+    row<span class="token operator">=</span><span class="token string">"frequency_label"</span> <span class="token punctuation">,</span>  <span class="token comment" spellcheck="true"># Y資料來源欄位</span>
+    col_order<span class="token operator">=</span>recency_label<span class="token punctuation">,</span>  <span class="token comment" spellcheck="true"># X資料順序</span>
+    row_order<span class="token operator">=</span>frequency_label<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># Y資料順序</span>
+    margin_titles<span class="token operator">=</span><span class="token boolean">True</span>  <span class="token comment" spellcheck="true"># 小圖啟用</span>
+<span class="token punctuation">)</span>
+
+g <span class="token operator">=</span> g<span class="token punctuation">.</span>map_dataframe<span class="token punctuation">(</span>
+    sns<span class="token punctuation">.</span>barplot<span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># 資料顯示的模式</span>
+    x<span class="token operator">=</span><span class="token string">'monetary_label'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># 小圖表X資料來源</span>
+    y<span class="token operator">=</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># 小圖表Y資料來源，訪客計數</span>
+    order<span class="token operator">=</span>monetary_label<span class="token punctuation">,</span> <span class="token comment" spellcheck="true"># X資料順序</span>
+    estimator<span class="token operator">=</span>sum<span class="token punctuation">,</span>  <span class="token comment" spellcheck="true"># Y計數加總</span>
+    palette <span class="token operator">=</span> sns<span class="token punctuation">.</span>color_palette<span class="token punctuation">(</span><span class="token string">"muted"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#畫布色調 </span>
+<span class="token punctuation">)</span> 
+
+g <span class="token operator">=</span> g<span class="token punctuation">.</span>set_axis_labels<span class="token punctuation">(</span><span class="token string">'Recency'</span><span class="token punctuation">,</span><span class="token string">'Frequency'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>add_legend<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><img src="/img/32264/004.png" alt=""></p>
+<h3 id="找出-VIP-客戶群"><a href="#找出-VIP-客戶群" class="headerlink" title="找出 VIP 客戶群"></a>找出 VIP 客戶群</h3><p>最後可以根據條件對不同客戶群分別做行銷</p>
+<pre class=" language-python"><code class="language-python">vip <span class="token operator">=</span> rfm_df<span class="token punctuation">[</span>
+    <span class="token punctuation">(</span>rfm_df<span class="token punctuation">[</span><span class="token string">'frequency_label'</span><span class="token punctuation">]</span> <span class="token operator">==</span> frequency_label<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>
+    <span class="token punctuation">(</span>rfm_df<span class="token punctuation">[</span><span class="token string">'recency_label'</span><span class="token punctuation">]</span> <span class="token operator">==</span> recency_label<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>
+    <span class="token punctuation">(</span>rfm_df<span class="token punctuation">[</span><span class="token string">'monetary_label'</span><span class="token punctuation">]</span> <span class="token operator">==</span> monetary_label<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span>
+vip<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span></code></pre>
+<p><img src="/img/32264/005.png" alt=""></p>
+
+    </div>
+    
+    
+    <!-- Like Coin -->
+<script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/samirliu127/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+</script>
+<!-- End Like Coin -->
+    
+    <div class="post-footer">
+        <div>
+            
+            轉載聲明：
+            商業轉載請聯繫作者獲得授權，非商業傳再請註明出處。
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/posts/26559.html" class="next-post btn btn-default" title='Google Analytics 內容分組'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Google Analytics 內容分組</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<script id="dsq-count-scr" src="https://samirliu127-hexo-blog.disqus.com/count.js" async></script>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function() {
+    this.page.url = 'https://samirliu127.github.io/posts/32264.html';
+    this.page.identifier = 'posts/32264.html';
+    this.page.title = 'Python 實現 RFM 用戶分析模型';
+};
+var d = document,
+    s = d.createElement('script');
+s.src = 'https://samirliu127-hexo-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);
+</script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模型意義"><span class="toc-text">模型意義</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客戶分群意義"><span class="toc-text">客戶分群意義</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-程式碼"><span class="toc-text">Python 程式碼</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Prepare"><span class="toc-text">Data Prepare</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RFM-Table"><span class="toc-text">RFM Table</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RFM-Model"><span class="toc-text">RFM Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RFM-Draw"><span class="toc-text">RFM Draw</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#找出-VIP-客戶群"><span class="toc-text">找出 VIP 客戶群</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2019
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
