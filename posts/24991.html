@@ -1,0 +1,477 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="隨勛所欲 - Google Analytics 網站分析">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://samirliu127.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="GTM,Google Tag Manager,GA,Google Analytics,電子商務,交易訂單,事件,目標,轉換" />
+
+
+<meta name="description" content="
+電子商務可以在網站上衡量訪客的交易資訊，其包含產品內容、產品數量、交易金額…等。加強型電子商務則為強調訪客的購物流程，包括產品的曝光、點擊、瀏覽、加入購物車…等。大部分都推薦使用 dataLa..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+
+<!-- Open Graph data -->
+<meta property="og:title" content="GTM 上設置 Google Analytics 電子商務" />
+
+<meta name="og:description" content="
+電子商務可以在網站上衡量訪客的交易資訊，其包含產品內容、產品數量、交易金額…等。加強型電子商務則為強調訪客的購物流程，包括產品的曝光、點擊、瀏覽、加入購物車…等。大部分都推薦使用 dataLa..." />
+
+
+<meta property="og:image" content="/img/24991/000.jpg" />
+
+    <!--Title-->
+
+<title>
+    
+    GTM 上設置 Google Analytics 電子商務 |
+    
+    隨勛所欲 - Google Analytics 網站分析
+</title>
+
+<link rel="alternate" href="/atom.xml" title="隨勛所欲 - Google Analytics 網站分析" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5M44L8F');</script>
+<!-- End Google Tag Manager -->
+
+
+    
+<meta name="baidu-site-verification" content="P04QVZ2PUj" />
+
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    <script data-ad-client="ca-pub-5811286107404442" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5M44L8F"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <header class="main-header"  style="background-image:url(
+    /./img/up-background.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Samir Liu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://samirliu127.github.io">
+                        隨勛所欲 - Google Analytics 網站分析</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首頁</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/tracking/"><i class="fa fa-area-chart"></i>
+                                網站分析</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/python/"><i class="fa fa-code"></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/others/"><i class="fa fa-book"></i>
+                                隨筆</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-calendar-o"></i>
+                                時間軸</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="GTM 上設置 Google Analytics 電子商務">
+            
+            GTM 上設置 Google Analytics 電子商務
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/tracking/">網站分析</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Google-Analytics/" rel="tag">Google Analytics</a> <a class="tag-link" href="/tags/Google-Tag-Manager/" rel="tag">Google Tag Manager</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/12/06</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>電子商務可以在網站上衡量訪客的交易資訊，其包含產品內容、產品數量、交易金額…等。加強型電子商務則為強調訪客的購物流程，包括產品的曝光、點擊、瀏覽、加入購物車…等。<br>大部分都推薦使用 dataLayer 取得交易資料，不過就需要動到網站請工程師修改。若只在 Google Tag Manager 上設置則使用自訂 JavaScript 將數據回傳給 Google Analytics，不過當網站有變動時就可能會抓錯欄位，這兩個方法各有優缺點。</p>
+</blockquote>
+<h2 id="Google-Analytics-電子商務參數"><a href="#Google-Analytics-電子商務參數" class="headerlink" title="Google Analytics 電子商務參數"></a>Google Analytics 電子商務參數</h2><p>參考<a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#product-data" target="_blank" rel="noopener">官方文件</a>列出幾個 Purchase 常用的參數。</p>
+<h3 id="Action-Data"><a href="#Action-Data" class="headerlink" title="Action Data"></a>Action Data</h3><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>text</td>
+<td><strong>Yes*</strong></td>
+<td>訂單編號，若互動為 purchase 則為必要參數</td>
+</tr>
+<tr>
+<td>revenue</td>
+<td>number</td>
+<td>No</td>
+<td>訂單總金額，此為包含運費、稅收…等金額</td>
+</tr>
+<tr>
+<td>tax</td>
+<td>number</td>
+<td>No</td>
+<td>訂單總稅額</td>
+</tr>
+<tr>
+<td>shipping</td>
+<td>number</td>
+<td>No</td>
+<td>訂單運費</td>
+</tr>
+<tr>
+<td>coupon</td>
+<td>text</td>
+<td>No</td>
+<td>訂單所使用的優惠券</td>
+</tr>
+</tbody></table>
+<h3 id="Product-Data"><a href="#Product-Data" class="headerlink" title="Product Data"></a>Product Data</h3><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>text</td>
+<td><strong>Yes*</strong></td>
+<td>產品不重複編號</td>
+</tr>
+<tr>
+<td>name</td>
+<td>text</td>
+<td><strong>Yes*</strong></td>
+<td>產品名稱</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>text</td>
+<td>No</td>
+<td>產品品牌</td>
+</tr>
+<tr>
+<td>category</td>
+<td>text</td>
+<td>No</td>
+<td>產品類別</td>
+</tr>
+<tr>
+<td>price</td>
+<td>number</td>
+<td>No</td>
+<td>產品價格</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>integer</td>
+<td>No</td>
+<td>產品數量</td>
+</tr>
+</tbody></table>
+<h2 id="使用-DataLayer-設置"><a href="#使用-DataLayer-設置" class="headerlink" title="使用 DataLayer 設置"></a>使用 DataLayer 設置</h2><p>DataLayer(資料層)是一種 JavaScript 物件，需在網站原始碼中加入的資訊，可用來將網站資訊傳送到 Google Tag Manager，之後就可以容器中運用這項資訊。</p>
+<h3 id="網站設置"><a href="#網站設置" class="headerlink" title="網站設置"></a>網站設置</h3><p>在購買完成頁設置如下</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
+dataLayer<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token string">'ecommerce'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'purchase'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'actionField'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'id'</span><span class="token punctuation">:</span> <span class="token string">'T1235'</span><span class="token punctuation">,</span>
+        <span class="token string">'revenue'</span><span class="token punctuation">:</span> <span class="token number">7900</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token string">'products'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+        <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'產品名稱1'</span><span class="token punctuation">,</span>
+        <span class="token string">'id'</span><span class="token punctuation">:</span> <span class="token string">'E12945'</span><span class="token punctuation">,</span>
+        <span class="token string">'category'</span><span class="token punctuation">:</span> <span class="token string">'家電'</span><span class="token punctuation">,</span>
+        <span class="token string">'price'</span><span class="token punctuation">:</span> <span class="token number">5900</span><span class="token punctuation">,</span>
+        <span class="token string">'quantity'</span><span class="token punctuation">:</span> <span class="token number">1</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'產品名稱2'</span><span class="token punctuation">,</span>
+        <span class="token string">'id'</span><span class="token punctuation">:</span> <span class="token string">'C45093'</span><span class="token punctuation">,</span>
+        <span class="token string">'category'</span><span class="token punctuation">:</span> <span class="token string">'廚房用具'</span><span class="token punctuation">,</span>
+        <span class="token string">'price'</span><span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
+        <span class="token string">'quantity'</span><span class="token punctuation">:</span> <span class="token number">2</span>
+      <span class="token punctuation">}</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<h3 id="GTM-設置"><a href="#GTM-設置" class="headerlink" title="GTM 設置"></a>GTM 設置</h3><p>將 <a href="../30024.html#在-GTM-設置-GA">GAID 變數</a>啟用電子商務，勾選使用資料層。<br><img src="/img/24991/001.png" alt=""></p>
+<h2 id="使用自訂-JavaScript"><a href="#使用自訂-JavaScript" class="headerlink" title="使用自訂 JavaScript"></a>使用自訂 JavaScript</h2><p>使用自訂 JavaScript 將數據回傳給 Google Analytics，需要會一些爬蟲的技巧。</p>
+<h3 id="建立使用者自定義變數"><a href="#建立使用者自定義變數" class="headerlink" title="建立使用者自定義變數"></a>建立使用者自定義變數</h3><p>建立自訂 JavaScript</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> ecommerceData <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'ecommerce'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'purchase'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'actionField'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          <span class="token string">'id'</span><span class="token punctuation">:</span> <span class="token string">'T1235'</span><span class="token punctuation">,</span>
+          <span class="token string">'revenue'</span><span class="token punctuation">:</span> <span class="token number">7900</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">'products'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+          <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'產品名稱1'</span><span class="token punctuation">,</span>
+          <span class="token string">'id'</span><span class="token punctuation">:</span> <span class="token string">'E12945'</span><span class="token punctuation">,</span>
+          <span class="token string">'category'</span><span class="token punctuation">:</span> <span class="token string">'家電'</span><span class="token punctuation">,</span>
+          <span class="token string">'price'</span><span class="token punctuation">:</span> <span class="token number">5900</span><span class="token punctuation">,</span>
+          <span class="token string">'quantity'</span><span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+          <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'產品名稱2'</span><span class="token punctuation">,</span>
+          <span class="token string">'id'</span><span class="token punctuation">:</span> <span class="token string">'C45093'</span><span class="token punctuation">,</span>
+          <span class="token string">'category'</span><span class="token punctuation">:</span> <span class="token string">'廚房用具'</span><span class="token punctuation">,</span>
+          <span class="token string">'price'</span><span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
+          <span class="token string">'quantity'</span><span class="token punctuation">:</span> <span class="token number">2</span>
+        <span class="token punctuation">}</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> ecommerceData
+<span class="token punctuation">}</span></code></pre>
+<h3 id="新增-Google-Analytics-代碼"><a href="#新增-Google-Analytics-代碼" class="headerlink" title="新增 Google Analytics 代碼"></a>新增 Google Analytics 代碼</h3><ol>
+<li>追蹤類型選用事件</li>
+<li>非互動匹配選用是</li>
+<li>啟用電子商務並讀取前面設置的自訂義 JavaScript</li>
+<li>觸發條件使用 <code>Dom Ready</code>，並設定條件為購買頁面</li>
+</ol>
+<p><img src="/img/24991/002.png" alt=""></p>
+
+    </div>
+    
+    
+    <!-- Like Coin -->
+<script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/samirliu127/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+</script>
+<!-- End Like Coin -->
+    
+    <div class="post-footer">
+        <div>
+            
+            轉載聲明：
+            商業轉載請聯繫作者獲得授權，非商業傳再請註明出處。
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/posts/32264.html" class="next-post btn btn-default" title='Python 實現 RFM 用戶分析模型'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Python 實現 RFM 用戶分析模型</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<script id="dsq-count-scr" src="https://samirliu127-hexo-blog.disqus.com/count.js" async></script>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function() {
+    this.page.url = 'https://samirliu127.github.io/posts/24991.html';
+    this.page.identifier = 'posts/24991.html';
+    this.page.title = 'GTM 上設置 Google Analytics 電子商務';
+};
+var d = document,
+    s = d.createElement('script');
+s.src = 'https://samirliu127-hexo-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);
+</script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Analytics-電子商務參數"><span class="toc-text">Google Analytics 電子商務參數</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Action-Data"><span class="toc-text">Action Data</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Product-Data"><span class="toc-text">Product Data</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-DataLayer-設置"><span class="toc-text">使用 DataLayer 設置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#網站設置"><span class="toc-text">網站設置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GTM-設置"><span class="toc-text">GTM 設置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用自訂-JavaScript"><span class="toc-text">使用自訂 JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#建立使用者自定義變數"><span class="toc-text">建立使用者自定義變數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新增-Google-Analytics-代碼"><span class="toc-text">新增 Google Analytics 代碼</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2019
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
