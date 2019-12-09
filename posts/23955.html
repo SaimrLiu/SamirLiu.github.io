@@ -285,7 +285,67 @@ date: 2019-11-01 20:10:33
 <pre class=" language-bash"><code class="language-bash">$ hexo clean</code></pre>
 <p>打包並部屬</p>
 <pre class=" language-bash"><code class="language-bash">$ hexo d -g</code></pre>
+<script type="text/javascript">
+    function handleFiles(files) {
+      // Check for the various File API support.
+      if (window.FileReader) {
+          // FileReader are supported.
+          getAsText(files[0]);
+      } else {
+          alert('FileReader are not supported in this browser.');
+      }
+    }
+    function getAsText(fileToRead) {
+      var reader = new FileReader();
+      // Read file into memory as UTF-8      
+      reader.readAsText(fileToRead);
+      // Handle errors load
+      reader.onload = loadHandler;
+      reader.onerror = errorHandler;
+    }
+    function loadHandler(event) {
+      var csv = event.target.result;
+      processData(csv);
+    }
+    function processData(csv) {
+        var lines = csv.split(/\r\n|\n/);
+        file_result = [];
 
+        var csv_headers = lines[0].split(",");
+        for(var i=1;i<lines.length;i++){
+            var obj = {};
+            var currentline=lines[i].split(",");
+
+            for(var j=0;j<csv_headers.length;j++){
+                obj[csv_headers[j]] = currentline[j]
+            }
+            file_result.push(obj)
+        }
+      console.log(file_result);
+    }
+    function errorHandler(evt) {
+      if(evt.target.error.name == "NotReadableError") {
+          alert("Canno't read file !");
+      }
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+<script type="text/javascript">
+    function rfm_model(){
+      $.post({
+        url: "https://asia-east2-hadoop-test-gsp.cloudfunctions.net/rfm_model", 
+        data: {"level": 3, "data": file_result}, 
+        function(result){console.log(result)},
+        contentType: "application/json",
+        dataType: "json"
+      })
+    }
+</script>
+<form>
+    <input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
+    <input type="button" id="csv-submit" onclick="rfm_model(this.files)" value="Submit">
+</form>
     </div>
     
     
