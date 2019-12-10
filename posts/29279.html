@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="隨勛所欲 - Google Analytics 網站分析">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://samirliu127.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="RFM,客戶分群,數據分析,數據行銷,python,桑基圖,sankey" />
+
+
+<meta name="description" content="
+接續上次 RFM 用戶分析模型，透過桑基圖繪出用戶三個時間點分群的變化，用來觀察整體訪客經營是否符合預期中的變化。
+
+桑基圖 (Sankey Diagram)桑基圖是一種流程圖，其資訊包含著流..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Python 實現桑基圖" />
+
+<meta name="og:description" content="
+接續上次 RFM 用戶分析模型，透過桑基圖繪出用戶三個時間點分群的變化，用來觀察整體訪客經營是否符合預期中的變化。
+
+桑基圖 (Sankey Diagram)桑基圖是一種流程圖，其資訊包含著流..." />
+
+
+<meta property="og:image" content="/img/29279/000.png" />
+
+    <!--Title-->
+
+<title>
+    
+    Python 實現桑基圖 |
+    
+    隨勛所欲 - Google Analytics 網站分析
+</title>
+
+<link rel="alternate" href="/atom.xml" title="隨勛所欲 - Google Analytics 網站分析" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5M44L8F');</script>
+<!-- End Google Tag Manager -->
+
+
+    
+<meta name="baidu-site-verification" content="P04QVZ2PUj" />
+
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    <script data-ad-client="ca-pub-5811286107404442" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5M44L8F"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <header class="main-header"  style="background-image:url(
+    /./img/up-background.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Samir Liu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://samirliu127.github.io">
+                        隨勛所欲 - Google Analytics 網站分析</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首頁</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/tracking/"><i class="fa fa-area-chart"></i>
+                                網站分析</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/python/"><i class="fa fa-code"></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/others/"><i class="fa fa-book"></i>
+                                隨筆</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-calendar-o"></i>
+                                時間軸</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python 實現桑基圖">
+            
+            Python 實現桑基圖
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/python/">Python</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/12/10</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>接續上次 <a href="../32264.html">RFM 用戶分析模型</a>，透過桑基圖繪出用戶三個時間點分群的變化，用來觀察整體訪客經營是否符合預期中的變化。</p>
+</blockquote>
+<h2 id="桑基圖-Sankey-Diagram"><a href="#桑基圖-Sankey-Diagram" class="headerlink" title="桑基圖 (Sankey Diagram)"></a>桑基圖 (Sankey Diagram)</h2><p>桑基圖是一種流程圖，其資訊包含著流量的大小、方向及變化狀況，套用在不同階段的客戶分群上，可以簡單看出訪客的變化狀況。<br><img src="/img/29279/000.png" alt=""></p>
+<h2 id="客戶分群意義"><a href="#客戶分群意義" class="headerlink" title="客戶分群意義"></a>客戶分群意義</h2><p>接續 <a href="../32264.html">RFM 用戶分析模型</a>將訪客分成 8 組。</p>
+<table>
+<thead>
+<tr>
+<th>Recency 消費時間</th>
+<th>Frequency 頻率</th>
+<th>Monetary 金額</th>
+<th>客戶分群</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>近</td>
+<td>高</td>
+<td>高</td>
+<td>高價值，VIP 客戶(high_vip)</td>
+</tr>
+<tr>
+<td>遠</td>
+<td>高</td>
+<td>高</td>
+<td>高價值，流失客戶(high_passive)</td>
+</tr>
+<tr>
+<td>近</td>
+<td>低</td>
+<td>高</td>
+<td>高價值，新客戶(high_new)</td>
+</tr>
+<tr>
+<td>遠</td>
+<td>低</td>
+<td>高</td>
+<td>高價值，淺在客戶(high_risk)</td>
+</tr>
+<tr>
+<td>近</td>
+<td>高</td>
+<td>低</td>
+<td>一般價值，VIP 客戶(low_vip)</td>
+</tr>
+<tr>
+<td>遠</td>
+<td>高</td>
+<td>低</td>
+<td>一般價值，流失客戶(low_passive)</td>
+</tr>
+<tr>
+<td>近</td>
+<td>低</td>
+<td>低</td>
+<td>一般價值，新客戶(low_new)</td>
+</tr>
+<tr>
+<td>遠</td>
+<td>低</td>
+<td>低</td>
+<td>一般價值，淺在客戶(low_risk)</td>
+</tr>
+</tbody></table>
+<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>分群步驟參照前一篇 <a href="../32264.html">RFM 用戶分析模型</a>。</p>
+<h3 id="RFM-分群"><a href="#RFM-分群" class="headerlink" title="RFM 分群"></a>RFM 分群</h3><p>資料日期範圍為 2010-12-01~2011-12-09，將日期分成三個階段，分別做 RFM 分群，同時給予 R,F,M 三個 1 或 2 的分數，再依照時間區間與分群結果定義分群名稱。</p>
+<ul>
+<li>part1: 2010-12-01 ~ 2011-03-31</li>
+<li>part2: 2011-04-01 ~ 2011-07-31</li>
+<li>part3: 2011-08-01 ~ 2011-12-09</li>
+</ul>
+<p><img src="/img/29279/001.png" alt=""></p>
+<h3 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h3><p>合併三個階段的資料表。<br><img src="/img/29279/002.png" alt=""></p>
+<h3 id="繪圖準備"><a href="#繪圖準備" class="headerlink" title="繪圖準備"></a>繪圖準備</h3><h4 id="節點-nodes"><a href="#節點-nodes" class="headerlink" title="節點 nodes"></a>節點 nodes</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 將三個階段的節點分開</span>
+nodes_1 <span class="token operator">=</span> <span class="token punctuation">[</span>l <span class="token operator">+</span> <span class="token string">'_1'</span> <span class="token keyword">for</span> l <span class="token keyword">in</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part1'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>unique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+nodes_2 <span class="token operator">=</span> <span class="token punctuation">[</span>l <span class="token operator">+</span> <span class="token string">'_2'</span> <span class="token keyword">for</span> l <span class="token keyword">in</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part2'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>unique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+nodes_3 <span class="token operator">=</span> <span class="token punctuation">[</span>l <span class="token operator">+</span> <span class="token string">'_3'</span> <span class="token keyword">for</span> l <span class="token keyword">in</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part3'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>unique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+nodes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">*</span>nodes_1<span class="token punctuation">,</span> <span class="token operator">*</span>nodes_2<span class="token punctuation">,</span> <span class="token operator">*</span>nodes_3<span class="token punctuation">]</span></code></pre>
+<p><img src="/img/29279/003.png" alt=""></p>
+<h4 id="流動方向與值-source-target-value"><a href="#流動方向與值-source-target-value" class="headerlink" title="流動方向與值 (source, target, value)"></a>流動方向與值 (source, target, value)</h4><ul>
+<li>source 流動起點(節點的index)</li>
+<li>target 流動終點(節點的index)</li>
+<li>value 流動的量</li>
+</ul>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 合併階段 1to2 與 2to3 的變化</span>
+rfm_df_select <span class="token operator">=</span> rfm_df<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token string">'level_part1'</span><span class="token punctuation">,</span> <span class="token string">'level_part2'</span><span class="token punctuation">,</span> <span class="token string">'level_part3'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+rfm_df<span class="token punctuation">[</span><span class="token string">'level_change_1to2'</span><span class="token punctuation">]</span> <span class="token operator">=</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part1'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_1>'</span> <span class="token operator">+</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part2'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_2'</span>
+rfm_df<span class="token punctuation">[</span><span class="token string">'level_change_2to3'</span><span class="token punctuation">]</span> <span class="token operator">=</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part2'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_2>'</span> <span class="token operator">+</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part3'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_3'</span>
+
+<span class="token comment" spellcheck="true"># 計算變化量</span>
+source <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+target <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+value <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> idx<span class="token punctuation">,</span> val <span class="token keyword">in</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_change_1to2'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>iteritems<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    source<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nodes<span class="token punctuation">.</span>index<span class="token punctuation">(</span>idx<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'>'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    target<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nodes<span class="token punctuation">.</span>index<span class="token punctuation">(</span>idx<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'>'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    value<span class="token punctuation">.</span>append<span class="token punctuation">(</span>val<span class="token punctuation">)</span>
+<span class="token keyword">for</span> idx<span class="token punctuation">,</span> val <span class="token keyword">in</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_change_2to3'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>iteritems<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    source<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nodes<span class="token punctuation">.</span>index<span class="token punctuation">(</span>idx<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'>'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    target<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nodes<span class="token punctuation">.</span>index<span class="token punctuation">(</span>idx<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'>'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    value<span class="token punctuation">.</span>append<span class="token punctuation">(</span>val<span class="token punctuation">)</span></code></pre>
+<p><img src="/img/29279/004.png" alt=""></p>
+<h3 id="繪圖"><a href="#繪圖" class="headerlink" title="繪圖"></a>繪圖</h3><p>不過資料變化沒有很大。其他桑基圖的使用<a href="https://plot.ly/python/sankey-diagram/" target="_blank" rel="noopener">參考</a></p>
+<pre class=" language-python"><code class="language-python">fig <span class="token operator">=</span> go<span class="token punctuation">.</span>Figure<span class="token punctuation">(</span>data<span class="token operator">=</span><span class="token punctuation">[</span>go<span class="token punctuation">.</span>Sankey<span class="token punctuation">(</span>
+    node <span class="token operator">=</span> dict<span class="token punctuation">(</span>
+      pad <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span>
+      thickness <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span>
+      line <span class="token operator">=</span> dict<span class="token punctuation">(</span>color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span> width <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      label <span class="token operator">=</span> nodes<span class="token punctuation">,</span>
+      color <span class="token operator">=</span> <span class="token string">"blue"</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    link <span class="token operator">=</span> dict<span class="token punctuation">(</span>
+      source <span class="token operator">=</span> source<span class="token punctuation">,</span>
+      target <span class="token operator">=</span> target<span class="token punctuation">,</span>
+      value <span class="token operator">=</span> value
+  <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+fig<span class="token punctuation">.</span>update_layout<span class="token punctuation">(</span>title_text<span class="token operator">=</span><span class="token string">"訪客生命週期可視化"</span><span class="token punctuation">,</span> font_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span>
+fig<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><img src="/img/29279/005.png" alt=""></p>
+
+    </div>
+    
+    
+    <!-- Like Coin -->
+<script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/samirliu127/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+</script>
+<!-- End Like Coin -->
+    
+    <div class="post-footer">
+        <div>
+            
+            轉載聲明：
+            商業轉載請聯繫作者獲得授權，非商業傳再請註明出處。
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/posts/24991.html" class="next-post btn btn-default" title='GTM 上設置 Google Analytics 電子商務'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            GTM 上設置 Google Analytics 電子商務</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<script id="dsq-count-scr" src="https://samirliu127-hexo-blog.disqus.com/count.js" async></script>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function() {
+    this.page.url = 'https://samirliu127.github.io/posts/29279.html';
+    this.page.identifier = 'posts/29279.html';
+    this.page.title = 'Python 實現桑基圖';
+};
+var d = document,
+    s = d.createElement('script');
+s.src = 'https://samirliu127-hexo-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);
+</script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#桑基圖-Sankey-Diagram"><span class="toc-text">桑基圖 (Sankey Diagram)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客戶分群意義"><span class="toc-text">客戶分群意義</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#實作"><span class="toc-text">實作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RFM-分群"><span class="toc-text">RFM 分群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Merge"><span class="toc-text">Merge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#繪圖準備"><span class="toc-text">繪圖準備</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#節點-nodes"><span class="toc-text">節點 nodes</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流動方向與值-source-target-value"><span class="toc-text">流動方向與值 (source, target, value)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#繪圖"><span class="toc-text">繪圖</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2019
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
