@@ -23,9 +23,9 @@
 
 
 <meta name="description" content="
-接續上次 RFM 用戶分析模型，透過桑基圖繪出用戶三個時間點分群的變化，用來觀察整體訪客經營是否符合預期中的變化。
+透過上次 RFM 用戶分析模型將訪客分群，利用桑基圖繪出用戶不同時間點分群的變化，用來觀察整體訪客經營是否符合預期中的變化。
 
-桑基圖 (Sankey Diagram)桑基圖是一種流程圖，其資訊包含著流..." />
+桑基圖 (Sankey Diagram)桑基圖是一種流程圖，其資..." />
 
 
 <meta name="robots" content="all" />
@@ -37,9 +37,9 @@
 <meta property="og:title" content="Python 實現桑基圖" />
 
 <meta name="og:description" content="
-接續上次 RFM 用戶分析模型，透過桑基圖繪出用戶三個時間點分群的變化，用來觀察整體訪客經營是否符合預期中的變化。
+透過上次 RFM 用戶分析模型將訪客分群，利用桑基圖繪出用戶不同時間點分群的變化，用來觀察整體訪客經營是否符合預期中的變化。
 
-桑基圖 (Sankey Diagram)桑基圖是一種流程圖，其資訊包含著流..." />
+桑基圖 (Sankey Diagram)桑基圖是一種流程圖，其資..." />
 
 
 <meta property="og:image" content="/img/29279/000.png" />
@@ -216,124 +216,120 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <div class="post-body post-content">
         <blockquote>
-<p>接續上次 <a href="../32264.html">RFM 用戶分析模型</a>，透過桑基圖繪出用戶三個時間點分群的變化，用來觀察整體訪客經營是否符合預期中的變化。</p>
+<p>透過上次 <a href="../32264.html">RFM 用戶分析模型</a>將訪客分群，利用桑基圖繪出用戶不同時間點分群的變化，用來觀察整體訪客經營是否符合預期中的變化。</p>
 </blockquote>
-<h2 id="桑基圖-Sankey-Diagram"><a href="#桑基圖-Sankey-Diagram" class="headerlink" title="桑基圖 (Sankey Diagram)"></a>桑基圖 (Sankey Diagram)</h2><p>桑基圖是一種流程圖，其資訊包含著流量的大小、方向及變化狀況，套用在不同階段的客戶分群上，可以簡單看出訪客的變化狀況。<br><img src="/img/29279/000.png" alt=""></p>
-<h2 id="客戶分群意義"><a href="#客戶分群意義" class="headerlink" title="客戶分群意義"></a>客戶分群意義</h2><p>接續 <a href="../32264.html">RFM 用戶分析模型</a>將訪客分成 8 組。</p>
+<h2 id="桑基圖-Sankey-Diagram"><a href="#桑基圖-Sankey-Diagram" class="headerlink" title="桑基圖 (Sankey Diagram)"></a>桑基圖 (Sankey Diagram)</h2><p>桑基圖是一種流程圖，其資訊包含著流量的大小、方向及變化狀況，套用在不同階段的客戶分群上，可以簡單看出訪客的變化狀況。<br><img src="/img/29279/001.png" alt=""></p>
+<h2 id="客戶分群意義"><a href="#客戶分群意義" class="headerlink" title="客戶分群意義"></a>客戶分群意義</h2><p>接續 <a href="../32264.html">RFM 用戶分析模型</a>的分組，避免維度太多只使用 Frequency 與 Monetary 分成 4 組。</p>
 <table>
 <thead>
 <tr>
-<th>Recency 消費時間</th>
 <th>Frequency 頻率</th>
 <th>Monetary 金額</th>
 <th>客戶分群</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>近</td>
 <td>高</td>
 <td>高</td>
-<td>高價值，VIP 客戶(high_vip)</td>
+<td>Best Customers</td>
 </tr>
 <tr>
-<td>遠</td>
-<td>高</td>
-<td>高</td>
-<td>高價值，流失客戶(high_passive)</td>
-</tr>
-<tr>
-<td>近</td>
-<td>低</td>
-<td>高</td>
-<td>高價值，新客戶(high_new)</td>
-</tr>
-<tr>
-<td>遠</td>
-<td>低</td>
-<td>高</td>
-<td>高價值，淺在客戶(high_risk)</td>
-</tr>
-<tr>
-<td>近</td>
 <td>高</td>
 <td>低</td>
-<td>一般價值，VIP 客戶(low_vip)</td>
+<td>Value Customers</td>
 </tr>
 <tr>
-<td>遠</td>
+<td>低</td>
 <td>高</td>
-<td>低</td>
-<td>一般價值，流失客戶(low_passive)</td>
+<td>Loyal Customers</td>
 </tr>
 <tr>
-<td>近</td>
 <td>低</td>
 <td>低</td>
-<td>一般價值，新客戶(low_new)</td>
-</tr>
-<tr>
-<td>遠</td>
-<td>低</td>
-<td>低</td>
-<td>一般價值，淺在客戶(low_risk)</td>
+<td>Cheap Customers</td>
 </tr>
 </tbody></table>
 <h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>分群步驟參照前一篇 <a href="../32264.html">RFM 用戶分析模型</a>。</p>
-<h3 id="RFM-分群"><a href="#RFM-分群" class="headerlink" title="RFM 分群"></a>RFM 分群</h3><p>資料日期範圍為 2010-12-01~2011-12-09，將日期分成三個階段，分別做 RFM 分群，同時給予 R,F,M 三個 1 或 2 的分數，再依照時間區間與分群結果定義分群名稱。</p>
-<ul>
-<li>part1: 2010-12-01 ~ 2011-03-31</li>
-<li>part2: 2011-04-01 ~ 2011-07-31</li>
-<li>part3: 2011-08-01 ~ 2011-12-09</li>
-</ul>
-<p><img src="/img/29279/001.png" alt=""></p>
-<h3 id="Merge"><a href="#Merge" class="headerlink" title="Merge"></a>Merge</h3><p>合併三個階段的資料表。<br><img src="/img/29279/002.png" alt=""></p>
-<h3 id="繪圖準備"><a href="#繪圖準備" class="headerlink" title="繪圖準備"></a>繪圖準備</h3><h4 id="節點-nodes"><a href="#節點-nodes" class="headerlink" title="節點 nodes"></a>節點 nodes</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 將三個階段的節點分開</span>
-nodes_1 <span class="token operator">=</span> <span class="token punctuation">[</span>l <span class="token operator">+</span> <span class="token string">'_1'</span> <span class="token keyword">for</span> l <span class="token keyword">in</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part1'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>unique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-nodes_2 <span class="token operator">=</span> <span class="token punctuation">[</span>l <span class="token operator">+</span> <span class="token string">'_2'</span> <span class="token keyword">for</span> l <span class="token keyword">in</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part2'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>unique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-nodes_3 <span class="token operator">=</span> <span class="token punctuation">[</span>l <span class="token operator">+</span> <span class="token string">'_3'</span> <span class="token keyword">for</span> l <span class="token keyword">in</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part3'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>unique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-nodes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">*</span>nodes_1<span class="token punctuation">,</span> <span class="token operator">*</span>nodes_2<span class="token punctuation">,</span> <span class="token operator">*</span>nodes_3<span class="token punctuation">]</span></code></pre>
-<p><img src="/img/29279/003.png" alt=""></p>
-<h4 id="流動方向與值-source-target-value"><a href="#流動方向與值-source-target-value" class="headerlink" title="流動方向與值 (source, target, value)"></a>流動方向與值 (source, target, value)</h4><ul>
-<li>source 流動起點(節點的index)</li>
-<li>target 流動終點(節點的index)</li>
-<li>value 流動的量</li>
-</ul>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 合併階段 1to2 與 2to3 的變化</span>
-rfm_df_select <span class="token operator">=</span> rfm_df<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token string">'level_part1'</span><span class="token punctuation">,</span> <span class="token string">'level_part2'</span><span class="token punctuation">,</span> <span class="token string">'level_part3'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-rfm_df<span class="token punctuation">[</span><span class="token string">'level_change_1to2'</span><span class="token punctuation">]</span> <span class="token operator">=</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part1'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_1>'</span> <span class="token operator">+</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part2'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_2'</span>
-rfm_df<span class="token punctuation">[</span><span class="token string">'level_change_2to3'</span><span class="token punctuation">]</span> <span class="token operator">=</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part2'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_2>'</span> <span class="token operator">+</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_part3'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'_3'</span>
+<h3 id="資料準備"><a href="#資料準備" class="headerlink" title="資料準備"></a>資料準備</h3><p>Sankey 圖基本上由 source, target, value 組成，其資訊包含著流動方向與流量值。下圖為這次準備的數據集，其包含客戶每半年的分群與數量。</p>
+<p><img src="/img/29279/002.png" alt=""></p>
+<h3 id="繪圖"><a href="#繪圖" class="headerlink" title="繪圖"></a>繪圖</h3><h4 id="函數"><a href="#函數" class="headerlink" title="函數"></a>函數</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">gen_sankey</span><span class="token punctuation">(</span>df<span class="token punctuation">,</span> cat_cols<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> value_cols<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">'Sankey Diagram'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">""" 生成 Sankey fig 物件
 
-<span class="token comment" spellcheck="true"># 計算變化量</span>
-source <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-target <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-value <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> idx<span class="token punctuation">,</span> val <span class="token keyword">in</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_change_1to2'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>iteritems<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    source<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nodes<span class="token punctuation">.</span>index<span class="token punctuation">(</span>idx<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'>'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    target<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nodes<span class="token punctuation">.</span>index<span class="token punctuation">(</span>idx<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'>'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    value<span class="token punctuation">.</span>append<span class="token punctuation">(</span>val<span class="token punctuation">)</span>
-<span class="token keyword">for</span> idx<span class="token punctuation">,</span> val <span class="token keyword">in</span> rfm_df<span class="token punctuation">[</span><span class="token string">'level_change_2to3'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>value_counts<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>iteritems<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    source<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nodes<span class="token punctuation">.</span>index<span class="token punctuation">(</span>idx<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'>'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    target<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nodes<span class="token punctuation">.</span>index<span class="token punctuation">(</span>idx<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'>'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    value<span class="token punctuation">.</span>append<span class="token punctuation">(</span>val<span class="token punctuation">)</span></code></pre>
-<p><img src="/img/29279/004.png" alt=""></p>
-<h3 id="繪圖"><a href="#繪圖" class="headerlink" title="繪圖"></a>繪圖</h3><p>不過資料變化沒有很大。其他桑基圖的使用<a href="https://plot.ly/python/sankey-diagram/" target="_blank" rel="noopener">參考</a>。</p>
-<pre class=" language-python"><code class="language-python">fig <span class="token operator">=</span> go<span class="token punctuation">.</span>Figure<span class="token punctuation">(</span>data<span class="token operator">=</span><span class="token punctuation">[</span>go<span class="token punctuation">.</span>Sankey<span class="token punctuation">(</span>
-    node <span class="token operator">=</span> dict<span class="token punctuation">(</span>
-      pad <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span>
-      thickness <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span>
-      line <span class="token operator">=</span> dict<span class="token punctuation">(</span>color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span> width <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      label <span class="token operator">=</span> nodes<span class="token punctuation">,</span>
-      color <span class="token operator">=</span> <span class="token string">"blue"</span>
-    <span class="token punctuation">)</span><span class="token punctuation">,</span>
-    link <span class="token operator">=</span> dict<span class="token punctuation">(</span>
-      source <span class="token operator">=</span> source<span class="token punctuation">,</span>
-      target <span class="token operator">=</span> target<span class="token punctuation">,</span>
-      value <span class="token operator">=</span> value
-  <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    :param df: 資料 DataFrame
+    :param cat_cols: 流程中的級別欄位名稱
+    :param value_cols: 每個流程的數量欄位名稱
+    :param title: Sankey 標題名稱
+    :return: dict() sankey data
+    """</span>
+    <span class="token comment" spellcheck="true"># 漸層色</span>
+    colorPalette <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'#3f51b1'</span><span class="token punctuation">,</span> <span class="token string">'#5a55ae'</span><span class="token punctuation">,</span> <span class="token string">'#7b5fac'</span><span class="token punctuation">,</span> <span class="token string">'#8f6aae'</span><span class="token punctuation">,</span> <span class="token string">'#a86aa4'</span><span class="token punctuation">,</span> <span class="token string">'#cc6b8e'</span><span class="token punctuation">,</span> <span class="token string">'#f18271'</span><span class="token punctuation">,</span> <span class="token string">'#f3a469'</span><span class="token punctuation">,</span> <span class="token string">'#f7c978'</span><span class="token punctuation">]</span>
+    labelList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    colorNumList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> catCol <span class="token keyword">in</span> cat_cols<span class="token punctuation">:</span>
+        labelListTemp <span class="token operator">=</span> list<span class="token punctuation">(</span>df<span class="token punctuation">[</span>catCol<span class="token punctuation">]</span><span class="token punctuation">.</span>unique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        colorNumList<span class="token punctuation">.</span>append<span class="token punctuation">(</span>len<span class="token punctuation">(</span>labelListTemp<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        labelList<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>labelListTemp<span class="token punctuation">)</span>
 
-fig<span class="token punctuation">.</span>update_layout<span class="token punctuation">(</span>title_text<span class="token operator">=</span><span class="token string">"訪客生命週期可視化"</span><span class="token punctuation">,</span> font_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span>
-fig<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p><img src="/img/29279/005.png" alt=""></p>
+    <span class="token comment" spellcheck="true"># labelList 去除重複</span>
+    labelList <span class="token operator">=</span> list<span class="token punctuation">(</span>dict<span class="token punctuation">.</span>fromkeys<span class="token punctuation">(</span>labelList<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 根據層級定義顏色</span>
+    colorList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> idx<span class="token punctuation">,</span> colorNum <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>colorNumList<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        colorList <span class="token operator">=</span> colorList <span class="token operator">+</span> <span class="token punctuation">[</span>colorPalette<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">*</span>colorNum
+
+    <span class="token comment" spellcheck="true"># DataFrame 轉換成 source -> target</span>
+    sourceTargetDf <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'source'</span><span class="token punctuation">,</span> <span class="token string">'target'</span><span class="token punctuation">,</span> <span class="token string">'count'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>cat_cols<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        tempDf <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token punctuation">[</span>cat_cols<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> cat_cols<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> value_cols<span class="token punctuation">]</span><span class="token punctuation">]</span>
+        tempDf<span class="token punctuation">.</span>columns <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'source'</span><span class="token punctuation">,</span> <span class="token string">'target'</span><span class="token punctuation">,</span> <span class="token string">'count'</span><span class="token punctuation">]</span>
+        sourceTargetDf <span class="token operator">=</span> pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>sourceTargetDf<span class="token punctuation">,</span> tempDf<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        sourceTargetDf <span class="token operator">=</span> sourceTargetDf<span class="token punctuation">.</span>groupby<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'source'</span><span class="token punctuation">,</span> <span class="token string">'target'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>agg<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'count'</span><span class="token punctuation">:</span> <span class="token string">'sum'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 對 source-target 編譯成 index</span>
+    sourceTargetDf<span class="token punctuation">[</span><span class="token string">'sourceID'</span><span class="token punctuation">]</span> <span class="token operator">=</span> sourceTargetDf<span class="token punctuation">[</span><span class="token string">'source'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> labelList<span class="token punctuation">.</span>index<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    sourceTargetDf<span class="token punctuation">[</span><span class="token string">'targetID'</span><span class="token punctuation">]</span> <span class="token operator">=</span> sourceTargetDf<span class="token punctuation">[</span><span class="token string">'target'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> labelList<span class="token punctuation">.</span>index<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 建立 Sankey 圖</span>
+    data <span class="token operator">=</span> dict<span class="token punctuation">(</span>
+        type<span class="token operator">=</span><span class="token string">'sankey'</span><span class="token punctuation">,</span>
+        node <span class="token operator">=</span> dict<span class="token punctuation">(</span>
+          pad <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">,</span>
+          thickness <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span>
+          line <span class="token operator">=</span> dict<span class="token punctuation">(</span>
+            color <span class="token operator">=</span> <span class="token string">"black"</span><span class="token punctuation">,</span>
+            width <span class="token operator">=</span> <span class="token number">0.5</span>
+          <span class="token punctuation">)</span><span class="token punctuation">,</span>
+          label <span class="token operator">=</span> labelList<span class="token punctuation">,</span>
+          color <span class="token operator">=</span> colorList
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        link <span class="token operator">=</span> dict<span class="token punctuation">(</span>
+          source <span class="token operator">=</span> sourceTargetDf<span class="token punctuation">[</span><span class="token string">'sourceID'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          target <span class="token operator">=</span> sourceTargetDf<span class="token punctuation">[</span><span class="token string">'targetID'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          value <span class="token operator">=</span> sourceTargetDf<span class="token punctuation">[</span><span class="token string">'count'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">)</span>
+      <span class="token punctuation">)</span>
+
+    layout <span class="token operator">=</span>  dict<span class="token punctuation">(</span>
+        title <span class="token operator">=</span> title<span class="token punctuation">,</span>
+        font <span class="token operator">=</span> dict<span class="token punctuation">(</span>
+          size <span class="token operator">=</span> <span class="token number">10</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
+
+    fig <span class="token operator">=</span> dict<span class="token punctuation">(</span>data<span class="token operator">=</span><span class="token punctuation">[</span>data<span class="token punctuation">]</span><span class="token punctuation">,</span> layout<span class="token operator">=</span>layout<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> fig</code></pre>
+<h4 id="函式使用"><a href="#函式使用" class="headerlink" title="函式使用"></a>函式使用</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> plotly
+<span class="token keyword">import</span> plotly<span class="token punctuation">.</span>graph_objects <span class="token keyword">as</span> go
+
+fig <span class="token operator">=</span> genSankey<span class="token punctuation">(</span>rfm_variety<span class="token punctuation">,</span> cat_cols<span class="token operator">=</span><span class="token punctuation">[</span>
+    <span class="token string">'level_201701'</span><span class="token punctuation">,</span> <span class="token string">'level_201706'</span><span class="token punctuation">,</span> <span class="token string">'level_201801'</span><span class="token punctuation">,</span> 
+    <span class="token string">'level_201806'</span><span class="token punctuation">,</span> <span class="token string">'level_201901'</span><span class="token punctuation">,</span> <span class="token string">'level_201906'</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span> value_cols<span class="token operator">=</span><span class="token string">'count'</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">'訪客生命週期可視化'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># plotly.offline.plot(fig, validate=False) ## 生成 html</span>
+go<span class="token punctuation">.</span>Figure<span class="token punctuation">(</span>fig<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">## 繪圖</span></code></pre>
+<p><img src="/img/29279/000.png" alt=""></p>
 
     </div>
     
@@ -399,7 +395,7 @@ s.setAttribute('data-timestamp', '' + +new Date());
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#桑基圖-Sankey-Diagram"><span class="toc-text">桑基圖 (Sankey Diagram)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客戶分群意義"><span class="toc-text">客戶分群意義</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#實作"><span class="toc-text">實作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RFM-分群"><span class="toc-text">RFM 分群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Merge"><span class="toc-text">Merge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#繪圖準備"><span class="toc-text">繪圖準備</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#節點-nodes"><span class="toc-text">節點 nodes</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流動方向與值-source-target-value"><span class="toc-text">流動方向與值 (source, target, value)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#繪圖"><span class="toc-text">繪圖</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#桑基圖-Sankey-Diagram"><span class="toc-text">桑基圖 (Sankey Diagram)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客戶分群意義"><span class="toc-text">客戶分群意義</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#實作"><span class="toc-text">實作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#資料準備"><span class="toc-text">資料準備</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#繪圖"><span class="toc-text">繪圖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函數"><span class="toc-text">函數</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函式使用"><span class="toc-text">函式使用</span></a></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
