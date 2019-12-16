@@ -214,7 +214,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <blockquote>
 <p>電子商務可以在網站上衡量訪客的交易資訊，其包含產品內容、產品數量、交易金額…等。加強型電子商務則為強調訪客的購物流程，包括產品的曝光、點擊、瀏覽、加入購物車…等。<br>大部分都推薦使用 dataLayer 取得交易資料，不過就需要動到網站請工程師修改。若只在 Google Tag Manager 上設置則使用自訂 JavaScript 將數據回傳給 Google Analytics，不過當網站有變動時就可能會抓錯欄位，這兩個方法各有優缺點。</p>
 </blockquote>
-<h2 id="Google-Analytics-電子商務參數"><a href="#Google-Analytics-電子商務參數" class="headerlink" title="Google Analytics 電子商務參數"></a>Google Analytics 電子商務參數</h2><p>參考<a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#product-data" target="_blank" rel="noopener">官方文件</a>列出幾個 Purchase 常用的參數。</p>
+<h2 id="Google-Analytics-電子商務參數"><a href="#Google-Analytics-電子商務參數" class="headerlink" title="Google Analytics 電子商務參數"></a>Google Analytics 電子商務參數</h2><hr>
+<p>參考<a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#product-data" target="_blank" rel="noopener">官方文件</a>列出幾個 Purchase 常用的參數。</p>
 <h3 id="Action-Data"><a href="#Action-Data" class="headerlink" title="Action Data"></a>Action Data</h3><table>
 <thead>
 <tr>
@@ -301,7 +302,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <td>產品數量</td>
 </tr>
 </tbody></table>
-<h2 id="使用-DataLayer-設置"><a href="#使用-DataLayer-設置" class="headerlink" title="使用 DataLayer 設置"></a>使用 DataLayer 設置</h2><p>DataLayer(資料層)是一種 JavaScript 物件，需在網站原始碼中加入的資訊，可用來將網站資訊傳送到 Google Tag Manager，之後就可以容器中運用這項資訊。</p>
+<h2 id="使用-DataLayer-設置"><a href="#使用-DataLayer-設置" class="headerlink" title="使用 DataLayer 設置"></a>使用 DataLayer 設置</h2><hr>
+<p>DataLayer(資料層)是一種 JavaScript 物件，需在網站原始碼中加入的資訊，可用來將網站資訊傳送到 Google Tag Manager，之後就可以容器中運用這項資訊。</p>
 <h3 id="網站設置"><a href="#網站設置" class="headerlink" title="網站設置"></a>網站設置</h3><p>在購買完成頁設置如下</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
 dataLayer<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -329,7 +331,8 @@ dataLayer<span class="token punctuation">.</span><span class="token function">pu
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
 <h3 id="GTM-設置"><a href="#GTM-設置" class="headerlink" title="GTM 設置"></a>GTM 設置</h3><p>將 <a href="../30024.html#在-GTM-設置-GA">GAID 變數</a>啟用電子商務，勾選使用資料層。<br><img src="/img/24991/001.png" alt=""></p>
-<h2 id="使用自訂-JavaScript"><a href="#使用自訂-JavaScript" class="headerlink" title="使用自訂 JavaScript"></a>使用自訂 JavaScript</h2><p>使用自訂 JavaScript 將數據回傳給 Google Analytics，需要會一些爬蟲的技巧。</p>
+<h2 id="使用自訂-JavaScript"><a href="#使用自訂-JavaScript" class="headerlink" title="使用自訂 JavaScript"></a>使用自訂 JavaScript</h2><hr>
+<p>使用自訂 JavaScript 將數據回傳給 Google Analytics，需要會一些爬蟲的技巧。</p>
 <h3 id="建立使用者自定義變數"><a href="#建立使用者自定義變數" class="headerlink" title="建立使用者自定義變數"></a>建立使用者自定義變數</h3><p>建立自訂 JavaScript</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">var</span> ecommerceData <span class="token operator">=</span> <span class="token punctuation">{</span>

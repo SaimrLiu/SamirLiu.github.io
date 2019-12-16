@@ -218,8 +218,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <blockquote>
 <p>透過上次 <a href="../32264.html">RFM 用戶分析模型</a>將訪客分群，用 Python繪出桑基圖(Sankey)將用戶不同時間點分群的變化，用來觀察整體訪客經營是否符合預期中的變化。</p>
 </blockquote>
-<h2 id="桑基圖-Sankey-Diagram"><a href="#桑基圖-Sankey-Diagram" class="headerlink" title="桑基圖 (Sankey Diagram)"></a>桑基圖 (Sankey Diagram)</h2><p>桑基圖是一種流程圖，其資訊包含著流量的大小、方向及變化狀況，套用在不同階段的客戶分群上，可以簡單看出訪客的變化狀況。<br><img src="/img/29279/001.png" alt=""></p>
-<h2 id="客戶分群意義"><a href="#客戶分群意義" class="headerlink" title="客戶分群意義"></a>客戶分群意義</h2><p>接續 <a href="../32264.html">RFM 用戶分析模型</a>的分組，避免維度太多只使用 Frequency 與 Monetary 分成 4 組。</p>
+<h2 id="桑基圖-Sankey-Diagram"><a href="#桑基圖-Sankey-Diagram" class="headerlink" title="桑基圖 (Sankey Diagram)"></a>桑基圖 (Sankey Diagram)</h2><hr>
+<p>桑基圖是一種流程圖，其資訊包含著流量的大小、方向及變化狀況，套用在不同階段的客戶分群上，可以簡單看出訪客的變化狀況。<br><img src="/img/29279/001.png" alt=""></p>
+<h2 id="客戶分群意義"><a href="#客戶分群意義" class="headerlink" title="客戶分群意義"></a>客戶分群意義</h2><hr>
+<p>接續 <a href="../32264.html">RFM 用戶分析模型</a>的分組，避免維度太多只使用 Frequency 與 Monetary 分成 4 組。</p>
 <table>
 <thead>
 <tr>
@@ -249,7 +251,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <td>Cheap Customers</td>
 </tr>
 </tbody></table>
-<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>分群步驟參照前一篇 <a href="../32264.html">RFM 用戶分析模型</a>。</p>
+<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><hr>
+<p>分群步驟參照前一篇 <a href="../32264.html">RFM 用戶分析模型</a>。</p>
 <h3 id="資料準備"><a href="#資料準備" class="headerlink" title="資料準備"></a>資料準備</h3><p>Sankey 圖基本上由 source, target, value 組成，其資訊包含著流動方向與流量值。下圖為這次準備的數據集，其包含客戶每半年的分群與數量。</p>
 <p><img src="/img/29279/002.png" alt=""></p>
 <h3 id="繪圖"><a href="#繪圖" class="headerlink" title="繪圖"></a>繪圖</h3><h4 id="函數"><a href="#函數" class="headerlink" title="函數"></a>函數</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">gen_sankey</span><span class="token punctuation">(</span>df<span class="token punctuation">,</span> cat_cols<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> value_cols<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">'Sankey Diagram'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
