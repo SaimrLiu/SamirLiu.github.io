@@ -1,0 +1,419 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="隨勛所欲 - Google Analytics 網站分析">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://samirliu127.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="python,GA,Google Analytics,API,數據分析,數據行銷,DataFrame" />
+
+
+<meta name="description" content="
+本文教 Analytics Reporting API v4 的 Python 快速指南，使用服務帳戶(Service application)取得報表資料，大部分都是程式碼，說明較少。
+
+啟..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Python：Google Analytics Reporting API 快速入門" />
+
+<meta name="og:description" content="
+本文教 Analytics Reporting API v4 的 Python 快速指南，使用服務帳戶(Service application)取得報表資料，大部分都是程式碼，說明較少。
+
+啟..." />
+
+
+<meta property="og:image" content="/img/15747/000.png" />
+
+    <!--Title-->
+
+<title>
+    
+    Python：Google Analytics Reporting API 快速入門 |
+    
+    隨勛所欲 - Google Analytics 網站分析
+</title>
+
+<link rel="alternate" href="/atom.xml" title="隨勛所欲 - Google Analytics 網站分析" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5M44L8F');</script>
+<!-- End Google Tag Manager -->
+
+
+    
+<meta name="baidu-site-verification" content="P04QVZ2PUj" />
+
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    <script data-ad-client="ca-pub-5811286107404442" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5M44L8F"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <header class="main-header"  style="background-image:url(
+    /./img/up-background.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Samir Liu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://samirliu127.github.io">
+                        隨勛所欲 - Google Analytics 網站分析</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首頁</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/tracking/"><i class="fa fa-area-chart"></i>
+                                網站分析</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/python/"><i class="fa fa-code"></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/others/"><i class="fa fa-book"></i>
+                                隨筆</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-calendar-o"></i>
+                                時間軸</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Python：Google Analytics Reporting API 快速入門">
+            
+            Python：Google Analytics Reporting API 快速入門
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/python/">Python</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/12/16</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>本文教 Analytics Reporting API v4 的 Python 快速指南，使用服務帳戶(Service application)取得報表資料，大部分都是程式碼，說明較少。</p>
+</blockquote>
+<h2 id="啟用-GCP-服務"><a href="#啟用-GCP-服務" class="headerlink" title="啟用 GCP 服務"></a>啟用 GCP 服務</h2><hr>
+<h3 id="1-啟用-API"><a href="#1-啟用-API" class="headerlink" title="1. 啟用 API"></a>1. 啟用 API</h3><p>在開始前要先啟用 <a href="https://console.developers.google.com/start/api?id=analyticsreporting.googleapis.com&credential=client_key" target="_blank" rel="noopener">Analytics Reporting API v4</a> 。<br><img src="/img/15747/000.png" alt=""></p>
+<h3 id="2-建立服務帳戶"><a href="#2-建立服務帳戶" class="headerlink" title="2. 建立服務帳戶"></a>2. 建立服務帳戶</h3><p>在 GCP 的<code>API 和服務</code> &gt; <code>憑證</code> 建立服務帳戶金鑰，並選擇或新增服務帳戶，將產生的 json 金鑰存到本機。</p>
+<h3 id="3-權限設置"><a href="#3-權限設置" class="headerlink" title="3. 權限設置"></a>3. 權限設置</h3><p>將此服務帳戶添加至 Google Analytics 報表中，檢視及分析權限即可，服務帳戶類似於以下的電子郵件地址：</p>
+<blockquote>
+<p><a href="mailto:quickstart@PROJECT-ID.iam.gserviceaccount.com" target="_blank" rel="noopener">quickstart@PROJECT-ID.iam.gserviceaccount.com</a></p>
+</blockquote>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><h3 id="取報表函數"><a href="#取報表函數" class="headerlink" title="取報表函數"></a>取報表函數</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> apiclient<span class="token punctuation">.</span>discovery <span class="token keyword">import</span> build
+<span class="token keyword">from</span> oauth2client<span class="token punctuation">.</span>service_account <span class="token keyword">import</span> ServiceAccountCredentials
+
+SCPOES <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'https://www.googleapis.com/auth/analytics.readonly'</span><span class="token punctuation">]</span>
+KEY_FILE_LOCATION <span class="token operator">=</span> <span class="token string">'&lt;JSON_FILE>'</span>
+
+<span class="token keyword">def</span> <span class="token function">get_service</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Build Analytics Reporting API V4 service object.
+    """</span>
+    credentials <span class="token operator">=</span> ServiceAccountCredentials<span class="token punctuation">.</span>from_json_keyfile_name<span class="token punctuation">(</span>
+        KEY_FILE_LOCATION<span class="token punctuation">,</span> SCPOES
+    <span class="token punctuation">)</span>
+    service <span class="token operator">=</span> build<span class="token punctuation">(</span>serviceName<span class="token operator">=</span><span class="token string">'analyticsreporting'</span><span class="token punctuation">,</span> version<span class="token operator">=</span><span class="token string">'v4'</span><span class="token punctuation">,</span> credentials<span class="token operator">=</span>credentials<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> service
+
+<span class="token keyword">def</span> <span class="token function">get_report</span><span class="token punctuation">(</span>
+    service<span class="token punctuation">,</span> view_id<span class="token punctuation">,</span> 
+    start_date<span class="token operator">=</span><span class="token string">'7daysAgo'</span><span class="token punctuation">,</span> end_date<span class="token operator">=</span><span class="token string">'yesterday'</span><span class="token punctuation">,</span> 
+    metrics<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dimensions<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> service<span class="token punctuation">.</span>reports<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>batchGet<span class="token punctuation">(</span>
+            body<span class="token operator">=</span><span class="token punctuation">{</span>
+                <span class="token string">'reportRequests'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+                    <span class="token string">'viewId'</span><span class="token punctuation">:</span> profile_id<span class="token punctuation">,</span>
+                    <span class="token string">'dateRanges'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">'startDate'</span><span class="token punctuation">:</span> start_date<span class="token punctuation">,</span> <span class="token string">'endDate'</span><span class="token punctuation">:</span> end_date<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">'metrics'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">'expression'</span><span class="token punctuation">:</span> m<span class="token punctuation">}</span> <span class="token keyword">for</span> m <span class="token keyword">in</span> metrics<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">'dimensions'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> d<span class="token punctuation">}</span> <span class="token keyword">for</span> d <span class="token keyword">in</span> dimensions<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><pre class=" language-python"><code class="language-python">VIEW_ID <span class="token operator">=</span> <span class="token string">'&lt;VIEW_ID>'</span>
+metrics <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'ga:sessions'</span><span class="token punctuation">]</span>
+dimensions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'ga:source'</span><span class="token punctuation">,</span> <span class="token string">'ga:medium'</span><span class="token punctuation">]</span>
+start_date<span class="token punctuation">,</span> end_date <span class="token operator">=</span> <span class="token string">'7daysAgo'</span><span class="token punctuation">,</span> <span class="token string">'yesterday'</span>
+
+service <span class="token operator">=</span> get_service<span class="token punctuation">(</span><span class="token punctuation">)</span>
+response <span class="token operator">=</span> get_report<span class="token punctuation">(</span>
+                service<span class="token punctuation">,</span> VIEW_ID<span class="token punctuation">,</span>
+                start_date<span class="token punctuation">,</span> end_date<span class="token punctuation">,</span>
+                metrics<span class="token punctuation">,</span> dimensions
+                <span class="token punctuation">)</span></code></pre>
+<h3 id="response-轉-DataFrame"><a href="#response-轉-DataFrame" class="headerlink" title="response 轉 DataFrame"></a>response 轉 DataFrame</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">res_to_df</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    report <span class="token operator">=</span> res<span class="token punctuation">[</span><span class="token string">'reports'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    dimensions <span class="token operator">=</span> report<span class="token punctuation">[</span><span class="token string">'columnHeader'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'dimensions'</span><span class="token punctuation">]</span>
+    metrics <span class="token operator">=</span> <span class="token punctuation">[</span>m<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> m <span class="token keyword">in</span> report<span class="token punctuation">[</span><span class="token string">'columnHeader'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'metricHeader'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'metricHeaderEntries'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    headers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">*</span>dimensions<span class="token punctuation">,</span> <span class="token operator">*</span>metrics<span class="token punctuation">]</span>
+
+    data_rows <span class="token operator">=</span> report<span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'rows'</span><span class="token punctuation">]</span>
+    data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> row <span class="token keyword">in</span> data_rows<span class="token punctuation">:</span>
+        data<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">*</span>row<span class="token punctuation">[</span><span class="token string">'dimensions'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">*</span>row<span class="token punctuation">[</span><span class="token string">'metrics'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'values'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>data<span class="token operator">=</span>data<span class="token punctuation">,</span> columns<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+
+df <span class="token operator">=</span> res_to_df<span class="token punctuation">(</span>response<span class="token punctuation">)</span></code></pre>
+<h2 id="其他參考"><a href="#其他參考" class="headerlink" title="其他參考"></a>其他參考</h2><p><a href="https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/" target="_blank" rel="noopener">Google Analytics 維度與指標組合參考</a></p>
+
+    </div>
+    
+    
+    <!-- Like Coin -->
+<script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/samirliu127/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+</script>
+<!-- End Like Coin -->
+    
+    <div class="post-footer">
+        <div>
+            
+            轉載聲明：
+            商業轉載請聯繫作者獲得授權，非商業傳再請註明出處。
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/posts/29279.html" class="next-post btn btn-default" title='Python 實現桑基圖(Sankey)'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Python 實現桑基圖(Sankey)</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5811286107404442"
+     data-ad-slot="3317220257"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+
+<script id="dsq-count-scr" src="https://samirliu127-hexo-blog.disqus.com/count.js" async></script>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function() {
+    this.page.url = 'https://samirliu127.github.io/posts/15747.html';
+    this.page.identifier = 'posts/15747.html';
+    this.page.title = 'Python：Google Analytics Reporting API 快速入門';
+};
+var d = document,
+    s = d.createElement('script');
+s.src = 'https://samirliu127-hexo-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);
+</script>
+
+</div>
+
+                </main>
+                
+                    <aside class="col-md-4 sidebar">
+    <div id="ad-box" class="widget" style="padding:0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- posts sidebar -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5811286107404442"
+     data-ad-slot="1395486699"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+</aside>
+<aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#啟用-GCP-服務"><span class="toc-text">啟用 GCP 服務</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-啟用-API"><span class="toc-text">1. 啟用 API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-建立服務帳戶"><span class="toc-text">2. 建立服務帳戶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-權限設置"><span class="toc-text">3. 權限設置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#取報表函數"><span class="toc-text">取報表函數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#response-轉-DataFrame"><span class="toc-text">response 轉 DataFrame</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他參考"><span class="toc-text">其他參考</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2019
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
