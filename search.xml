@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Google Analytics 跨網域追蹤</title>
+      <link href="/posts/63657.html"/>
+      <url>/posts/63657.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><strong><a href="https://samir-blog.herokuapp.com/" target="_blank">Demo Site</a></strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 網站分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Google Analytics </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python：Google Analytics Reporting API 快速入門</title>
       <link href="/posts/15747.html"/>
       <url>/posts/15747.html</url>

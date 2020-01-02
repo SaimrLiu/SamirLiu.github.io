@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://samirliu127.github.io/"/>
-  <updated>2019-12-16T08:03:16.019Z</updated>
+  <updated>2020-01-02T02:37:46.831Z</updated>
   <id>https://samirliu127.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google Analytics 跨網域追蹤</title>
+    <link href="https://samirliu127.github.io/posts/63657.html"/>
+    <id>https://samirliu127.github.io/posts/63657.html</id>
+    <published>2020-01-02T02:34:57.000Z</published>
+    <updated>2020-01-02T02:37:46.831Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><strong><a href="https://samir-blog.herokuapp.com/" target="_blank">Demo Site</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Demo&quot;&gt;&lt;a href=&quot;#Demo&quot; class=&quot;headerlink&quot; title=&quot;Demo&quot;&gt;&lt;/a&gt;Demo&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://samir-blog.herokuapp.com/&quot; target=&quot;_b
+      
+    
+    </summary>
+    
+      <category term="網站分析" scheme="https://samirliu127.github.io/categories/tracking/"/>
+    
+    
+      <category term="Google Analytics" scheme="https://samirliu127.github.io/tags/Google-Analytics/"/>
+    
+  </entry>
   
   <entry>
     <title>Python：Google Analytics Reporting API 快速入門</title>
