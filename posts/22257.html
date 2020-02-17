@@ -19,10 +19,13 @@
     <link rel="dns-prefetch" href="https://samirliu127.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="網站追蹤,網站分析,技術分享,GTM,Google Tag Manager,GA,Google Analytics,Python,tracking,Ecommerce" />
+<meta name="keywords" content="community detection,社區發現,Louvain,非監督式學習,機器學習" />
 
 
-<meta name="description" content="專注分享網頁追蹤、資料分析，包含各廣告追蹤。" />
+<meta name="description" content="
+Louvain 算法是一種基於多層次優化 Modularity 的算法，具有快速、準確的優點，在效率和效果上都表現比較好，並且能夠發現層次性的社區結構，被認為是性能最好的社區發現算法之一。
+
+..." />
 
 
 <meta name="robots" content="all" />
@@ -31,16 +34,21 @@
 <meta name="verify" content="all" />
 
 <!-- Open Graph data -->
-<meta property="og:title" content="" />
+<meta property="og:title" content="community detection 社區發現 (Louvain)" />
 
-<meta property="og:description" content="專注分享網頁追蹤、資料分析，包含各廣告追蹤。" />
+<meta name="og:description" content="
+Louvain 算法是一種基於多層次優化 Modularity 的算法，具有快速、準確的優點，在效率和效果上都表現比較好，並且能夠發現層次性的社區結構，被認為是性能最好的社區發現算法之一。
 
+..." />
+
+
+<meta property="og:image" content="/img/22257/000.png" />
 
     <!--Title-->
 
 <title>
     
-    Tag: Facebook |
+    community detection 社區發現 (Louvain) |
     
     隨勛所欲 - Google Analytics 網站分析
 </title>
@@ -166,160 +174,164 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <ol class="breadcrumb">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="community detection 社區發現 (Louvain)">
+            
+            community detection 社區發現 (Louvain)
+            
+        </h1>
+        <div class="post-meta">
     
-    <li>
-        Facebook
-    </li>
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/others/">隨筆</a>
+    </span>
     
     
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/" rel="tag">機器學習</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/02/17</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>Louvain 算法是一種基於多層次優化 Modularity 的算法，具有快速、準確的優點，在效率和效果上都表現比較好，並且能夠發現層次性的社區結構，被認為是性能最好的社區發現算法之一。</p>
+</blockquote>
+<h2 id="Louvain-算法模型"><a href="#Louvain-算法模型" class="headerlink" title="Louvain 算法模型"></a>Louvain 算法模型</h2><p>大型網絡（如社交網路服務或移動電話網路）的典型規模現在以數百萬個節點為單位，並且這些規模要求使用新方法從其結構中檢索綜合信息。</p>
+<p>一種有效的方法是將網路分解為子單元或社區，其中連接較為緊密的部分可以被看成一個社區，而在兩個社區間則相對連接較為稀疏。</p>
+<blockquote>
+<p><img src="/img/22257/001.png" alt=""><br>Modularity 的定義是衡量社區內的緊密程度，它的取值範圍是 [-0.5,1）。該算法來源於論文 《Fast unfolding of communities in large networks》。</p>
+</blockquote>
+<ul>
+<li><code>Aij</code>：代表 i 和 j 之間的邊權重，當網路圖不帶權重時，所有邊權重可視為 1。</li>
+<li><code>m</code>：所有邊的權重和(邊的數量)</li>
+<li><code>ki</code>：所有與節點 i 相連的邊權重和，<code>kj</code>同理</li>
+<li><code>Ci</code>：節點 i 的社區，<code>Cj</code>同理。<code>δ(Ci, Cj)</code> 表示若<code>Ci</code>與<code>Cj</code>為同一社區，則回傳 1，否則回傳 0</li>
+</ul>
+<blockquote>
+<p><img src="/img/22257/002.png" alt=""><br>公式簡化後，可以簡單地理解為社區內部所有邊權重和減去與社區節點相連的邊權重和。</p>
+</blockquote>
+<ul>
+<li><code>Σin</code>：表示社區內的邊權重和</li>
+<li><code>Σtot</code>：表示與社區內的節點相連的所有的邊權重和</li>
+</ul>
+<h2 id="Louvain-算法過程"><a href="#Louvain-算法過程" class="headerlink" title="Louvain 算法過程"></a>Louvain 算法過程</h2><p><img src="/img/22257/000.png" alt=""></p>
+<ol>
+<li>針對每個節點與其鄰近節點做計算，衡量把該節點加入其鄰近節點的社區的 Modularity。選擇最大化 Modularity 值的節點，加入其所在的社區，直到不再發生變化。</li>
+<li>將步驟 1 中形成的社區壓縮成一個點，分別計算這些點之間的邊與權重，以及社區內的所有點的邊與權重，用於下一輪的步驟 1 計算。</li>
 </ol>
 
-<article class="post">
-    
-    <div class="post-media">
-        <a href="/posts/16262.html">
-            <img class="img-ajax" src="/img/loading.gif" data-src="https://s14608.pcdn.co/wp-content/uploads/2016/11/facebook-pixel.jpg" alt="Facebook Pixel 代碼部署">
-        </a>
     </div>
     
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/posts/16262.html">
-                    Facebook Pixel 代碼部署</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime="" title="">
-                    2019年11月20日
-                </time>
-            </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            轉載聲明：
+            商業轉載請聯繫作者獲得授權，非商業傳再請註明出處。
+            
+            
         </div>
-        <p class="brief">
+        <div>
             
-            
-Facebook Pixel？臉書像素？是 Facebook 的網頁追蹤代碼，用於追蹤與衡量網站的訪客，可以針對指定受眾做在行銷或是建立相似受眾找到更多的淺在客戶群，所以在 Facebook 上投放廣告之前埋設追蹤碼是必要的。不過 ...
-            
-        </p>
+        </div>
     </div>
 </article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/posts/63657.html" class="next-post btn btn-default" title='Google Analytics 跨網域追蹤'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Google Analytics 跨網域追蹤</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
 
+<div id="comments">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5811286107404442"
+     data-ad-slot="3317220257"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+
+<script id="dsq-count-scr" src="https://samirliu127-hexo-blog.disqus.com/count.js" async></script>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function() {
+    this.page.url = 'https://samirliu127.github.io/posts/22257.html';
+    this.page.identifier = 'posts/22257.html';
+    this.page.title = 'community detection 社區發現 (Louvain)';
+};
+var d = document,
+    s = d.createElement('script');
+s.src = 'https://samirliu127-hexo-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);
+</script>
+
+</div>
 
                 </main>
                 
-                    
-<aside class="col-md-4 sidebar">
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Search
-    </h3>
-    <div id="search-form">
-        <div id="result-mask" class="hide"></div>
-        <div class="search-area">
-            
-            <input id="search-key" type="search" autocomplete="off" placeholder="Search What？">
-            <button type="button" class="search-form-submit" id="search-local">
-                Search</button>
-            
-            
-        </div>
-        <div id="result-wrap" class="hide">
-            <div id="search-result"></div>
-        </div>
-        <div class="hide">
-            <template id="search-tpl">
-                <div class="item">
-                    <a href="/{path}" title="{title}">
-                        <div class="title">{title}</div>
-                        <div class="content">{content}</div>
-                    </a>
-                </div>
-            </template>
-        </div>
+                    <aside class="col-md-4 sidebar">
+    <div id="ad-box" class="widget" style="padding:0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- posts sidebar -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5811286107404442"
+     data-ad-slot="1395486699"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
     </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Social
-    </h3>
-    <div class="content social">
-        
-        <a href="//www.facebook.com/100226861444726" rel="external nofollow" title="Facebook" target="_blank">
-            <i class="facebook-square fa fa-facebook-square"></i>
-        </a>
-        
-        <a href="//github.com/SamirLiu127" rel="external nofollow" title="Github" target="_blank">
-            <i class="github fa fa-github"></i>
-        </a>
-        
-        <a href="//www.linkedin.com/in/samirliu" rel="external nofollow" title="Linkedin" target="_blank">
-            <i class="linkedin fa fa-linkedin"></i>
-        </a>
-        
-        <a href="mailto:gip24000@gmail.com" rel="external nofollow" title="電子信箱" target="_blank">
-            <i class="envelope-o fa fa-envelope-o"></i>
-        </a>
-        
-    </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Archives
-    </h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/"><i class="fa" aria-hidden="true">2020年02月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/"><i class="fa" aria-hidden="true">2020年01月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/"><i class="fa" aria-hidden="true">2019年12月</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/"><i class="fa" aria-hidden="true">2019年11月</i></a><span class="archive-list-count">13</span></li></ul>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Categories
-    </h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python/"><i class="fa" aria-hidden="true">Python</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tracking/"><i class="fa" aria-hidden="true">網站分析</i></a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/others/"><i class="fa" aria-hidden="true">隨筆</i></a><span class="category-list-count">4</span></li></ul>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Tag Cloud
-    </h3>
-    <div class="content tag-cloud">
-        
-        <a href="/tags/Facebook/" style="font-size: 10px;">Facebook</a> <a href="/tags/Google-Analytics/" style="font-size: 20px;">Google Analytics</a> <a href="/tags/Google-Sheet/" style="font-size: 10px;">Google Sheet</a> <a href="/tags/Google-Tag-Manager/" style="font-size: 17.5px;">Google Tag Manager</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/" style="font-size: 10px;">機器學習</a>
-        
-    </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        Friends
-    </h3>
-    <div class="content friends-link">
-        
-        <a href="https://jerry80409.github.io?utm_source=samir&utm_medium=affiliate" class="fa" target="_blank">
-            PAWS</a>
-        
-        <a href="https://chilunhuang.github.io?utm_source=samir&utm_medium=affiliate" class="fa" target="_blank">
-            CLH Lab</a>
-        
-    </div>
-</div>
-
-    
 </aside>
-
+<aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Louvain-算法模型"><span class="toc-text">Louvain 算法模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Louvain-算法過程"><span class="toc-text">Louvain 算法過程</span></a></li></ol>
+        
+    </div>
+</aside>
                 
             </div>
         </div>
@@ -356,8 +368,6 @@ Facebook Pixel？臉書像素？是 Facebook 的網頁追蹤代碼，用於追�
         </div>
     </div>
 </div>
-
-<script src="/js/search.js?rev=@@hash"></script>
 
 
 

@@ -230,18 +230,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <blockquote>
 <p><a href="mailto:quickstart@PROJECT-ID.iam.gserviceaccount.com" target="_blank" rel="noopener">quickstart@PROJECT-ID.iam.gserviceaccount.com</a></p>
 </blockquote>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><h3 id="取報表函數"><a href="#取報表函數" class="headerlink" title="取報表函數"></a>取報表函數</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> apiclient<span class="token punctuation">.</span>discovery <span class="token keyword">import</span> build
-<span class="token keyword">from</span> oauth2client<span class="token punctuation">.</span>service_account <span class="token keyword">import</span> ServiceAccountCredentials
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><h3 id="所需套件"><a href="#所需套件" class="headerlink" title="所需套件"></a>所需套件</h3><pre class=" language-txt"><code class="language-txt">google-oauth2-tool
+google-api-python-client</code></pre>
+<h3 id="取報表函數"><a href="#取報表函數" class="headerlink" title="取報表函數"></a>取報表函數</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> apiclient<span class="token punctuation">.</span>discovery <span class="token keyword">import</span> build
+<span class="token keyword">from</span> google<span class="token punctuation">.</span>oauth2<span class="token punctuation">.</span>service_account <span class="token keyword">import</span> Credentials
 
-SCPOES <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'https://www.googleapis.com/auth/analytics.readonly'</span><span class="token punctuation">]</span>
+SCOPES <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'https://www.googleapis.com/auth/analytics.readonly'</span><span class="token punctuation">]</span>
 KEY_FILE_LOCATION <span class="token operator">=</span> <span class="token string">'&lt;JSON_FILE>'</span>
 
 <span class="token keyword">def</span> <span class="token function">get_service</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""
     Build Analytics Reporting API V4 service object.
     """</span>
-    credentials <span class="token operator">=</span> ServiceAccountCredentials<span class="token punctuation">.</span>from_json_keyfile_name<span class="token punctuation">(</span>
-        KEY_FILE_LOCATION<span class="token punctuation">,</span> SCPOES
+    credentials <span class="token operator">=</span> Credentials<span class="token punctuation">.</span>from_service_account_file<span class="token punctuation">(</span>
+        KEY_FILE_LOCATION<span class="token punctuation">,</span> scopes<span class="token operator">=</span>SCOPES
     <span class="token punctuation">)</span>
     service <span class="token operator">=</span> build<span class="token punctuation">(</span>serviceName<span class="token operator">=</span><span class="token string">'analyticsreporting'</span><span class="token punctuation">,</span> version<span class="token operator">=</span><span class="token string">'v4'</span><span class="token punctuation">,</span> credentials<span class="token operator">=</span>credentials<span class="token punctuation">)</span>
     <span class="token keyword">return</span> service
@@ -254,7 +256,7 @@ KEY_FILE_LOCATION <span class="token operator">=</span> <span class="token strin
     <span class="token keyword">return</span> service<span class="token punctuation">.</span>reports<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>batchGet<span class="token punctuation">(</span>
             body<span class="token operator">=</span><span class="token punctuation">{</span>
                 <span class="token string">'reportRequests'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-                    <span class="token string">'viewId'</span><span class="token punctuation">:</span> profile_id<span class="token punctuation">,</span>
+                    <span class="token string">'viewId'</span><span class="token punctuation">:</span> view_id<span class="token punctuation">,</span>
                     <span class="token string">'dateRanges'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">'startDate'</span><span class="token punctuation">:</span> start_date<span class="token punctuation">,</span> <span class="token string">'endDate'</span><span class="token punctuation">:</span> end_date<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token string">'metrics'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">'expression'</span><span class="token punctuation">:</span> m<span class="token punctuation">}</span> <span class="token keyword">for</span> m <span class="token keyword">in</span> metrics<span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token string">'dimensions'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> d<span class="token punctuation">}</span> <span class="token keyword">for</span> d <span class="token keyword">in</span> dimensions<span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -374,7 +376,7 @@ s.setAttribute('data-timestamp', '' + +new Date());
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#啟用-GCP-服務"><span class="toc-text">啟用 GCP 服務</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-啟用-API"><span class="toc-text">1. 啟用 API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-建立服務帳戶"><span class="toc-text">2. 建立服務帳戶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-權限設置"><span class="toc-text">3. 權限設置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#取報表函數"><span class="toc-text">取報表函數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#response-轉-DataFrame"><span class="toc-text">response 轉 DataFrame</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他參考"><span class="toc-text">其他參考</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#啟用-GCP-服務"><span class="toc-text">啟用 GCP 服務</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-啟用-API"><span class="toc-text">1. 啟用 API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-建立服務帳戶"><span class="toc-text">2. 建立服務帳戶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-權限設置"><span class="toc-text">3. 權限設置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#所需套件"><span class="toc-text">所需套件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取報表函數"><span class="toc-text">取報表函數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#response-轉-DataFrame"><span class="toc-text">response 轉 DataFrame</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他參考"><span class="toc-text">其他參考</span></a></li></ol>
         
     </div>
 </aside>
