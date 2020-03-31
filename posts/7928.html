@@ -19,13 +19,17 @@
     <link rel="dns-prefetch" href="https://samirliu127.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="community detection,社區發現,Louvain,非監督式學習,機器學習" />
+<meta name="keywords" content="python,多執行緒,多進程,multiprocessing,爬蟲,tutorial" />
 
 
 <meta name="description" content="
-Louvain 算法是一種基於多層次優化 Modularity 的算法，具有快速、準確的優點，在效率和效果上都表現比較好，並且能夠發現層次性的社區結構，被認為是性能最好的社區發現算法之一。
+multiprocessing 筆記
 
-..." />
+Process
+導入套件與進程 functionimport time
+import multiprocessing as mp
+
+def claw(w..." />
 
 
 <meta name="robots" content="all" />
@@ -34,21 +38,25 @@ Louvain 算法是一種基於多層次優化 Modularity 的算法，具有快速
 <meta name="verify" content="all" />
 
 <!-- Open Graph data -->
-<meta property="og:title" content="community detection 社區發現 (Louvain)" />
+<meta property="og:title" content="Python 多執行緒 (multiprocessing)" />
 
 <meta name="og:description" content="
-Louvain 算法是一種基於多層次優化 Modularity 的算法，具有快速、準確的優點，在效率和效果上都表現比較好，並且能夠發現層次性的社區結構，被認為是性能最好的社區發現算法之一。
+multiprocessing 筆記
 
-..." />
+Process
+導入套件與進程 functionimport time
+import multiprocessing as mp
+
+def claw(w..." />
 
 
-<meta property="og:image" content="/img/22257/000.png" />
+<meta property="og:image" content="/img/7928/000.png" />
 
     <!--Title-->
 
 <title>
     
-    community detection 社區發現 (Louvain) |
+    Python 多執行緒 (multiprocessing) |
     
     隨勛所欲 - Google Analytics 網站分析
 </title>
@@ -178,16 +186,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="community detection 社區發現 (Louvain)">
+        <h1 id="Python 多執行緒 (multiprocessing)">
             
-            community detection 社區發現 (Louvain)
+            Python 多執行緒 (multiprocessing)
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/others/">隨筆</a>
+        <a class="category-link" href="/categories/python/">Python</a>
     </span>
     
     
@@ -195,7 +203,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92/" rel="tag">機器學習</a>
+            <a class="tag-link" href="/tags/python/" rel="tag">python</a>
             
         </span>
     </span>
@@ -205,7 +213,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2020/02/17</span>
+            2020/03/31</span>
     </span>
     
     <span class="fa-wrap">
@@ -221,31 +229,87 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <div class="post-body post-content">
         <blockquote>
-<p>Louvain 算法是一種基於多層次優化 Modularity 的算法，具有快速、準確的優點，在效率和效果上都表現比較好，並且能夠發現層次性的社區結構，被認為是性能最好的社區發現算法之一。</p>
+<p>multiprocessing 筆記</p>
 </blockquote>
-<h2 id="Louvain-算法模型"><a href="#Louvain-算法模型" class="headerlink" title="Louvain 算法模型"></a>Louvain 算法模型</h2><p>大型網絡（如社交網路服務或移動電話網路）的典型規模現在以數百萬個節點為單位，並且這些規模要求使用新方法從其結構中檢索綜合信息。</p>
-<p>一種有效的方法是將網路分解為子單元或社區，其中連接較為緊密的部分可以被看成一個社區，而在兩個社區間則相對連接較為稀疏。</p>
+<h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><hr>
+<h3 id="導入套件與進程-function"><a href="#導入套件與進程-function" class="headerlink" title="導入套件與進程 function"></a>導入套件與進程 function</h3><pre class=" language-python="><code class="language-python=">import time
+import multiprocessing as mp
+
+def claw(website):
+    time.sleep(len(website))
+    print(f'{website}: hello world')</code></pre>
+<h3 id="執行多進程"><a href="#執行多進程" class="headerlink" title="執行多進程"></a>執行多進程</h3><pre class=" language-python="><code class="language-python="># 建立 Process
+## 當 args 的參數只要一個值時，需要加逗號，否則會報錯
+work_1 = mp.Process(target=claw, args=('websiteAAAAAA',))
+work_2 = mp.Process(target=claw, args=('websiteB',))
+
+# 執行 Process
+print('Start Process')
+work_1.start()
+work_2.start()
+
+# 等待 Process 完成
+print('Wait...')
+work_1.join()
+work_2.join()
+print('Done!!!')</code></pre>
+<p>打印結果</p>
+<pre class=" language-shell"><code class="language-shell">Start Process
+Wait...
+websiteB[8]: hello world
+websiteAAAAAA[13]: hello world
+Done!!!</code></pre>
+<h2 id="Pool-進程池"><a href="#Pool-進程池" class="headerlink" title="Pool 進程池"></a>Pool 進程池</h2><h3 id="導入套件與進程-function-1"><a href="#導入套件與進程-function-1" class="headerlink" title="導入套件與進程 function"></a>導入套件與進程 function</h3><p>使用多進程爬 Google 新聞前五則</p>
+<pre class=" language-python="><code class="language-python=">import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+import multiprocessing as mp
+
+def news_craw(topic):
+    # 取得該分類下前五則新聞標題與連結
+    google_news = 'https://news.google.com'
+    url = f'{google_news}/topics/{topic}?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant'
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text.encode('utf-8'), "html.parser")
+    news = []
+    for i in range(5):
+        news.append({
+            'title': soup.select('div.xrnccd h3')[i].text,
+            'link': google_news + soup.select('div.xrnccd h3 a')[i]['href'][1:]
+        })
+    return news</code></pre>
+<p>新聞主題</p>
+<pre class=" language-python="><code class="language-python=">google_news_topic = [
+    'CAAqJQgKIh9DQkFTRVFvSUwyMHZNRFptTXpJU0JYcG9MVlJYS0FBUAE',        ## 台灣
+    'CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx1YlY4U0JYcG9MVlJYR2dKVVZ5Z0FQAQ', ## 國際
+    'CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx6TVdZU0JYcG9MVlJYR2dKVVZ5Z0FQAQ', ## 商業
+    'CAAqKggKIiRDQkFTRlFvSUwyMHZNREpxYW5RU0JYcG9MVlJYR2dKVVZ5Z0FQAQ'  ## 娛樂
+]</code></pre>
+<h3 id="執行多進程-1"><a href="#執行多進程-1" class="headerlink" title="執行多進程"></a>執行多進程</h3><h4 id="pool-map"><a href="#pool-map" class="headerlink" title="pool.map"></a>pool.map</h4><pre class=" language-python="><code class="language-python="># processes 預設使用電腦核心數
+with mp.Pool(processes=4) as pool:
+    res = pool.map(news_craw, google_news_topic)
+
+new_list = [item for news in res for item in news]
+df = pd.DataFrame(new_list)
+df</code></pre>
+<h4 id="pool-apply-sync"><a href="#pool-apply-sync" class="headerlink" title="pool.apply_sync"></a>pool.apply_sync</h4><pre class=" language-python="><code class="language-python=">pool = mp.Pool(processes=4)
+
+multiple_res = []
+for topic in google_news_topic:
+    multiple_res.append(pool.apply_async(news_craw, (topic,)))
+
+pool.close()
+pool.join()  # 待程序完成
+
+# 使用 get 取得回傳值
+new_list = [item for res in multiple_res for item in res.get()]
+df = pd.DataFrame(new_list)
+df</code></pre>
+<p>打印結果</p>
 <blockquote>
-<p><img src="/img/22257/001.png" alt=""><br>Modularity 的定義是衡量社區內的緊密程度，它的取值範圍是 [-0.5,1）。該算法來源於論文 《Fast unfolding of communities in large networks》。</p>
+<p><img src="/img/7928/001.png" alt=""></p>
 </blockquote>
-<ul>
-<li><code>Aij</code>：代表 i 和 j 之間的邊權重，當網路圖不帶權重時，所有邊權重可視為 1。</li>
-<li><code>m</code>：所有邊的權重和(邊的數量)</li>
-<li><code>ki</code>：所有與節點 i 相連的邊權重和，<code>kj</code>同理</li>
-<li><code>Ci</code>：節點 i 的社區，<code>Cj</code>同理。<code>δ(Ci, Cj)</code> 表示若<code>Ci</code>與<code>Cj</code>為同一社區，則回傳 1，否則回傳 0</li>
-</ul>
-<blockquote>
-<p><img src="/img/22257/002.png" alt=""><br>公式簡化後，可以簡單地理解為社區內部所有邊權重和減去與社區節點相連的邊權重和。</p>
-</blockquote>
-<ul>
-<li><code>Σin</code>：表示社區內的邊權重和</li>
-<li><code>Σtot</code>：表示與社區內的節點相連的所有的邊權重和</li>
-</ul>
-<h2 id="Louvain-算法過程"><a href="#Louvain-算法過程" class="headerlink" title="Louvain 算法過程"></a>Louvain 算法過程</h2><p><img src="/img/22257/000.png" alt=""></p>
-<ol>
-<li>針對每個節點與其鄰近節點做計算，衡量把該節點加入其鄰近節點的社區的 Modularity。選擇最大化 Modularity 值的節點，加入其所在的社區，直到不再發生變化。</li>
-<li>將步驟 1 中形成的社區壓縮成一個點，分別計算這些點之間的邊與權重，以及社區內的所有點的邊與權重，用於下一輪的步驟 1 計算。</li>
-</ol>
+<p>在使用上兩者結果是一樣的</p>
 
     </div>
     
@@ -265,17 +329,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/posts/7928.html" class="pre-post btn btn-default" title='Python 多執行緒 (multiprocessing)'>
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            Python 多執行緒 (multiprocessing)</span>
-    </a>
     
-    
-    <a href="/posts/63657.html" class="next-post btn btn-default" title='Google Analytics 跨網域追蹤'>
+    <a href="/posts/22257.html" class="next-post btn btn-default" title='community detection 社區發現 (Louvain)'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            Google Analytics 跨網域追蹤</span><i class="fa fa-angle-right fa-fw"></i>
+            community detection 社區發現 (Louvain)</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -298,9 +356,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_config = function() {
-    this.page.url = 'https://samirliu127.github.io/posts/22257.html';
-    this.page.identifier = 'posts/22257.html';
-    this.page.title = 'community detection 社區發現 (Louvain)';
+    this.page.url = 'https://samirliu127.github.io/posts/7928.html';
+    this.page.identifier = 'posts/7928.html';
+    this.page.title = 'Python 多執行緒 (multiprocessing)';
 };
 var d = document,
     s = d.createElement('script');
@@ -334,7 +392,7 @@ s.setAttribute('data-timestamp', '' + +new Date());
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Louvain-算法模型"><span class="toc-text">Louvain 算法模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Louvain-算法過程"><span class="toc-text">Louvain 算法過程</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Process"><span class="toc-text">Process</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#導入套件與進程-function"><span class="toc-text">導入套件與進程 function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#執行多進程"><span class="toc-text">執行多進程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pool-進程池"><span class="toc-text">Pool 進程池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#導入套件與進程-function-1"><span class="toc-text">導入套件與進程 function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#執行多進程-1"><span class="toc-text">執行多進程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pool-map"><span class="toc-text">pool.map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pool-apply-sync"><span class="toc-text">pool.apply_sync</span></a></li></ol></li></ol></li></ol>
         
     </div>
 </aside>

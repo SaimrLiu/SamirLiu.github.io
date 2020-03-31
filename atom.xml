@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://samirliu127.github.io/"/>
-  <updated>2020-02-17T08:06:01.291Z</updated>
+  <updated>2020-03-31T07:59:21.562Z</updated>
   <id>https://samirliu127.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python 多執行緒 (multiprocessing)</title>
+    <link href="https://samirliu127.github.io/posts/7928.html"/>
+    <id>https://samirliu127.github.io/posts/7928.html</id>
+    <published>2020-03-31T07:59:21.000Z</published>
+    <updated>2020-03-31T07:59:21.562Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>multiprocessing 筆記</p></blockquote><h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><hr><h3 id="導入套件與進程-function"><a href="#導入套件與進程-function" class="headerlink" title="導入套件與進程 function"></a>導入套件與進程 function</h3><pre class=" language-python="><code class="language-python=">import timeimport multiprocessing as mpdef claw(website):    time.sleep(len(website))    print(f'{website}: hello world')</code></pre><h3 id="執行多進程"><a href="#執行多進程" class="headerlink" title="執行多進程"></a>執行多進程</h3><pre class=" language-python="><code class="language-python="># 建立 Process## 當 args 的參數只要一個值時，需要加逗號，否則會報錯work_1 = mp.Process(target=claw, args=('websiteAAAAAA',))work_2 = mp.Process(target=claw, args=('websiteB',))# 執行 Processprint('Start Process')work_1.start()work_2.start()# 等待 Process 完成print('Wait...')work_1.join()work_2.join()print('Done!!!')</code></pre><p>打印結果</p><pre class=" language-shell"><code class="language-shell">Start ProcessWait...websiteB[8]: hello worldwebsiteAAAAAA[13]: hello worldDone!!!</code></pre><h2 id="Pool-進程池"><a href="#Pool-進程池" class="headerlink" title="Pool 進程池"></a>Pool 進程池</h2><h3 id="導入套件與進程-function-1"><a href="#導入套件與進程-function-1" class="headerlink" title="導入套件與進程 function"></a>導入套件與進程 function</h3><p>使用多進程爬 Google 新聞前五則</p><pre class=" language-python="><code class="language-python=">import requestsimport pandas as pdfrom bs4 import BeautifulSoupimport multiprocessing as mpdef news_craw(topic):    # 取得該分類下前五則新聞標題與連結    google_news = 'https://news.google.com'    url = f'{google_news}/topics/{topic}?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant'    res = requests.get(url)    soup = BeautifulSoup(res.text.encode('utf-8'), "html.parser")    news = []    for i in range(5):        news.append({            'title': soup.select('div.xrnccd h3')[i].text,            'link': google_news + soup.select('div.xrnccd h3 a')[i]['href'][1:]        })    return news</code></pre><p>新聞主題</p><pre class=" language-python="><code class="language-python=">google_news_topic = [    'CAAqJQgKIh9DQkFTRVFvSUwyMHZNRFptTXpJU0JYcG9MVlJYS0FBUAE',        ## 台灣    'CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx1YlY4U0JYcG9MVlJYR2dKVVZ5Z0FQAQ', ## 國際    'CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx6TVdZU0JYcG9MVlJYR2dKVVZ5Z0FQAQ', ## 商業    'CAAqKggKIiRDQkFTRlFvSUwyMHZNREpxYW5RU0JYcG9MVlJYR2dKVVZ5Z0FQAQ'  ## 娛樂]</code></pre><h3 id="執行多進程-1"><a href="#執行多進程-1" class="headerlink" title="執行多進程"></a>執行多進程</h3><h4 id="pool-map"><a href="#pool-map" class="headerlink" title="pool.map"></a>pool.map</h4><pre class=" language-python="><code class="language-python="># processes 預設使用電腦核心數with mp.Pool(processes=4) as pool:    res = pool.map(news_craw, google_news_topic)new_list = [item for news in res for item in news]df = pd.DataFrame(new_list)df</code></pre><h4 id="pool-apply-sync"><a href="#pool-apply-sync" class="headerlink" title="pool.apply_sync"></a>pool.apply_sync</h4><pre class=" language-python="><code class="language-python=">pool = mp.Pool(processes=4)multiple_res = []for topic in google_news_topic:    multiple_res.append(pool.apply_async(news_craw, (topic,)))pool.close()pool.join()  # 待程序完成# 使用 get 取得回傳值new_list = [item for res in multiple_res for item in res.get()]df = pd.DataFrame(new_list)df</code></pre><p>打印結果</p><blockquote><p><img src="/img/7928/001.png" alt=""></p></blockquote><p>在使用上兩者結果是一樣的</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;multiprocessing 筆記&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Process&quot;&gt;&lt;a href=&quot;#Process&quot; class=&quot;headerlink&quot; title=&quot;Process&quot;&gt;&lt;/a&gt;Process&lt;/h2&gt;
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://samirliu127.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://samirliu127.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>community detection 社區發現 (Louvain)</title>
