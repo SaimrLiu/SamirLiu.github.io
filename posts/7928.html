@@ -232,27 +232,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>multiprocessing 筆記</p>
 </blockquote>
 <h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><hr>
-<h3 id="導入套件與進程-function"><a href="#導入套件與進程-function" class="headerlink" title="導入套件與進程 function"></a>導入套件與進程 function</h3><pre class=" language-python="><code class="language-python=">import time
-import multiprocessing as mp
+<h3 id="導入套件與進程-function"><a href="#導入套件與進程-function" class="headerlink" title="導入套件與進程 function"></a>導入套件與進程 function</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> time
+<span class="token keyword">import</span> multiprocessing <span class="token keyword">as</span> mp
 
-def claw(website):
-    time.sleep(len(website))
-    print(f'{website}: hello world')</code></pre>
-<h3 id="執行多進程"><a href="#執行多進程" class="headerlink" title="執行多進程"></a>執行多進程</h3><pre class=" language-python="><code class="language-python="># 建立 Process
-## 當 args 的參數只要一個值時，需要加逗號，否則會報錯
-work_1 = mp.Process(target=claw, args=('websiteAAAAAA',))
-work_2 = mp.Process(target=claw, args=('websiteB',))
+<span class="token keyword">def</span> <span class="token function">claw</span><span class="token punctuation">(</span>website<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span>len<span class="token punctuation">(</span>website<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'{website}: hello world'</span><span class="token punctuation">)</span></code></pre>
+<h3 id="執行多進程"><a href="#執行多進程" class="headerlink" title="執行多進程"></a>執行多進程</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 建立 Process</span>
+<span class="token comment" spellcheck="true">## 當 args 的參數只要一個值時，需要加逗號，否則會報錯</span>
+work_1 <span class="token operator">=</span> mp<span class="token punctuation">.</span>Process<span class="token punctuation">(</span>target<span class="token operator">=</span>claw<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'websiteAAAAAA'</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+work_2 <span class="token operator">=</span> mp<span class="token punctuation">.</span>Process<span class="token punctuation">(</span>target<span class="token operator">=</span>claw<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'websiteB'</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-# 執行 Process
-print('Start Process')
-work_1.start()
-work_2.start()
+<span class="token comment" spellcheck="true"># 執行 Process</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Start Process'</span><span class="token punctuation">)</span>
+work_1<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+work_2<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-# 等待 Process 完成
-print('Wait...')
-work_1.join()
-work_2.join()
-print('Done!!!')</code></pre>
+<span class="token comment" spellcheck="true"># 等待 Process 完成</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Wait...'</span><span class="token punctuation">)</span>
+work_1<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+work_2<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Done!!!'</span><span class="token punctuation">)</span></code></pre>
 <p>打印結果</p>
 <pre class=" language-shell"><code class="language-shell">Start Process
 Wait...
@@ -260,50 +260,50 @@ websiteB[8]: hello world
 websiteAAAAAA[13]: hello world
 Done!!!</code></pre>
 <h2 id="Pool-進程池"><a href="#Pool-進程池" class="headerlink" title="Pool 進程池"></a>Pool 進程池</h2><h3 id="導入套件與進程-function-1"><a href="#導入套件與進程-function-1" class="headerlink" title="導入套件與進程 function"></a>導入套件與進程 function</h3><p>使用多進程爬 Google 新聞前五則</p>
-<pre class=" language-python="><code class="language-python=">import requests
-import pandas as pd
-from bs4 import BeautifulSoup
-import multiprocessing as mp
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup
+<span class="token keyword">import</span> multiprocessing <span class="token keyword">as</span> mp
 
-def news_craw(topic):
-    # 取得該分類下前五則新聞標題與連結
-    google_news = 'https://news.google.com'
-    url = f'{google_news}/topics/{topic}?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant'
-    res = requests.get(url)
-    soup = BeautifulSoup(res.text.encode('utf-8'), "html.parser")
-    news = []
-    for i in range(5):
-        news.append({
-            'title': soup.select('div.xrnccd h3')[i].text,
-            'link': google_news + soup.select('div.xrnccd h3 a')[i]['href'][1:]
-        })
-    return news</code></pre>
+<span class="token keyword">def</span> <span class="token function">news_craw</span><span class="token punctuation">(</span>topic<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 取得該分類下前五則新聞標題與連結</span>
+    google_news <span class="token operator">=</span> <span class="token string">'https://news.google.com'</span>
+    url <span class="token operator">=</span> f<span class="token string">'{google_news}/topics/{topic}?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant'</span>
+    res <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+    soup <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"html.parser"</span><span class="token punctuation">)</span>
+    news <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        news<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token string">'title'</span><span class="token punctuation">:</span> soup<span class="token punctuation">.</span>select<span class="token punctuation">(</span><span class="token string">'div.xrnccd h3'</span><span class="token punctuation">)</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>text<span class="token punctuation">,</span>
+            <span class="token string">'link'</span><span class="token punctuation">:</span> google_news <span class="token operator">+</span> soup<span class="token punctuation">.</span>select<span class="token punctuation">(</span><span class="token string">'div.xrnccd h3 a'</span><span class="token punctuation">)</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'href'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> news</code></pre>
 <p>新聞主題</p>
-<pre class=" language-python="><code class="language-python=">google_news_topic = [
-    'CAAqJQgKIh9DQkFTRVFvSUwyMHZNRFptTXpJU0JYcG9MVlJYS0FBUAE',        ## 台灣
-    'CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx1YlY4U0JYcG9MVlJYR2dKVVZ5Z0FQAQ', ## 國際
-    'CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx6TVdZU0JYcG9MVlJYR2dKVVZ5Z0FQAQ', ## 商業
-    'CAAqKggKIiRDQkFTRlFvSUwyMHZNREpxYW5RU0JYcG9MVlJYR2dKVVZ5Z0FQAQ'  ## 娛樂
-]</code></pre>
-<h3 id="執行多進程-1"><a href="#執行多進程-1" class="headerlink" title="執行多進程"></a>執行多進程</h3><h4 id="pool-map"><a href="#pool-map" class="headerlink" title="pool.map"></a>pool.map</h4><pre class=" language-python="><code class="language-python="># processes 預設使用電腦核心數
-with mp.Pool(processes=4) as pool:
-    res = pool.map(news_craw, google_news_topic)
+<pre class=" language-python"><code class="language-python">google_news_topic <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">'CAAqJQgKIh9DQkFTRVFvSUwyMHZNRFptTXpJU0JYcG9MVlJYS0FBUAE'</span><span class="token punctuation">,</span>        <span class="token comment" spellcheck="true">## 台灣</span>
+    <span class="token string">'CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx1YlY4U0JYcG9MVlJYR2dKVVZ5Z0FQAQ'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">## 國際</span>
+    <span class="token string">'CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx6TVdZU0JYcG9MVlJYR2dKVVZ5Z0FQAQ'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">## 商業</span>
+    <span class="token string">'CAAqKggKIiRDQkFTRlFvSUwyMHZNREpxYW5RU0JYcG9MVlJYR2dKVVZ5Z0FQAQ'</span>  <span class="token comment" spellcheck="true">## 娛樂</span>
+<span class="token punctuation">]</span></code></pre>
+<h3 id="執行多進程-1"><a href="#執行多進程-1" class="headerlink" title="執行多進程"></a>執行多進程</h3><h4 id="pool-map"><a href="#pool-map" class="headerlink" title="pool.map"></a>pool.map</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># processes 預設使用電腦核心數</span>
+<span class="token keyword">with</span> mp<span class="token punctuation">.</span>Pool<span class="token punctuation">(</span>processes<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">as</span> pool<span class="token punctuation">:</span>
+    res <span class="token operator">=</span> pool<span class="token punctuation">.</span>map<span class="token punctuation">(</span>news_craw<span class="token punctuation">,</span> google_news_topic<span class="token punctuation">)</span>
 
-new_list = [item for news in res for item in news]
-df = pd.DataFrame(new_list)
+new_list <span class="token operator">=</span> <span class="token punctuation">[</span>item <span class="token keyword">for</span> news <span class="token keyword">in</span> res <span class="token keyword">for</span> item <span class="token keyword">in</span> news<span class="token punctuation">]</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>new_list<span class="token punctuation">)</span>
 df</code></pre>
-<h4 id="pool-apply-sync"><a href="#pool-apply-sync" class="headerlink" title="pool.apply_sync"></a>pool.apply_sync</h4><pre class=" language-python="><code class="language-python=">pool = mp.Pool(processes=4)
+<h4 id="pool-apply-sync"><a href="#pool-apply-sync" class="headerlink" title="pool.apply_sync"></a>pool.apply_sync</h4><pre class=" language-python"><code class="language-python">pool <span class="token operator">=</span> mp<span class="token punctuation">.</span>Pool<span class="token punctuation">(</span>processes<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
 
-multiple_res = []
-for topic in google_news_topic:
-    multiple_res.append(pool.apply_async(news_craw, (topic,)))
+multiple_res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> topic <span class="token keyword">in</span> google_news_topic<span class="token punctuation">:</span>
+    multiple_res<span class="token punctuation">.</span>append<span class="token punctuation">(</span>pool<span class="token punctuation">.</span>apply_async<span class="token punctuation">(</span>news_craw<span class="token punctuation">,</span> <span class="token punctuation">(</span>topic<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-pool.close()
-pool.join()  # 待程序完成
+pool<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+pool<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 待程序完成</span>
 
-# 使用 get 取得回傳值
-new_list = [item for res in multiple_res for item in res.get()]
-df = pd.DataFrame(new_list)
+<span class="token comment" spellcheck="true"># 使用 get 取得回傳值</span>
+new_list <span class="token operator">=</span> <span class="token punctuation">[</span>item <span class="token keyword">for</span> res <span class="token keyword">in</span> multiple_res <span class="token keyword">for</span> item <span class="token keyword">in</span> res<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>new_list<span class="token punctuation">)</span>
 df</code></pre>
 <p>打印結果</p>
 <blockquote>
