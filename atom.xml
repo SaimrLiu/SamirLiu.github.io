@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://samirliu127.github.io/"/>
-  <updated>2020-05-28T09:15:28.642Z</updated>
+  <updated>2020-06-16T09:47:02.072Z</updated>
   <id>https://samirliu127.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ubuntu 18.04 安裝 Nvidia driver &amp; cuda 10.2 &amp; conda</title>
+    <link href="https://samirliu127.github.io/posts/62551.html"/>
+    <id>https://samirliu127.github.io/posts/62551.html</id>
+    <published>2020-06-16T09:47:02.000Z</published>
+    <updated>2020-06-16T09:47:02.072Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>雲服務：Google Cloud Platform<br>作業系統：ubuntu 18.04 LTS<br>顯示卡：TESLA T4</p></blockquote><hr><h2 id="1-安裝-GPU"><a href="#1-安裝-GPU" class="headerlink" title="1. 安裝 GPU"></a>1. 安裝 GPU</h2><p>以下皆在 root 下執行</p><pre class=" language-shell"><code class="language-shell">$ sudo su -</code></pre><pre class=" language-shell"><code class="language-shell">$ sudo apt-get update$ sudo apt-get install -y ubuntu-drivers-common$ ubuntu-drivers devices</code></pre><p>輸出看到可以安裝 440 的驅動版本</p><pre class=" language-shell"><code class="language-shell">== /sys/devices/pci0000:00/0000:00:04.0 ==modalias : pci:v000010DEd00001EB8sv000010DEsd000012A2bc03sc02i00vendor   : NVIDIA Corporationdriver   : nvidia-driver-435 - distro non-freedriver   : nvidia-driver-440 - distro non-free recommendeddriver   : xserver-xorg-video-nouveau - distro free builtin</code></pre><p>安裝驅動</p><pre class=" language-shell"><code class="language-shell">$ sudo ubuntu-drivers autoinstall</code></pre><hr><h2 id="2-安裝-cuda-10-2-amp-cuDNN"><a href="#2-安裝-cuda-10-2-amp-cuDNN" class="headerlink" title="2. 安裝 cuda 10.2 &amp; cuDNN"></a>2. 安裝 cuda 10.2 &amp; cuDNN</h2><h3 id="安裝-cuda-10-2-軟件包"><a href="#安裝-cuda-10-2-軟件包" class="headerlink" title="安裝 cuda 10.2 軟件包"></a>安裝 cuda 10.2 軟件包</h3><pre class=" language-shell"><code class="language-shell">$ cd /tmp$ wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.2.89-1_amd64.deb$ sudo dpkg -i cuda-repo-ubuntu1804_10.2.89-1_amd64.deb$ sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub</code></pre><h3 id="安裝-cuDNN-v7-6-5-軟件包"><a href="#安裝-cuDNN-v7-6-5-軟件包" class="headerlink" title="安裝 cuDNN v7.6.5 軟件包"></a>安裝 cuDNN v7.6.5 軟件包</h3><p>cuDNN 軟件包到 <a href="https://developer.nvidia.com/cudnn" target="_blank" rel="noopener">這裡下載</a>，載 Runtime 與 Developer</p><ul><li>cuDNN Runtime Library for Ubuntu18.04 (Deb)</li><li>cuDNN Developer Library for Ubuntu18.04 (Deb)</li></ul><p><img src="/img/62551/001.png" alt=""></p><p>安裝軟件包</p><pre class=" language-shell"><code class="language-shell">$ sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.2_amd64.deb$ sudo dpkg -i libcudnn7-dev_7.6.5.32-1+cuda10.2_amd64.deb</code></pre><p>執行安裝後重開機</p><pre class=" language-shell"><code class="language-shell">$ sudo apt-get update$ sudo apt-get install --no-install-recommends \   cuda-10-2 \   libcudnn7=7.6.5.32-1+cuda10.2  \   libcudnn7-dev=7.6.5.32-1+cuda10.2$ sudo reboot</code></pre><p>重開機後測試</p><pre><code>$ nvidia-smi</code></pre><p><img src="/img/62551/002.png" alt=""></p><hr><h2 id="3-安裝-Miniconda"><a href="#3-安裝-Miniconda" class="headerlink" title="3. 安裝 Miniconda"></a>3. 安裝 Miniconda</h2><pre class=" language-shell"><code class="language-shell">$ cd /tmp && curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh$ sudo bash Miniconda3-latest-Linux-x86_64.sh</code></pre><p>安裝位置 <code>/opt/miniconda3</code>，並將路徑新增至 <code>.bashrc</code></p><pre class=" language-shell"><code class="language-shell">export PATH="/opt/miniconda3/bin:$PATH"</code></pre><hr><h2 id="4-安裝-tensorflow"><a href="#4-安裝-tensorflow" class="headerlink" title="4. 安裝 tensorflow"></a>4. 安裝 tensorflow</h2><pre class=" language-shell"><code class="language-shell">pip install --upgrade --user pippip install tensorflow-gpupython -c 'import tensorflow as tf; tf.test.gpu_device_name()'</code></pre><p>輸出結果為<br><img src="/img/62551/003.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;雲服務：Google Cloud Platform&lt;br&gt;作業系統：ubuntu 18.04 LTS&lt;br&gt;顯示卡：TESLA T4&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;1-安裝-GPU&quot;&gt;&lt;a href=&quot;#1-安裝-G
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://samirliu127.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://samirliu127.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>Python getopt 命令列參數</title>
@@ -534,31 +563,6 @@
       
         &lt;h2 id=&quot;文章&quot;&gt;&lt;a href=&quot;#文章&quot; class=&quot;headerlink&quot; title=&quot;文章&quot;&gt;&lt;/a&gt;文章&lt;/h2&gt;&lt;p&gt;命令行中輸入：&lt;/p&gt;
 &lt;pre class=&quot; language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ 
-      
-    
-    </summary>
-    
-      <category term="隨筆" scheme="https://samirliu127.github.io/categories/others/"/>
-    
-    
-      <category term="hexo" scheme="https://samirliu127.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://samirliu127.github.io/posts/16107.html"/>
-    <id>https://samirliu127.github.io/posts/16107.html</id>
-    <published>2019-11-06T16:00:00.000Z</published>
-    <updated>2019-11-14T08:17:33.193Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
       
     
     </summary>

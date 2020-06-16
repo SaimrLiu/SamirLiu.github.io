@@ -19,15 +19,16 @@
     <link rel="dns-prefetch" href="https://samirliu127.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="python,getopt,GetoptError,tutorial" />
+<meta name="keywords" content="python,GPU,tensorflow,anaconda,nvidia" />
 
 
 <meta name="description" content="
-Python 提供 getopt 模組，提供幫助解析命令列的選項和參數。另外可以透過 sys.argv 取得命令列任何參數。
+雲服務：Google Cloud Platform作業系統：ubuntu 18.04 LTS顯示卡：TESLA T4
 
 
-函數getopt解析命令列
-getopt(argv, shor..." />
+1. 安裝 GPU以下皆在 root 下執行
+$ sudo su -
+..." />
 
 
 <meta name="robots" content="all" />
@@ -36,21 +37,24 @@ getopt(argv, shor..." />
 <meta name="verify" content="all" />
 
 <!-- Open Graph data -->
-<meta property="og:title" content="Python getopt 命令列參數" />
+<meta property="og:title" content="ubuntu 18.04 安裝 Nvidia driver &amp; cuda 10.2 &amp; conda" />
 
 <meta name="og:description" content="
-Python 提供 getopt 模組，提供幫助解析命令列的選項和參數。另外可以透過 sys.argv 取得命令列任何參數。
+雲服務：Google Cloud Platform作業系統：ubuntu 18.04 LTS顯示卡：TESLA T4
 
 
-函數getopt解析命令列
-getopt(argv, shor..." />
+1. 安裝 GPU以下皆在 root 下執行
+$ sudo su -
+..." />
 
+
+<meta property="og:image" content="/img/62551/000.png" />
 
     <!--Title-->
 
 <title>
     
-    Python getopt 命令列參數 |
+    ubuntu 18.04 安裝 Nvidia driver &amp; cuda 10.2 &amp; conda |
     
     隨勛所欲 - Google Analytics 網站分析
 </title>
@@ -180,9 +184,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Python getopt 命令列參數">
+        <h1 id="ubuntu 18.04 安裝 Nvidia driver &amp; cuda 10.2 &amp; conda">
             
-            Python getopt 命令列參數
+            ubuntu 18.04 安裝 Nvidia driver &amp; cuda 10.2 &amp; conda
             
         </h1>
         <div class="post-meta">
@@ -207,7 +211,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2020/05/28</span>
+            2020/06/16</span>
     </span>
     
     <span class="fa-wrap">
@@ -223,73 +227,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <div class="post-body post-content">
         <blockquote>
-<p>Python 提供 <code>getopt</code> 模組，提供幫助解析命令列的選項和參數。另外可以透過 <code>sys.argv</code> 取得命令列任何參數。</p>
+<p>雲服務：Google Cloud Platform<br>作業系統：ubuntu 18.04 LTS<br>顯示卡：TESLA T4</p>
 </blockquote>
 <hr>
-<h2 id="函數"><a href="#函數" class="headerlink" title="函數"></a>函數</h2><h3 id="getopt"><a href="#getopt" class="headerlink" title="getopt"></a>getopt</h3><p>解析命令列</p>
-<pre class=" language-python"><code class="language-python">getopt<span class="token punctuation">(</span>argv<span class="token punctuation">,</span> shortopts<span class="token punctuation">,</span> longopts<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
-<ul>
-<li>argv：要解析的參數，通常是<code>sys.argv[1:]</code></li>
-<li>shortopts：要識別的短格式<code>(-)</code>，其有要求參數後須加<code>:</code></li>
-<li>longopts：可選，要識別的長格式<code>(--)</code>，有參數要求加<code>=</code></li>
-</ul>
-<h3 id="GetoptError"><a href="#GetoptError" class="headerlink" title="GetoptError"></a>GetoptError</h3><p>當再命令列發現未被辨識的選項，或需要被賦予參數得選項無參數時，將會發出異常。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">try</span><span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token keyword">except</span> getopt<span class="token punctuation">.</span>GetoptError<span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<h2 id="1-安裝-GPU"><a href="#1-安裝-GPU" class="headerlink" title="1. 安裝 GPU"></a>1. 安裝 GPU</h2><p>以下皆在 root 下執行</p>
+<pre class=" language-shell"><code class="language-shell">$ sudo su -</code></pre>
+<pre class=" language-shell"><code class="language-shell">$ sudo apt-get update
+$ sudo apt-get install -y ubuntu-drivers-common
+$ ubuntu-drivers devices</code></pre>
+<p>輸出看到可以安裝 440 的驅動版本</p>
+<pre class=" language-shell"><code class="language-shell">== /sys/devices/pci0000:00/0000:00:04.0 ==
+modalias : pci:v000010DEd00001EB8sv000010DEsd000012A2bc03sc02i00
+vendor   : NVIDIA Corporation
+driver   : nvidia-driver-435 - distro non-free
+driver   : nvidia-driver-440 - distro non-free recommended
+driver   : xserver-xorg-video-nouveau - distro free builtin</code></pre>
+<p>安裝驅動</p>
+<pre class=" language-shell"><code class="language-shell">$ sudo ubuntu-drivers autoinstall</code></pre>
 <hr>
-<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><h3 id="程式範例"><a href="#程式範例" class="headerlink" title="程式範例"></a>程式範例</h3><p><code>demo-getopt.py</code></p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/python</span>
-<span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
-<span class="token keyword">import</span> sys
-<span class="token keyword">import</span> getopt
-
-
-<span class="token keyword">def</span> <span class="token function">usage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token triple-quoted-string string">'''Usage:{sys.argv[0]} [-i name | --ifile=name][-o name | --ofile=name]
-    -h help
-    -i input file path
-    -o output file path
-    '''</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span>argv<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    input_file <span class="token operator">=</span> <span class="token string">''</span>
-    output_file <span class="token operator">=</span> <span class="token string">''</span>
-
-    <span class="token keyword">try</span><span class="token punctuation">:</span>
-        opts<span class="token punctuation">,</span> args <span class="token operator">=</span> getopt<span class="token punctuation">.</span>getopt<span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'hi:o:'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"help"</span><span class="token punctuation">,</span> <span class="token string">"ifile="</span><span class="token punctuation">,</span> <span class="token string">"ofile="</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token keyword">except</span> getopt<span class="token punctuation">.</span>GetoptError<span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'{argv[0]} -i &lt;inputfile> -o &lt;outputfile>'</span><span class="token punctuation">)</span>
-        sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> name<span class="token punctuation">,</span> value <span class="token keyword">in</span> opts<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> name <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'-h'</span><span class="token punctuation">,</span> <span class="token string">'--help'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            usage<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> name <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'-i'</span><span class="token punctuation">,</span> <span class="token string">'--ifile'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            input_file <span class="token operator">=</span> value
-        <span class="token keyword">elif</span> name <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'-o'</span><span class="token punctuation">,</span> <span class="token string">'--ofile'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            output_file <span class="token operator">=</span> value
-    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'&lt;&lt;&lt; Input file is {input_file} &lt;&lt;&lt;'</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'>>> Output file is {output_file} >>>'</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    main<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span></code></pre>
-<h3 id="演示結果"><a href="#演示結果" class="headerlink" title="演示結果"></a>演示結果</h3><ol>
-<li><pre class=" language-shell"><code class="language-shell">python demo-getopt.py -h
-# Usage:demo-getopt.py [-i name | --ifile=name][-o name | --ofile=name]
-#    -h help
-#    -i input file path
-#    -o output file path</code></pre>
-</li>
-<li><pre class=" language-shell"><code class="language-shell">python demo-getopt.py -i text.txt --ofile=data.csv
-# <<< Input file is text.txt <<<
-# >>> Output file is data.csv >>></code></pre>
-</li>
-</ol>
+<h2 id="2-安裝-cuda-10-2-amp-cuDNN"><a href="#2-安裝-cuda-10-2-amp-cuDNN" class="headerlink" title="2. 安裝 cuda 10.2 &amp; cuDNN"></a>2. 安裝 cuda 10.2 &amp; cuDNN</h2><h3 id="安裝-cuda-10-2-軟件包"><a href="#安裝-cuda-10-2-軟件包" class="headerlink" title="安裝 cuda 10.2 軟件包"></a>安裝 cuda 10.2 軟件包</h3><pre class=" language-shell"><code class="language-shell">$ cd /tmp
+$ wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.2.89-1_amd64.deb
+$ sudo dpkg -i cuda-repo-ubuntu1804_10.2.89-1_amd64.deb
+$ sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub</code></pre>
+<h3 id="安裝-cuDNN-v7-6-5-軟件包"><a href="#安裝-cuDNN-v7-6-5-軟件包" class="headerlink" title="安裝 cuDNN v7.6.5 軟件包"></a>安裝 cuDNN v7.6.5 軟件包</h3><p>cuDNN 軟件包到 <a href="https://developer.nvidia.com/cudnn" target="_blank" rel="noopener">這裡下載</a>，載 Runtime 與 Developer</p>
+<ul>
+<li>cuDNN Runtime Library for Ubuntu18.04 (Deb)</li>
+<li>cuDNN Developer Library for Ubuntu18.04 (Deb)</li>
+</ul>
+<p><img src="/img/62551/001.png" alt=""></p>
+<p>安裝軟件包</p>
+<pre class=" language-shell"><code class="language-shell">$ sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.2_amd64.deb
+$ sudo dpkg -i libcudnn7-dev_7.6.5.32-1+cuda10.2_amd64.deb</code></pre>
+<p>執行安裝後重開機</p>
+<pre class=" language-shell"><code class="language-shell">$ sudo apt-get update
+$ sudo apt-get install --no-install-recommends \
+   cuda-10-2 \
+   libcudnn7=7.6.5.32-1+cuda10.2  \
+   libcudnn7-dev=7.6.5.32-1+cuda10.2
+$ sudo reboot</code></pre>
+<p>重開機後測試</p>
+<pre><code>$ nvidia-smi</code></pre><p><img src="/img/62551/002.png" alt=""></p>
+<hr>
+<h2 id="3-安裝-Miniconda"><a href="#3-安裝-Miniconda" class="headerlink" title="3. 安裝 Miniconda"></a>3. 安裝 Miniconda</h2><pre class=" language-shell"><code class="language-shell">$ cd /tmp && curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ sudo bash Miniconda3-latest-Linux-x86_64.sh</code></pre>
+<p>安裝位置 <code>/opt/miniconda3</code>，並將路徑新增至 <code>.bashrc</code></p>
+<pre class=" language-shell"><code class="language-shell">export PATH="/opt/miniconda3/bin:$PATH"</code></pre>
+<hr>
+<h2 id="4-安裝-tensorflow"><a href="#4-安裝-tensorflow" class="headerlink" title="4. 安裝 tensorflow"></a>4. 安裝 tensorflow</h2><pre class=" language-shell"><code class="language-shell">pip install --upgrade --user pip
+pip install tensorflow-gpu
+python -c 'import tensorflow as tf; tf.test.gpu_device_name()'</code></pre>
+<p>輸出結果為<br><img src="/img/62551/003.png" alt=""></p>
 
     </div>
     
@@ -309,17 +296,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/posts/62551.html" class="pre-post btn btn-default" title='ubuntu 18.04 安裝 Nvidia driver & cuda 10.2 & conda'>
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            ubuntu 18.04 安裝 Nvidia driver & cuda 10.2 & conda</span>
-    </a>
     
-    
-    <a href="/posts/7928.html" class="next-post btn btn-default" title='Python 多執行緒 (multiprocessing)'>
+    <a href="/posts/15191.html" class="next-post btn btn-default" title='Python getopt 命令列參數'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            Python 多執行緒 (multiprocessing)</span><i class="fa fa-angle-right fa-fw"></i>
+            Python getopt 命令列參數</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -342,9 +323,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_config = function() {
-    this.page.url = 'https://samirliu127.github.io/posts/15191.html';
-    this.page.identifier = 'posts/15191.html';
-    this.page.title = 'Python getopt 命令列參數';
+    this.page.url = 'https://samirliu127.github.io/posts/62551.html';
+    this.page.identifier = 'posts/62551.html';
+    this.page.title = 'ubuntu 18.04 安裝 Nvidia driver &amp; cuda 10.2 &amp; conda';
 };
 var d = document,
     s = d.createElement('script');
@@ -378,7 +359,7 @@ s.setAttribute('data-timestamp', '' + +new Date());
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#函數"><span class="toc-text">函數</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#getopt"><span class="toc-text">getopt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GetoptError"><span class="toc-text">GetoptError</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#範例"><span class="toc-text">範例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#程式範例"><span class="toc-text">程式範例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#演示結果"><span class="toc-text">演示結果</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安裝-GPU"><span class="toc-text">1. 安裝 GPU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安裝-cuda-10-2-amp-cuDNN"><span class="toc-text">2. 安裝 cuda 10.2 &amp; cuDNN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安裝-cuda-10-2-軟件包"><span class="toc-text">安裝 cuda 10.2 軟件包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安裝-cuDNN-v7-6-5-軟件包"><span class="toc-text">安裝 cuDNN v7.6.5 軟件包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-安裝-Miniconda"><span class="toc-text">3. 安裝 Miniconda</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-安裝-tensorflow"><span class="toc-text">4. 安裝 tensorflow</span></a></li></ol>
         
     </div>
 </aside>
