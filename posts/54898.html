@@ -1,0 +1,445 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="隨勛所欲 - Google Analytics 網站分析">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://samirliu127.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="python,graph,networkx,community detection,louvain" />
+
+
+<meta name="description" content="
+NetworkX 用於建立網絡模型、繪製網路圖、分析網絡結構等等的算法以及一些基本的繪圖工具。
+
+
+創建 Graphnetworkx 有四種圖，分別為無向圖、有向圖、多重邊無向圖、多重邊有向圖..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+
+<!-- Open Graph data -->
+<meta property="og:title" content="networkx 筆記" />
+
+<meta name="og:description" content="
+NetworkX 用於建立網絡模型、繪製網路圖、分析網絡結構等等的算法以及一些基本的繪圖工具。
+
+
+創建 Graphnetworkx 有四種圖，分別為無向圖、有向圖、多重邊無向圖、多重邊有向圖..." />
+
+
+<meta property="og:image" content="/img/54898/000.png" />
+
+    <!--Title-->
+
+<title>
+    
+    networkx 筆記 |
+    
+    隨勛所欲 - Google Analytics 網站分析
+</title>
+
+<link rel="alternate" href="/atom.xml" title="隨勛所欲 - Google Analytics 網站分析" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5M44L8F');</script>
+<!-- End Google Tag Manager -->
+
+
+    
+<meta name="baidu-site-verification" content="P04QVZ2PUj" />
+
+
+<script>
+(function() {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+    <script data-ad-client="ca-pub-5811286107404442" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5M44L8F"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <header class="main-header"  style="background-image:url(
+    /./img/up-background.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Samir Liu'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://samirliu127.github.io">
+                        隨勛所欲 - Google Analytics 網站分析</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa fa-home"></i>
+                                首頁</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/tracking/"><i class="fa fa-area-chart"></i>
+                                網站分析</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/python/"><i class="fa fa-code"></i>
+                                Python</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/others/"><i class="fa fa-book"></i>
+                                隨筆</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa fa-calendar-o"></i>
+                                時間軸</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="networkx 筆記">
+            
+            networkx 筆記
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/python/">Python</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/python/" rel="tag">python</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/06/17</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>NetworkX 用於建立網絡模型、繪製網路圖、分析網絡結構等等的算法以及一些基本的繪圖工具。</p>
+</blockquote>
+<hr>
+<h2 id="創建-Graph"><a href="#創建-Graph" class="headerlink" title="創建 Graph"></a>創建 Graph</h2><p>networkx 有四種圖，分別為無向圖、有向圖、多重邊無向圖、多重邊有向圖。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> networkx <span class="token keyword">as</span> nx
+
+<span class="token comment" spellcheck="true"># 創建空網路圖</span>
+G <span class="token operator">=</span> nx<span class="token punctuation">.</span>Graph<span class="token punctuation">(</span><span class="token punctuation">)</span>
+G <span class="token operator">=</span> nx<span class="token punctuation">.</span>DiGraph<span class="token punctuation">(</span><span class="token punctuation">)</span>
+G <span class="token operator">=</span> nx<span class="token punctuation">.</span>MultiGraph<span class="token punctuation">(</span><span class="token punctuation">)</span>
+G <span class="token operator">=</span> nx<span class="token punctuation">.</span>MultiDiGraph<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>添加節點</p>
+<pre class=" language-python"><code class="language-python">G<span class="token punctuation">.</span>add_node<span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span>
+G<span class="token punctuation">.</span>add_nodes_from<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'B'</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>添加邊與權重</p>
+<pre class=" language-python"><code class="language-python">G<span class="token punctuation">.</span>add_edge<span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token number">0.8</span><span class="token punctuation">)</span>
+G<span class="token punctuation">.</span>add_edges_from<span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">(</span><span class="token string">'B'</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'weight'</span><span class="token punctuation">:</span> <span class="token number">0.3</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'weight'</span><span class="token punctuation">:</span> <span class="token number">0.6</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>刪除</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 刪除節點</span>
+G<span class="token punctuation">.</span>remove_node<span class="token punctuation">(</span><span class="token string">'BC'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 刪除邊</span>
+G<span class="token punctuation">.</span>remove_edge<span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 刪除所有節點與邊</span>
+G<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>另外也可以從 DataFrame 載入</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+
+df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+     <span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token number">0.7</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+     <span class="token punctuation">(</span><span class="token string">'B'</span><span class="token punctuation">,</span> <span class="token string">'E'</span><span class="token punctuation">,</span> <span class="token number">0.6</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+     <span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span> <span class="token string">'E'</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+     <span class="token punctuation">(</span><span class="token string">'D'</span><span class="token punctuation">,</span> <span class="token string">'E'</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'src'</span><span class="token punctuation">,</span> <span class="token string">'dst'</span><span class="token punctuation">,</span> <span class="token string">'weight'</span><span class="token punctuation">]</span>
+<span class="token punctuation">)</span>
+G <span class="token operator">=</span> nx<span class="token punctuation">.</span>from_pandas_edgelist<span class="token punctuation">(</span>df<span class="token punctuation">,</span> <span class="token string">'src'</span><span class="token punctuation">,</span> <span class="token string">'dst'</span><span class="token punctuation">,</span> edge_attr<span class="token operator">=</span><span class="token string">'weight'</span><span class="token punctuation">)</span></code></pre>
+<hr>
+<h2 id="繪圖-nx-draw"><a href="#繪圖-nx-draw" class="headerlink" title="繪圖 nx.draw()"></a>繪圖 nx.draw()</h2><p>需要使用 matplotlib</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+nx<span class="token punctuation">.</span>draw<span class="token punctuation">(</span>G<span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><img src="/img/54898/001.png" alt=""></p>
+<p>詳解 nx.draw()</p>
+<pre><code>G: networkx 圖
+
+pos: 佈局指定節點排列形式
+
+node_size: 節點大小(預設300)
+
+node_color: 節點顏色(預設紅色)
+
+node_shape: 節點形狀(預設o)
+
+alpha: 透明度(預設1.0 不透明, 0為完全透明)
+
+width: 邊線的寬度(預設1.0)
+
+edge_color: 邊線顏色(預設黑色)
+
+style: 邊線的樣式(solid|dashed|dotted|dashdot)
+
+with_labels: 節點是否帶標籤
+
+font_size: 標籤字體大小(預設12)
+
+font_color: 標籤字體顏色(預設黑色)</code></pre><p>pos</p>
+<pre><code>nx.random_layout：隨機分佈
+nx.circular_layout：節點在圓環上均勻分佈
+nx.shell_layout：節點在同心圓上分佈
+nx.spring_layout： 用 Fruchterman-Reingold 演算法排列節點
+nx.spectral_layout：根據圖的拉普拉斯特徵向量排列節</code></pre><p>範例：</p>
+<pre class=" language-python"><code class="language-python">plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+nx<span class="token punctuation">.</span>draw<span class="token punctuation">(</span>
+    G<span class="token punctuation">,</span> 
+    pos<span class="token operator">=</span>nx<span class="token punctuation">.</span>spring_layout<span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    node_color<span class="token operator">=</span><span class="token string">'b'</span><span class="token punctuation">,</span>
+    edge_color<span class="token operator">=</span><span class="token string">'r'</span><span class="token punctuation">,</span>
+    with_labels<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    font_size<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">,</span>
+    node_size<span class="token operator">=</span><span class="token number">40</span><span class="token punctuation">,</span>
+    width<span class="token operator">=</span><span class="token number">0.7</span>
+<span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p><img src="/img/54898/000.png" alt=""></p>
+
+    </div>
+    
+    
+    <div class="post-footer">
+        <div>
+            
+            轉載聲明：
+            商業轉載請聯繫作者獲得授權，非商業傳再請註明出處。
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/posts/62551.html" class="next-post btn btn-default" title='ubuntu 18.04 安裝 Nvidia driver & cuda 10.2 & conda'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            ubuntu 18.04 安裝 Nvidia driver & cuda 10.2 & conda</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5811286107404442"
+     data-ad-slot="3317220257"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    
+
+<script id="dsq-count-scr" src="https://samirliu127-hexo-blog.disqus.com/count.js" async></script>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_config = function() {
+    this.page.url = 'https://samirliu127.github.io/posts/54898.html';
+    this.page.identifier = 'posts/54898.html';
+    this.page.title = 'networkx 筆記';
+};
+var d = document,
+    s = d.createElement('script');
+s.src = 'https://samirliu127-hexo-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);
+</script>
+
+</div>
+
+                </main>
+                
+                    <aside class="col-md-4 sidebar">
+    <div id="ad-box" class="widget" style="padding:0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- posts sidebar -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5811286107404442"
+     data-ad-slot="1395486699"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+</aside>
+<aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#創建-Graph"><span class="toc-text">創建 Graph</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#繪圖-nx-draw"><span class="toc-text">繪圖 nx.draw()</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2019
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
